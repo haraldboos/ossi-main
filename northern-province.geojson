@@ -1,0 +1,45 @@
+{
+  "type": "FeatureCollection",
+  "features": [
+    {
+      "type": "Feature",
+      "properties": { "DISTRICT": "Jaffna" },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [[[79.7,9.5],[80.4,9.5],[80.5,9.9],[79.6,9.9],[79.7,9.5]]]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": { "DISTRICT": "Kilinochchi" },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [[[80.0,9.1],[80.5,9.1],[80.6,9.4],[79.9,9.4],[80.0,9.1]]]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": { "DISTRICT": "Mannar" },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [[[79.5,8.6],[80.0,8.6],[80.1,9.1],[79.4,9.1],[79.5,8.6]]]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": { "DISTRICT": "Mullaitivu" },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [[[80.4,8.8],[81.0,8.8],[81.0,9.2],[80.3,9.2],[80.4,8.8]]]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": { "DISTRICT": "Vavuniya" },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [[[80.0,8.3],[80.6,8.3],[80.7,8.7],[79.9,8.7],[80.0,8.3]]]
+      }
+    }
+  ]
+}

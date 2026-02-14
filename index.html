@@ -1,0 +1,1740 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Northern Investment Summit 2026 | Investment Portal</title>
+    
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- AOS CSS -->
+    <link href="https://unpkg.com/aos@2.3.4/dist/aos.css" rel="stylesheet">
+    
+    <!-- Font Awesome for icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- Alpine.js -->
+    <script src="https://unpkg.com/alpinejs@3.12.0/dist/cdn.min.js" defer></script>
+    
+    <style>
+        /* Custom styles for enhanced professionalism */
+        .gradient-bg {
+            background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
+        }
+        
+        .section-padding {
+            padding-top: 5rem;
+            padding-bottom: 5rem;
+        }
+        
+        .card-hover {
+            transition: all 0.3s ease;
+        }
+        
+        .card-hover:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+        }
+        
+        .nav-link {
+            position: relative;
+        }
+        
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            bottom: -5px;
+            left: 0;
+            background-color: #3DDAD7;
+            transition: width 0.3s ease;
+        }
+        
+        .nav-link:hover::after {
+            width: 100%;
+        }
+        
+        .district-map path {
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+        
+        .district-map path:hover {
+            filter: brightness(1.2);
+            transform: scale(1.01);
+        }
+        
+        .modal-animation {
+            animation: modalFadeIn 0.3s ease-out;
+        }
+        
+        @keyframes modalFadeIn {
+            from {
+                opacity: 0;
+                transform: scale(0.9);
+            }
+            to {
+                opacity: 1;
+                transform: scale(1);
+            }
+        }
+        
+        .stat-card {
+            background: linear-gradient(135deg, rgba(61, 218, 215, 0.1) 0%, rgba(61, 218, 215, 0.05) 100%);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(61, 218, 215, 0.2);
+        }
+        
+        .hero-text-shadow {
+            text-shadow: 0 4px 12px rgba(0, 0, 0, 0.5);
+        }
+        
+        /* Hide Alpine elements before initialization */
+        [x-cloak] { 
+            display: none !important; 
+        }
+        
+        /* Tooltip styles */
+        .tooltip {
+            position: absolute;
+            background: rgba(15, 23, 42, 0.95);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(61, 218, 215, 0.3);
+            border-radius: 8px;
+            padding: 8px 16px;
+            font-size: 14px;
+            font-weight: 600;
+            color: white;
+            pointer-events: none;
+            z-index: 1000;
+            white-space: nowrap;
+            transform: translate(-50%, -100%);
+            margin-top: -10px;
+            opacity: 0;
+            transition: opacity 0.2s ease;
+        }
+        
+        .tooltip::after {
+            content: '';
+            position: absolute;
+            top: 100%;
+            left: 50%;
+            transform: translateX(-50%);
+            border-width: 6px;
+            border-style: solid;
+            border-color: rgba(61, 218, 215, 0.3) transparent transparent transparent;
+        }
+        
+        .sector-pill {
+            transition: all 0.2s ease;
+        }
+        
+        .sector-pill:hover {
+            transform: scale(1.05);
+        }
+        
+        /* Custom scrollbar */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        
+        ::-webkit-scrollbar-track {
+            background: rgba(30, 41, 59, 0.5);
+        }
+        
+        ::-webkit-scrollbar-thumb {
+            background: #3DDAD7;
+            border-radius: 4px;
+        }
+        
+        ::-webkit-scrollbar-thumb:hover {
+            background: #2ac8c5;
+        }
+    </style>
+</head>
+<body class="gradient-bg text-white" x-data="appData()" x-cloak>
+
+<!-- Navigation -->
+<header class="fixed top-0 left-0 w-full z-50 bg-gray-950/90 backdrop-blur-md border-b border-gray-800">
+    <nav class="max-w-7xl mx-auto flex items-center justify-between px-6 py-4">
+        <!-- Logo -->
+        <div class="flex items-center">
+            <img src="./logo7.png" alt="Northern Investment Summit Logo" class="h-20 md:h-24">
+            <!-- <span class="ml-3 text-lg font-bold bg-gradient-to-r from-[#3DDAD7] to-[#FF8360] bg-clip-text text-transparent">
+                NIS 2026
+            </span> -->
+        </div>
+
+        <!-- Desktop Menu -->
+        <ul class="hidden md:flex items-center space-x-10">
+            <li><a href="#about" class="nav-link font-medium hover:text-[#3DDAD7] transition-colors duration-300">About</a></li>
+            <li><a href="#districts" class="nav-link font-medium hover:text-[#3DDAD7] transition-colors duration-300">Districts</a></li>
+            <li><a href="#sectors" class="nav-link font-medium hover:text-[#3DDAD7] transition-colors duration-300">Investment Sectors</a></li>
+            <li><a href="#summit" class="nav-link font-medium hover:text-[#3DDAD7] transition-colors duration-300">Summit 2026</a></li>
+            <li>
+                <a href="#contact" class="bg-gradient-to-r from-[#FF8360] to-[#FF6B4A] px-6 py-2.5 rounded-lg font-semibold hover:shadow-lg hover:shadow-orange-500/20 transition-all duration-300">
+                    Contact Us
+                </a>
+            </li>
+        </ul>
+
+        <!-- Mobile Menu Button -->
+        <button @click="mobileMenuOpen = !mobileMenuOpen" class="md:hidden p-2 rounded-lg hover:bg-gray-800 transition-colors">
+            <svg :class="{ 'hidden': mobileMenuOpen, 'block': !mobileMenuOpen }" class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/>
+            </svg>
+            <svg :class="{ 'block': mobileMenuOpen, 'hidden': !mobileMenuOpen }" class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/>
+            </svg>
+        </button>
+    </nav>
+
+    <!-- Mobile Menu -->
+    <div x-show="mobileMenuOpen" x-transition:enter="transition ease-out duration-300"
+         x-transition:enter-start="opacity-0 -translate-y-4"
+         x-transition:enter-end="opacity-100 translate-y-0"
+         x-transition:leave="transition ease-in duration-200"
+         x-transition:leave-start="opacity-100 translate-y-0"
+         x-transition:leave-end="opacity-0 -translate-y-4"
+         class="md:hidden bg-gray-900/95 backdrop-blur-lg border-b border-gray-800">
+        <div class="px-6 py-4 space-y-4">
+            <a href="#about" @click="mobileMenuOpen = false" class="block py-2 font-medium hover:text-[#3DDAD7] transition-colors">About</a>
+            <a href="#districts" @click="mobileMenuOpen = false" class="block py-2 font-medium hover:text-[#3DDAD7] transition-colors">Districts</a>
+            <a href="#sectors" @click="mobileMenuOpen = false" class="block py-2 font-medium hover:text-[#3DDAD7] transition-colors">Investment Sectors</a>
+            <a href="#summit" @click="mobileMenuOpen = false" class="block py-2 font-medium hover:text-[#3DDAD7] transition-colors">Summit 2026</a>
+            <a href="#contact" @click="mobileMenuOpen = false" class="block py-3 mt-4 bg-gradient-to-r from-[#FF8360] to-[#FF6B4A] text-center rounded-lg font-semibold hover:shadow-lg transition-all">
+                Contact Us
+            </a>
+        </div>
+    </div>
+</header>
+
+<!-- Hero Section -->
+<section class="relative min-h-screen flex items-center justify-center overflow-hidden pt-16">
+    <!-- Background Image -->
+    <div class="absolute inset-0 z-0">
+        <img src="./herobg.png" alt="Northern Sri Lanka Landscape" 
+             class="w-full h-full object-cover object-center brightness-75">
+        <div class="absolute inset-0 bg-gradient-to-b from-gray-950/70 via-gray-950/50 to-gray-950/90"></div>
+        <div class="absolute inset-0 bg-gradient-to-r from-gray-950/40 to-gray-950/20"></div>
+    </div>
+
+    <!-- Hero Content -->
+    <div class="relative z-10 max-w-6xl mx-auto px-6 text-center">
+        <!-- Badge -->
+        <div data-aos="fade-down" data-aos-duration="800" 
+             class="inline-flex items-center gap-2 bg-gradient-to-r from-[#3DDAD7]/20 to-[#FF8360]/20 backdrop-blur-sm border border-white/10 rounded-full px-6 py-2 mb-8">
+            <!-- <span class="w-2 h-2 bg-[#3DDAD7] rounded-full animate-pulse"></span> -->
+            <span class="text-sm font-semibold text-[#FFD369] uppercase tracking-wider">
+                Investment Portal of the Northern Srilanka
+            </span>
+            
+        </div>
+<!-- <span>srilanka</span> -->
+        <!-- Main Heading -->
+        <h1 data-aos="fade-up" data-aos-duration="1000" 
+            class="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold leading-tight mb-6 hero-text-shadow">
+            <span class="block">
+                Invest in <br>the Economic</span>
+            <span class="bg-gradient-to-r from-[#3DDAD7] via-[#3DDAD7] to-[#FF8360] bg-clip-text text-transparent">
+                Center of Northern Sri Lanka
+            </span>
+        </h1>
+
+        <!-- Description -->
+        <p data-aos="fade-up" data-aos-duration="1200" data-aos-delay="200"
+           class="text-lg sm:text-xl md:text-2xl text-gray-200 max-w-3xl mx-auto mb-10 leading-relaxed">
+            Discover unparalleled investment opportunities, connect with key stakeholders, and drive sustainable economic growth through the OSSI investment platform.
+        </p>
+
+        <!-- CTA Buttons -->
+        <div data-aos="fade-up" data-aos-duration="1200" data-aos-delay="400" class="flex flex-col sm:flex-row gap-4 justify-center items-center">
+            <a href="#districts" 
+               class="group bg-gradient-to-r from-[#FF8360] to-[#FF6B4A] px-8 py-4 rounded-xl font-bold text-lg hover:shadow-2xl hover:shadow-orange-500/30 transition-all duration-300 transform hover:-translate-y-1 flex items-center gap-3">
+                <span>Explore Districts</span>
+                <i class="fas fa-arrow-right group-hover:translate-x-1 transition-transform"></i>
+            </a>
+            <a href="#sectors"
+               class="group border-2 border-[#3DDAD7] text-[#3DDAD7] px-8 py-4 rounded-xl font-bold text-lg hover:bg-[#3DDAD7] hover:text-gray-900 transition-all duration-300 flex items-center gap-3">
+                <i class="fas fa-industry"></i>
+                <span>View Sectors</span>
+            </a>
+        </div>
+
+        <!-- Stats -->
+        <div data-aos="fade-up" data-aos-duration="1200" data-aos-delay="600"
+             class="grid grid-cols-2 md:grid-cols-4 gap-6 mt-16 max-w-4xl mx-auto">
+            <div class="stat-card p-6 rounded-2xl text-center">
+                <div class="text-3xl font-bold text-[#3DDAD7] mb-2">5</div>
+                <div class="text-sm text-gray-300">Investment Districts</div>
+            </div>
+            <div class="stat-card p-6 rounded-2xl text-center">
+                <div class="text-3xl font-bold text-[#3DDAD7] mb-2">9</div>
+                <div class="text-sm text-gray-300">Main Sectors</div>
+            </div>
+            <div class="stat-card p-6 rounded-2xl text-center">
+                <div class="text-3xl font-bold text-[#3DDAD7] mb-2">40+</div>
+                <div class="text-sm text-gray-300">Sub-Sectors</div>
+            </div>
+            <div class="stat-card p-6 rounded-2xl text-center">
+                <div class="text-3xl font-bold text-[#3DDAD7] mb-2">2026</div>
+                <div class="text-sm text-gray-300">Investment Summit</div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Scroll Indicator -->
+    <div data-aos="fade-up" data-aos-delay="800" class="absolute bottom-8 left-1/2 transform -translate-x-1/2">
+        <a href="#about" class="animate-bounce inline-block p-3 rounded-full bg-white/10 hover:bg-white/20 transition-colors">
+            <i class="fas fa-chevron-down text-xl"></i>
+        </a>
+    </div>
+</section>
+
+<!-- About Section -->
+<section id="about" class="section-padding bg-gradient-to-b from-gray-900 to-gray-950">
+    <div class="max-w-6xl mx-auto px-6">
+        <div class="grid md:grid-cols-2 gap-12 items-center">
+            <div data-aos="fade-right">
+                <div class="inline-block mb-4">
+                    <span class="text-[#3DDAD7] font-bold text-sm uppercase tracking-wider">About the Region</span>
+                </div>
+                <h2 class="text-4xl md:text-5xl font-bold mb-6">
+                    The <span class="text-[#3DDAD7]">Northern Province</span> of Sri Lanka
+                </h2>
+                <p class="text-lg text-gray-300 mb-6 leading-relaxed">
+                    A culturally rich and historically significant region, known for its vibrant communities, 
+                    pristine coastline, and emerging economic potential. Positioned as a key growth center 
+                    for strategic investments in agriculture, tourism, ICT, and renewable energy sectors.
+                </p>
+                <div class="space-y-4">
+                    <div class="flex items-start gap-3">
+                        <div class="w-8 h-8 rounded-full bg-[#3DDAD7]/20 flex items-center justify-center flex-shrink-0">
+                            <i class="fas fa-check text-[#3DDAD7]"></i>
+                        </div>
+                        <p class="text-gray-300">Strategic geographic location with access to regional markets</p>
+                    </div>
+                    <div class="flex items-start gap-3">
+                        <div class="w-8 h-8 rounded-full bg-[#3DDAD7]/20 flex items-center justify-center flex-shrink-0">
+                            <i class="fas fa-check text-[#3DDAD7]"></i>
+                        </div>
+                        <p class="text-gray-300">Abundant natural resources and skilled workforce</p>
+                    </div>
+                    <div class="flex items-start gap-3">
+                        <div class="w-8 h-8 rounded-full bg-[#3DDAD7]/20 flex items-center justify-center flex-shrink-0">
+                            <i class="fas fa-check text-[#3DDAD7]"></i>
+                        </div>
+                        <p class="text-gray-300">Government incentives and investment-friendly policies</p>
+                    </div>
+                </div>
+            </div>
+            
+            <div data-aos="fade-left" class="relative">
+                <div class="relative rounded-2xl overflow-hidden shadow-2xl">
+                    <div class="aspect-video bg-gradient-to-br from-[#3DDAD7] to-[#FF8360] opacity-20"></div>
+                    <div class="absolute inset-0 flex items-center justify-center">
+                        <div class="text-center p-8">
+                            <i class="fas fa-map-marked-alt text-6xl text-[#3DDAD7] mb-4"></i>
+                            <h3 class="text-2xl font-bold mb-2">Strategic Location</h3>
+                            <p class="text-gray-300">Gateway to South Asian markets</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- OSSI Portal Section -->
+<section id="ossi" class="section-padding bg-gray-950">
+    <div class="max-w-6xl mx-auto px-6">
+        <div class="grid md:grid-cols-2 gap-12 items-center">
+            <div data-aos="fade-right">
+                <div class="inline-block mb-4">
+                    <span class="text-[#3DDAD7] font-bold text-sm uppercase tracking-wider">Investment Gateway</span>
+                </div>
+                <h2 class="text-4xl md:text-5xl font-bold mb-6">
+                    Introducing <span class="text-[#FF8360]">OSSI</span>
+                </h2>
+                <p class="text-lg text-gray-300 mb-6 leading-relaxed">
+                    Your Centralized Gateway to Investing in Northern Sri Lanka. Navigate investment opportunities with ease through our<br> One-Stop Shop for Investment (OSSI) platform.
+                </p>
+                
+                <div class="space-y-4 mb-8">
+                    <div class="flex items-start gap-3">
+                        <div class="w-10 h-10 rounded-full bg-[#3DDAD7]/20 flex items-center justify-center flex-shrink-0">
+                            <i class="fas fa-rocket text-[#3DDAD7]"></i>
+                        </div>
+                        <div>
+                            <h4 class="font-bold mb-1">Streamlined Investment Process</h4>
+                            <p class="text-gray-300">Single point of contact for all investment inquiries, permits, and approvals</p>
+                        </div>
+                    </div>
+                    
+                    <div class="flex items-start gap-3">
+                        <div class="w-10 h-10 rounded-full bg-[#3DDAD7]/20 flex items-center justify-center flex-shrink-0">
+                            <i class="fas fa-handshake text-[#3DDAD7]"></i>
+                        </div>
+                        <div>
+                            <h4 class="font-bold mb-1">Direct Stakeholder Connectivity</h4>
+                            <p class="text-gray-300">Connect with government agencies, local authorities, and industry partners</p>
+                        </div>
+                    </div>
+                    
+                    <div class="flex items-start gap-3">
+                        <div class="w-10 h-10 rounded-full bg-[#3DDAD7]/20 flex items-center justify-center flex-shrink-0">
+                            <i class="fas fa-chart-line text-[#3DDAD7]"></i>
+                        </div>
+                        <div>
+                            <h4 class="font-bold mb-1">Comprehensive Project Showcase</h4>
+                            <p class="text-gray-300">Access district-wise investment proposals and ready-to-invest projects</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <a href="https://lightcyan-pigeon-730918.hostingersite.com/" class="inline-flex items-center gap-3 bg-gradient-to-r from-[#3DDAD7] to-[#2ac8c5] text-gray-900 font-bold px-6 py-3 rounded-xl hover:shadow-lg hover:shadow-[#3DDAD7]/20 transition-all duration-300">
+                    <span>Access OSSI Portal</span>
+                    <i class="fas fa-arrow-right"></i>
+                </a>
+            </div>
+            
+            <div data-aos="fade-left" class="relative">
+                <!-- OSSI Feature Cards -->
+                <div class="space-y-6">
+                    <!-- Card 1 -->
+                    <div class="card-hover bg-gradient-to-br from-gray-800 to-gray-900 rounded-2xl p-6 border border-gray-700">
+                        <div class="flex items-center gap-4 mb-4">
+                            <div class="w-12 h-12 rounded-xl bg-blue-500/20 flex items-center justify-center">
+                                <i class="fas fa-search text-blue-400 text-xl"></i>
+                            </div>
+                            <div>
+                                <h3 class="text-xl font-bold">Discover Opportunities</h3>
+                                <span class="text-blue-400 text-sm">Explore 40+ Investment Sectors</span>
+                            </div>
+                        </div>
+                        <p class="text-gray-300">Access comprehensive information on agriculture, renewable energy, tourism, technology, and more across all 5 districts.</p>
+                    </div>
+                    
+                    <!-- Card 2 -->
+                    <div class="card-hover bg-gradient-to-br from-gray-800 to-gray-900 rounded-2xl p-6 border border-gray-700 ml-8">
+                        <div class="flex items-center gap-4 mb-4">
+                            <div class="w-12 h-12 rounded-xl bg-green-500/20 flex items-center justify-center">
+                                <i class="fas fa-file-alt text-green-400 text-xl"></i>
+                            </div>
+                            <div>
+                                <h3 class="text-xl font-bold">Simplify Processes</h3>
+                                <span class="text-green-400 text-sm">Streamlined Approvals & Permits</span>
+                            </div>
+                        </div>
+                        <p class="text-gray-300">Step-by-step guidance through legal frameworks, incentive programs, and regulatory requirements.</p>
+                    </div>
+                    
+                    <!-- Card 3 -->
+                    <div class="card-hover bg-gradient-to-br from-gray-800 to-gray-900 rounded-2xl p-6 border border-gray-700">
+                        <div class="flex items-center gap-4 mb-4">
+                            <div class="w-12 h-12 rounded-xl bg-purple-500/20 flex items-center justify-center">
+                                <i class="fas fa-users text-purple-400 text-xl"></i>
+                            </div>
+                            <div>
+                                <h3 class="text-xl font-bold">Connect with Experts</h3>
+                                <span class="text-purple-400 text-sm">Direct Access to Stakeholders</span>
+                            </div>
+                        </div>
+                        <p class="text-gray-300">Network with government agencies, local authorities, diaspora networks, and private sector partners.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- OSSI Benefits Section -->
+        <div class="mt-16" data-aos="fade-up">
+            <div class="text-center mb-12">
+                <h3 class="text-3xl font-bold mb-4">Why OSSI Matters for Investors</h3>
+                <p class="text-xl text-gray-300 max-w-3xl mx-auto">Building investor confidence through transparency and efficiency</p>
+            </div>
+            
+            <div class="grid md:grid-cols-3 gap-8">
+                <!-- Benefit 1 -->
+                <div class="text-center">
+                    <div class="w-16 h-16 rounded-2xl bg-[#3DDAD7]/20 flex items-center justify-center mx-auto mb-4">
+                        <i class="fas fa-shield-alt text-[#3DDAD7] text-2xl"></i>
+                    </div>
+                    <h4 class="text-xl font-bold mb-3">Enhanced Credibility</h4>
+                    <p class="text-gray-300">Positions Northern Province as a structured, transparent, and forward-thinking investment destination.</p>
+                </div>
+                
+                <!-- Benefit 2 -->
+                <div class="text-center">
+                    <div class="w-16 h-16 rounded-2xl bg-[#FF8360]/20 flex items-center justify-center mx-auto mb-4">
+                        <i class="fas fa-bolt text-[#FF8360] text-2xl"></i>
+                    </div>
+                    <h4 class="text-xl font-bold mb-3">Operational Efficiency</h4>
+                    <p class="text-gray-300">Reduces time and complexity by providing a single point of contact for all investment processes.</p>
+                </div>
+                
+                <!-- Benefit 3 -->
+                <div class="text-center">
+                    <div class="w-16 h-16 rounded-2xl bg-[#FFD369]/20 flex items-center justify-center mx-auto mb-4">
+                        <i class="fas fa-globe text-[#FFD369] text-2xl"></i>
+                    </div>
+                    <h4 class="text-xl font-bold mb-3">Global Accessibility</h4>
+                    <p class="text-gray-300">Makes investment opportunities easily accessible to global investors, diaspora, and local entrepreneurs.</p>
+                </div>
+            </div>
+            
+            <!-- CTA Box -->
+            <div class="mt-12 bg-gradient-to-r from-[#3DDAD7]/10 to-[#FF8360]/10 rounded-2xl p-8 border border-gray-700 text-center" data-aos="fade-up">
+                <h3 class="text-2xl font-bold mb-4">Ready to Explore Investment Opportunities?</h3>
+                <p class="text-gray-300 mb-6 max-w-2xl mx-auto">OSSI connects you directly to projects, policies, and partners across the Northern Province. Whether you're exploring sectors, seeking permits, or networking with stakeholders—OSSI is your first and only stop.</p>
+                <div class="flex flex-col sm:flex-row gap-4 justify-center">
+                    <a href="https://lightcyan-pigeon-730918.hostingersite.com/" class="bg-gradient-to-r from-[#FF8360] to-[#FF6B4A] px-8 py-3 rounded-xl font-bold hover:shadow-lg hover:shadow-orange-500/30 transition-all">
+                        <i class="fas fa-external-link-alt mr-2"></i>
+                        Access OSSI Portal
+                    </a>
+                    <a href="#sectors" class="border-2 border-[#3DDAD7] text-[#3DDAD7] px-8 py-3 rounded-xl font-bold hover:bg-[#3DDAD7] hover:text-gray-900 transition-all">
+                        <i class="fas fa-chart-pie mr-2"></i>
+                        Explore Investment Sectors
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- Districts Section -->
+<section id="districts" class="section-padding bg-gray-950">
+    <div class="max-w-7xl mx-auto px-6">
+        <!-- Section Header -->
+        <div class="text-center mb-16" data-aos="fade-up">
+            <div class="inline-block mb-4">
+                <span class="text-[#FFD369] font-bold text-sm uppercase tracking-wider">Investment Districts</span>
+            </div>
+            <h2 class="text-4xl md:text-5xl font-bold mb-6">
+                Explore <span class="text-[#3DDAD7]">Northern Province</span> Districts
+            </h2>
+            <p class="text-xl text-gray-300 max-w-3xl mx-auto">
+                Each district offers unique investment opportunities and strategic advantages
+            </p>
+        </div>
+
+        <!-- Interactive Map -->
+        <div class="mb-16" data-aos="fade-up">
+            <div class="bg-gradient-to-br from-gray-900 to-gray-800 rounded-3xl p-1 shadow-2xl">
+                <div class="bg-gray-900 rounded-2xl p-6">
+                    <div class="flex justify-between items-center mb-6">
+                        <h3 class="text-2xl font-bold text-white">Interactive Investment Map</h3>
+                        <div class="text-sm text-gray-400">Hover over any district for details</div>
+                    </div>
+                    
+                    <!-- Map Container -->
+                    <div class="relative bg-gray-800/50 rounded-xl p-4">
+                        <svg class="district-map w-full h-96" viewBox="0 0 300 280">
+                            <!-- Tooltip container -->
+                            <g id="tooltip-container"></g>
+                            
+                            <!-- District paths with improved styling -->
+                            <path d="m 190.72712,72.870747 4.93,4.06 -5.31999,-1.13 0.38999,-2.93 z m -187.949995,-15.45 1.9,0.11 1.51,2.76 2.41,1.13 0.22,0.73 5.71,0.45 0.95,0.68 1.12,7.11 -1.34,2.82 -3.36,0.17 -2.46,-0.85 -8.34,-5.07 -0.84,-8.06 1.12,-1.92 1.23,-0.51 0.17,0.45 z m 26.71,-9.36 0.45,1.75 1.01,0.62 -0.39,2.37 -1.9,-1.13 0.06,-2.93 0.77,-0.68 z m -4.87,-4.4 0.9,0.4 -0.33,7.39 -1.74,-0.68 -0.62,-1.58 0.06,-3.95 1.73,-1.58 z m 16.91,-2.71 1.9,2.03 -0.56,1.86 -1.74,-1.52 -0.39,-1.86 0.79,-0.51 z m -14.56,-10.61 0.73,4.51 -2.57,2.6 0.84,0.28 -0.51,1.58 -2.52,-2.82 1.57,-3.67 2.46,-2.48 z m 15.45,-3.33 2.46,2.09 1.68,-0.28 0.95,-1.02 1.4,0.96 0.56,1.69 1.29,0.85 -0.9,1.69 1.96,2.6 0.39,-1.02 -1.18,-0.9 4.09,-0.96 -1.4,-0.96 3.92,0.85 0.39,-0.51 0,2.82 -0.73,-0.34 -0.73,0.56 -0.73,0.11 -0.22,0.68 5.15,3.67 4.37,2.14 1.74,-0.11 -0.11,-0.68 1.17,-0.34 -0.33,-1.24 3.14,1.13 1.45,1.64 -0.95,1.92 0.34,1.81 -0.56,1.18 -2.91,1.69 -2.69,-0.56 -1.51,-1.02 -0.34,-1.19 0.73,0.06 -0.06,0.96 1.96,0.11 0.95,-3.27 -1.46,1.86 -2.63,-0.34 -1.74,-1.75 -3.42,-1.58 -3.58,-0.56 -2.3,3.44 -1.73,-0.11 -1.34,-1.24 -5.88,3.27 0.33,0.68 -1.06,2.06 0.78,1.38 -0.78,1.69 0.62,1.52 -0.73,0.4 -2.63,0.45 -8.34,-1.8 -0.27,-2.93 0.95,-0.23 0.5,-1.35 -1.06,-1.02 0.84,-0.62 -0.28,-2.71 0.95,-1.69 0.9,0.96 0.9,-0.68 -0.11,1.69 0.95,0.56 -1.01,2.54 2.13,1.75 0.9,-0.23 0,-0.85 2.91,0.62 -1.62,-1.02 -0.39,-1.81 -0.17,0.85 -3.36,-0.11 0.56,-1.64 2.01,0.63 1.9,-1.74 3.58,2.54 6.16,-3.39 -3.3,-2.37 -0.84,0.23 -1.57,-3.16 0.42,-1.05 1.59,-0.19 0.73,-0.85 0,-1.52 -1.29,-1.18 -1.62,-0.11 -0.17,1.02 0.5,-0.4 1.06,1.24 -0.67,1.47 -1.23,0.06 -1.51,-1.81 -1.79,-2.76 -0.22,-1.3 1.23,-0.9 -1.85,-1.3 -0.11,-1.13 2.74,0.34 1.18,-0.63 z m -9.07,-2.31 -0.56,6.26 -0.9,-2.43 0.34,-2.37 1.12,-1.46 z m 80.619995,-24.4400002 7.61001,2.09 2.07,5.02 4.31,7.2300002 9.73999,14 6.05,6.54 29.62001,23.58 3.36,2.99 0.45,1.18 12.53999,9.64 0.34001,1.52 -0.5,0.45 -1.85,-0.56 -8.17,-5.58 1.29,0.34 -0.45,-0.68 -2.35,-0.45 -4.25,-2.82 -5.54,-1.48 -1.62,0.41 -0.39,-0.9 -3.83,-2.14 0,0 0.16,-3.85 -1.72,-3.62 -9.3,-7.24 -13.82,-7.83 -7.32,-8.43 -8.11,15.58 0,0 -9.08,-5.14 -6.61,-2.93 -2.29,-0.28 -2.18,1.98 1.34,1.24 1.06,-1.41 0.9,0.79 0.22,2.65 -0.78,0.68 0.67,0.68 -2.66,-0.25 2.3,0.9 1.62,-0.9 0.67,0.4 0.78,-0.23 1.29,0.34 1.01,0.73 -0.62,1.02 0.9,0.28 -2.63,1.41 -1.85,-0.9 -1.23,0.28 0.67,0.96 1.45,-0.51 1.00999,0.73 -0.34,0.79 1.79,-0.68 -0.06,1.07 -1.57,0.39 1.51,0.85 0.39,0.56 2.74,0.34 -1.61,0.73 -5.89,-3.16 -5.539995,-5.25 -7.45,-3.33 -5.37,-2.99 -0.5,-1.03 -0.17,1.77 0.39,0.79 0.22,0.96 3.53,1.41 4.59,4.63 3.08,0.73 -1.57,0.34 -5.77,-2.09 -9.52,-6.32 -1.4,-0.34 -1.01,0.85 -4.09,-0.73 -2.8,-2.54 -1.96,2.99 2.13,1.92 -2.13,-0.39 -0.73,-1.13 2.63,-3.55 -1.29,-1.64 -0.11,-3.27 -1.73,-0.96 -1.18,1.64 -0.84,-0.23 -2.35,-2.2 -0.51,-1.58 -2.07,2.2 0.17,0.62 -2.74,-0.23 -1.06,-2.99 -1.29,-1.35 0.28,-2.43 -2.52,-3.89 -4.59,0.96 -0.06,2.26 -1.51,-0.17 0.84,2.99 -2.52,1.69 -3.14,-0.17 -0.17,-0.62 -2.74,-0.85 2.24,-3.05 -1.46,-4.29 1.74,-2.6 3.42,0.23 3.97,-1.3 0.11,0.9 -1.08,0.4 0.68,1.07 -0.62,2.88 4.7,-0.51 -0.79,-1.41 -1.28,-0.34 -0.84,-1.81 1.23,-2.77 3.69,-0.45 2.74,-1.69 0.62,-1.7500002 8.23,-3.39 6.49,-1.19 2.63,0.23 0.84,-0.51 7.05,1.47 6.33,0.45 2.18,-0.45 3.14,-1.92 1.18,0.62 1.12,-1.58 9.849995,-0.45 5.22,-1.67 z"
+                                id="LK-41"
+                                class="district-path"
+                                data-district="Jaffna"
+                                fill="#3498db" />
+                            
+                            <path d="m 67.727125,107.37075 1.23,2.08 0.17,1.92 0.73,0.51 0.45,-1.01 1.51,0.96 0.06,2.03 -1.29,1.18 -0.78,-2.25 -1.18,-0.62 -2.24,1.01 -1.4,-0.96 -0.22,-2.14 1.57,-0.62 1.39,-2.09 z m 18.08,-2.93 1.73,0.23 1.46,2.03 -2.3,-0.17 -1.34,-1.47 0.45,-0.62 z m -3.58,-5.180003 0.45,3.780003 -1.29,-0.79 0.84,-2.990003 z m -8.9,-27.68 1,0.68 0.06,0.96 -0.67,1.97 -0.67,0.23 -1.4,-3.1 0.28,-0.68 1.4,-0.06 z m 48.929995,-26.34 8.11,-15.58 7.32,8.43 13.82,7.83 9.3,7.24 1.72,3.62 -0.16,3.85 0,0 -0.87,-1.3 -1.46,2.82 -2.07,-0.34 0.17,1.41 0.73,-0.11 -0.11,1.35 1.06,0.68 -1.57,-0.23 -2.63,-2.31 -3.92,-1.58 1.57,2.59 -0.56,0.17 -0.06,2.03 1.29,1.41 0.5,-0.23 0.84,0.51 0.5,-0.79 -0.38,-0.94 3.02,1.92 1.12,0.17 0.39,0.73 5.15,-0.56 1.23,0.62 -0.06,1.02 1.62,0.39 -0.17,0.73 1.18,-0.79 0.22,0.73 -0.78,0.79 1.51,0.11 0.78,1.24 2.86,-0.28 0.5,0.51 0.62,-1.58 0.39,1.24 2.74,-0.73 2.86,1.52 2.52,0.4 -0.39,1.8 0.67,0.34 -1.45,1.3 -1.12,-0.11 1.9,1.64 2.85,-0.06 1.85,0.79 0.06,-1.58 1.18,-0.11 1.18,-1.24 4.81,1.02 0,0 0.33,1.13 -0.65,0.74 0.25,0.39 -0.94,3.6 -2,2.23 -0.91,-0.57 -1.75,1.86 -0.47999,2.56 0.47999,3.94 -0.53999,1.09 0.5,1.65 -5.71001,-3.16 -5.31,-5.44 -0.46,5.51 -2.2,3.72 -0.40999,2.87 -21.87001,1.220003 -0.27,6.39 -2.32,1.42 -14.85,-1.51 -8.45999,2.17 -3.06,-1.04 -4.74,1.11 -1.39,0.48 -4.06,3.72 1.34,7.74 -0.42,0.92 -5.32,-0.65 0,0 -8.62,5.31 -6.430005,0.33 0,0 0.73,-2.9 -0.78,-3.32 0.78,-4.4 -1.9,-1.52 -0.28,-1.47 1.12,-2.31 1.23,-0.75 0.06,-1.85 -6.27,-5.24 -1.29,-0.45 -0.73,0.79 -2.07,-0.11 -1.51,-1.18 0.11,-2.31 -0.9,-1.470003 0.84,-1.52 -1.74,-1.52 -0.17,-5.19 3.75,-2.71 7.84,-2.54 3.02,-2.37 4.310005,-1.97 1.74,-2.54 0.39,-0.62 2.69,-2.88 2.35,-1.3 0.61,-2.48 -3.81,-5.92 -4.03,-4.12 -8.680005,-6.94 -10.53,-5.98 1.96,-2.43 0.23,1.97 1.9,-0.17 0.56,0.23 -0.11,0.96 3.58,0.66 1.51,1.54 1.06,-0.4 0.62,1.58 1.18,1.02 2.46,-0.62 3.47,4.23 6.890005,2.99 3.58,-0.79 -0.39,1.75 1.12,-1.02 0.56,1.02 1.51,0.28 0.62,1.64 1.85,-0.9 -0.84,-1.3 0.67,-0.11 5.82,4.91 1.01,0.4 0.56,0.11 1.06,-0.34 2.41,1.92 -0.5,0.79 1.57,0.73 0.11,1.41 -0.62,-0.45 -0.5,-0.62 -2.58,-0.73 -1.51,2.03 3.92,2.03 0.72999,1.24 -1.74,-0.73 -1.85,0.96 -1.56999,-0.62 -0.33001,1.3 6.21,2.88 3.13,-0.73 1.12,0.06 2.58,-0.79 -0.84,-0.28 0.45,-0.51 0.95,-0.06 0.23,1.07 2.35,1.13 1.12,-0.73 0.17,-2.2 1.18,-0.06 1.9,0.9 0.22,-0.66 1.62,0.27 3.08,-2.2 0.22,-0.45 1.18,0.68 1.85,-0.68 -0.28,-3.1 1.06,-1.75 -0.89,-1.92 2.69,-0.28 0.06,-1.69 -1.62,-0.51 -0.62,1.07 -1.2,-0.26 0.64,-0.75 -2.69,-1.24 1.63,2.65 -0.85,0.4 -2.69,-3.61 -3.42,-2.93 -0.34,-1.24 -4.98,-3.44 -0.5,0.17 1.4,1.52 -1.57,-0.68 -5.03999,-3.84 0.36,-0.8 -8.84,-5.02 z"
+                                id="LK-42"
+                                class="district-path"
+                                data-district="Kilinochchi"
+                                fill="#2ecc71" />
+                            
+                            <path d="m 54.737125,209.37075 0.39,-1.14 -1.34,-0.5 0.95,-6.25 1.29,-4.56 0.5,0.11 -0.17,1.41 1.34,-3.04 -0.45,-1.01 -0.28,2.2 -0.67,-0.06 0.45,-3.43 -0.73,-2.81 -4.99,-7.6 1.58,1.18 0.72,-2.08 -1.28,0.56 -1.01,-0.56 0.56,-1.3 -0.73,0.23 -2.02,-1.52 0.78,-0.73 -0.22,-0.96 -1.9,-0.45 -4.81,-6.36 -8.9,-7.21 -5.26,-3.44 -8.9,-4.05 -9.91,-2.14 0.06,-1.92 -1.34,-0.39 2.29,-2.25 7.45,-1.18 9.01,1.35 15.34,5.41 5.21,4.28 3.36,3.21 1.62,2.76 3.47,2.65 -2.01,0.17 -3.19,-2.7 -5.88,-2.08 0.95,2.87 2.74,2.87 2.63,2.25 4.7,2.48 -0.17,1.18 -4.87,-0.34 -0.45,1.01 0.95,0.28 -1.85,0.56 0.11,1.58 2.41,0.28 -0.67,2.20 2.91,-2.65 0.84,2.87 3.7,0.34 5.15,-4.79 3.81,-1.24 0.95,-4.05 2.63,-1.07 1.9,-2.25 2.91,-1.01 2.52,0.11 -0.39,-0.84 2.46,-3.1 1.29,-3.55 2.3,-2.48 0.89,-3.15 -0.28,-2.31 1.23,-1.24 -0.78,-1.58 0.78,-2.87 -0.34,-1.24 1.51,-1.75 0.67,-2.25 2.01,-1.63 0.95,-1.8 0.95,-7.27 0.73,0.28 1.45,-2.4 0,0 6.430005,-0.33 8.62,-5.31 0,0 0.75,12.42 4.36,6.67 1.75,6.08 -1.95,3.23 0.79,8.6 -5.07,1.82 -3.77,9.98 2.59,2.36 0.21,1.13 -2.61,1.64 0.19,3.3 -0.61,0.96 15.01,-0.27 18.25999,-1.51 0,0 5.8,2.38 2.46001,2.53 1.00999,5.63 2.91,6.34 0.39,3.81 -1.73,1.59 -4.55,1.85 -10.84,1.89 -4.05,2.1 -13.66,-1.55 -4.52,7.87 -1.86,4.94 -4.07,-2 -1.4,5.22 4.7,3.1 1.76,3.33 2.03,1.61 0.55,1.38 1.08,0.31 0.87,2.11 2,2 0,0 -24.509995,6.27 -5.49,-1.38 -1.3,0.53 -7.19,-3.97 2.19,7.34 -1,23.29 -3.18,-0.44 -0.42,-0.62 0,0 -4.14,-1.44 -2.21,-2.33 -2.08,0.46 -2.59,-2.09 -1.9,0.53 -2.22,-0.43 -1.64,-1.49 -2.42,0.68 -2.6,-1.64 0,0 -0.95,-1 -0.13,-3.75 2.63,-4.33 2.41,-2.25 0.73,-2.59 -0.9,-3.94 1.9,-5.01 -0.56,-6.19 2.07,-3.49 -3.75,-6.75 -1.85,-5.35 -2.85,-3.1 1.01,0.39 1.23,-0.84 -1.73,-0.38 z"
+                                id="LK-43"
+                                class="district-path"
+                                data-district="Mannar"
+                                fill="#e74c3c" />
+                            
+                            <path d="m 139.31712,178.23075 10.23,-6.5 8.65,-7.88 -1.52,-12.34 -4.42,0.02 -0.07,-4.94 17.59,-0.5 3.82,4.86 0.55,3.46 3.44,0.1 6.03,-6.35 5.04,-0.7 -0.64,-3.07 4.37,-0.07 3.83,0.5 2.37001,1.61 0.59999,-0.91 1.88,0.69 1.13,7.87 3.22,0.7 2.86,-1.7 1.88,1.76 -1.06,4.82 -1.91999,1.89 0.08,1.96 1.62,0.19 6.53,-4.21 13.99,8.39 -4.29,14.85 0,0 -0.73,0.16 -1.83,6.27 0,0 -5.45,1.46 -2.85,-0.12 -3.97,1.87 -4.96,3.63 -4.34,0.68 -10.21,-0.33 -0.61,4.42 1.46,0.99 5.54,1.2 2.04,4.39 2.84,2.44 0.02,2.62 -3.52,2.13 -2.05,2.65 -1.06,2.88 -3.48,1.67 -2.4,4.51 -3.16,1.09 -0.74,3.31 -3.89,2.49 -1.06,1.69 -3.07,1.41 -2.11,2.84 -2.61001,0.07 -7.61,-5.37 -3.56,-1.53 -4.75,3.92 -0.72,-0.17 -0.46,2.42 -2.29,0.51 -2.24,5.15 -3.71,2.49 -0.42,2.13 0.77,1.85 -0.83,0.92 0.27,2.8 -2.09,1.77 -3.59,0.45 -2.86,5.42 -4.86,-0.94 -5.04,-2 -0.76,-4.18 -1.00999,-0.69 0.41999,-1.16 -0.69999,0 -0.89,-2.09 0.11,-2.09 -2.98,-1.43 -1.96,0.38 -1.87,-2.58 -0.7,-0.02 0.37,-1.69 -1.12,-2.99 0.91,-2.28 -0.52,-3.45 0,0 -2,-2.01 -0.87,-2.1 -1.08,-0.32 -0.55001,-1.38 -2.03,-1.61 -1.77,-3.33 -4.7,-3.11 1.40001,-5.22 4.06999,2 1.86001,-4.93 4.52,-7.87 13.64999,1.54 4.05001,-2.09 10.84,-1.9 4.55,-1.85 1.73,-1.59 -0.39,-3.81 -2.91,-6.34 -1.01,-5.63 -2.46,-2.53 z"
+                                id="LK-44"
+                                class="district-path"
+                                data-district="Vavuniya"
+                                fill="#f39c12" />
+                            
+                            <path d="m 196.48712,77.050747 8.96,7.44 -0.11,1.07 -0.78,0 -0.17,1.8 3.53,2.76 0.61,1.64 4.93001,1.8 -6.66,-6.09 -0.67,-2.09 14.27,13.71 9.97,7.330003 3.69,4 -0.34,0.56 1.23,0.34 1.23,3.95 4.53,7.33 4.31,13.97 3.69,7.15 -1.34,0.45 -0.9,-0.68 -0.22,-2.31 -2.63,-0.39 1.4,0.62 -0.28,2.14 1.79,2.31 -0.11,0.56 -1.34,-0.45 -0.45,2.03 1.51,-0.11 1.4,1.41 -0.73,-1.63 2.24,-3.21 9.69,17.52 6.33,9.91 -2.69,0.51 -4.93,-7.04 -4.93,-5.07 -1.85,-0.45 -0.78,1.18 0.45,1.13 -2.02,1.3 -0.73,-0.23 -0.22,1.75 2.24,2.53 3.36,1.52 0.39,0.96 0.62,0.06 0.28,-1.3 0.45,0.44 0.73,-0.61 0.06,-1.24 0.67,0.28 0.78,1.75 -1.79,2.59 2.01,-0.62 0.67,0 -0.17,0.47 0,0 -1.69,1.35 -1.83,-0.32 -2.32,1.4 -2.02,-0.26 -0.22,1.43 -2.67,0.95 -1.25,1.75 -7.04001,-0.35 -1.19999,1.18 -10.54,1.75 -1.8,2.06 0,0 4.28,-14.85 -13.98,-8.39 -6.54,4.21 -1.62,-0.19 -0.08,-1.96 1.91999,-1.89 1.06,-4.82 -1.88,-1.76 -2.86,1.7 -3.22,-0.7 -1.13,-7.87 -1.88999,-0.69 -0.6,0.91 -2.37,-1.61 -3.83001,-0.49 -4.37,0.06 0.63,3.08 -5.04,0.7 -6.03,6.35 -3.44,-0.1 -0.55,-3.46 -3.82,-4.86 -17.58,0.5 0.06,4.95 4.42,-0.03 1.53,12.34 -8.65,7.89 -10.23,6.5 0,0 -18.25999,1.51 -15.01,0.27 0.61,-0.96 -0.19,-3.3 2.61,-1.64 -0.21,-1.13 -2.59,-2.36 3.77,-9.98 5.07,-1.82 -0.79,-8.6 1.95,-3.23 -1.75,-6.08 -4.36,-6.67 -0.75,-12.42 0,0 5.32,0.65 0.42,-0.92 -1.34001,-7.74 4.06001,-3.72 1.38999,-0.48 4.74,-1.11 3.06,1.04 8.46,-2.17 14.85,1.51 2.32,-1.42 0.27,-6.39 21.87,-1.220003 0.41,-2.87 2.2,-3.72 0.46,-5.51 5.31,5.44 5.71,3.16 -0.5,-1.65 0.54,-1.09 -0.48,-3.94 0.48,-2.56 1.75,-1.86 0.92,0.56 2,-2.23 0.94,-3.6 -1.38,-1.09 1.13,0.7 0.65,-0.74 -0.33,-1.13 0,0 1.88,-0.7 z"
+                                id="LK-45"
+                                class="district-path"
+                                data-district="Mullaitivu"
+                                fill="#9b59b6" />
+                        </svg>
+                        
+                        <!-- Map Labels -->
+                        <div class="absolute top-4 left-4 bg-black/70 backdrop-blur-sm rounded-lg p-3">
+                            <div class="flex items-center gap-2 mb-2">
+                                <div class="w-3 h-3 rounded-full bg-[#3498db]"></div>
+                                <span class="text-sm font-medium">Jaffna</span>
+                            </div>
+                            <div class="flex items-center gap-2 mb-2">
+                                <div class="w-3 h-3 rounded-full bg-[#2ecc71]"></div>
+                                <span class="text-sm font-medium">Kilinochchi</span>
+                            </div>
+                            <div class="flex items-center gap-2">
+                                <div class="w-3 h-3 rounded-full bg-[#e74c3c]"></div>
+                                <span class="text-sm font-medium">Mannar</span>
+                            </div>
+                        </div>
+                        
+                        <div class="absolute bottom-4 right-4 bg-black/70 backdrop-blur-sm rounded-lg p-3">
+                            <div class="flex items-center gap-2 mb-2">
+                                <div class="w-3 h-3 rounded-full bg-[#f39c12]"></div>
+                                <span class="text-sm font-medium">Vavuniya</span>
+                            </div>
+                            <div class="flex items-center gap-2">
+                                <div class="w-3 h-3 rounded-full bg-[#9b59b6]"></div>
+                                <span class="text-sm font-medium">Mullaitivu</span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="text-center mt-4 text-gray-400 text-sm">
+                        <i class="fas fa-mouse-pointer mr-2"></i>
+                        Click on any district to view detailed investment opportunities
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- District Cards -->
+       
+    </div>
+</section>
+
+
+
+<section id="why-northern-questions" class="section-padding bg-gray-950">
+  <div class="max-w-6xl mx-auto px-6">
+
+    <!-- Header -->
+    <div class="text-center mb-14" data-aos="fade-up">
+      <span class="text-gray-400 font-bold text-sm uppercase tracking-wider">
+        Strategic Advantage
+      </span>
+
+      <h2 class="text-4xl md:text-5xl font-bold mt-3 mb-6">
+        Why Northern Sri Lanka?
+      </h2>
+
+      <p class="text-xl text-gray-300 max-w-3xl mx-auto leading-relaxed">
+        Discover why Northern Sri Lanka is emerging as one of South Asia’s most promising and strategic investment destinations.
+      </p>
+    </div>
+
+    <!-- Question Answer Card -->
+    <div class="bg-gray-900 rounded-3xl p-8 border border-gray-700 shadow-xl" data-aos="fade-up">
+
+      <ul class="space-y-6 text-gray-300 text-lg leading-relaxed list-disc list-inside">
+
+        <li>
+          Northern Sri Lanka is rapidly becoming a new frontier for sustainable investment, serving as a gateway to South Asian markets and located just 24 km from India.
+        </li>
+
+        <li>
+          Its strategic location on major global maritime trade routes enhances international connectivity, supported by 8,800 sq km of underutilized land and rich natural resources.
+        </li>
+
+        <li>
+          The Northern Province contributes nearly 30% of Sri Lanka’s fisheries production, strengthening growth in marine, aquaculture, and export industries.
+        </li>
+
+        <li>
+          Upcoming industrial zones, tourism hubs, and MSME clusters will accelerate regional economic expansion and job creation.
+        </li>
+
+        <li>
+          Investors benefit from tax incentives, capital allowances, public–private partnerships, and 30–40% lower operating and labor costs.
+        </li>
+
+        <li>
+          With full foreign ownership, multi-year tax holidays, priority government backing, and 24/7 investor support, Northern Sri Lanka stands as a high-impact investment destination.
+        </li>
+
+      </ul>
+    </div>
+
+  </div>
+</section>
+
+
+
+<!-- Investment Sectors Section -->
+<section id="sectors" class="section-padding bg-gradient-to-b from-gray-950 to-gray-900">
+    <div class="max-w-7xl mx-auto px-6">
+        <!-- Section Header -->
+        <div class="text-center mb-16" data-aos="fade-up">
+            <div class="inline-block mb-4">
+                <span class="text-[#FFD369] font-bold text-sm uppercase tracking-wider">Investment Opportunities</span>
+            </div>
+            <h2 class="text-4xl md:text-5xl font-bold mb-6">
+                Strategic <span class="text-[#3DDAD7]">Investment Sectors</span>
+            </h2>
+            <p class="text-xl text-gray-300 max-w-3xl mx-auto">
+                Comprehensive sectoral framework for sustainable development in Northern Sri Lanka
+            </p>
+        </div>
+
+        <!-- Sectors Grid -->
+        <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8 mb-16" data-aos="fade-up">
+            <!-- Agriculture -->
+            <div class="bg-gradient-to-br from-gray-900 to-gray-800 rounded-2xl p-6 border border-gray-700">
+                <div class="w-14 h-14 rounded-xl bg-green-500/20 flex items-center justify-center mb-6">
+                    <i class="fas fa-seedling text-2xl text-green-400"></i>
+                </div>
+                <h3 class="text-xl font-bold mb-4">Agriculture</h3>
+                <div class="flex flex-wrap gap-2">
+                    <span class="sector-pill bg-green-500/10 text-green-400 px-3 py-1 rounded-full text-sm border border-green-500/20">Agriculture</span>
+                    <span class="sector-pill bg-green-500/10 text-green-400 px-3 py-1 rounded-full text-sm border border-green-500/20">Plantation</span>
+                    <span class="sector-pill bg-green-500/10 text-green-400 px-3 py-1 rounded-full text-sm border border-green-500/20">Fisheries</span>
+                    <span class="sector-pill bg-green-500/10 text-green-400 px-3 py-1 rounded-full text-sm border border-green-500/20">Livestock</span>
+                </div>
+                <p class="text-gray-300 mt-4">
+                    Modern agricultural practices, agro-processing, fisheries development, and livestock farming.
+                </p>
+            </div>
+
+            <!-- Industry & Trade -->
+            <div class="bg-gradient-to-br from-gray-900 to-gray-800 rounded-2xl p-6 border border-gray-700">
+                <div class="w-14 h-14 rounded-xl bg-blue-500/20 flex items-center justify-center mb-6">
+                    <i class="fas fa-industry text-2xl text-blue-400"></i>
+                </div>
+                <h3 class="text-xl font-bold mb-4">Industry & Trade</h3>
+                <div class="flex flex-wrap gap-2">
+                    <span class="sector-pill bg-blue-500/10 text-blue-400 px-3 py-1 rounded-full text-sm border border-blue-500/20">Industry</span>
+                    <span class="sector-pill bg-blue-500/10 text-blue-400 px-3 py-1 rounded-full text-sm border border-blue-500/20">Internal Trade</span>
+                    <span class="sector-pill bg-blue-500/10 text-blue-400 px-3 py-1 rounded-full text-sm border border-blue-500/20">International Trade</span>
+                    <span class="sector-pill bg-blue-500/10 text-blue-400 px-3 py-1 rounded-full text-sm border border-blue-500/20">Tourism</span>
+                </div>
+                <p class="text-gray-300 mt-4">
+                    Industrial development, trade facilitation, export promotion, and tourism infrastructure.
+                </p>
+            </div>
+
+            <!-- Infrastructure -->
+            <div class="bg-gradient-to-br from-gray-900 to-gray-800 rounded-2xl p-6 border border-gray-700">
+                <div class="w-14 h-14 rounded-xl bg-yellow-500/20 flex items-center justify-center mb-6">
+                    <i class="fas fa-hard-hat text-2xl text-yellow-400"></i>
+                </div>
+                <h3 class="text-xl font-bold mb-4">Infrastructure</h3>
+                <div class="flex flex-wrap gap-2">
+                    <span class="sector-pill bg-yellow-500/10 text-yellow-400 px-3 py-1 rounded-full text-sm border border-yellow-500/20">Power and Energy</span>
+                    <span class="sector-pill bg-yellow-500/10 text-yellow-400 px-3 py-1 rounded-full text-sm border border-yellow-500/20">Irrigation</span>
+                    <span class="sector-pill bg-yellow-500/10 text-yellow-400 px-3 py-1 rounded-full text-sm border border-yellow-500/20">Urban Development</span>
+                    <span class="sector-pill bg-yellow-500/10 text-yellow-400 px-3 py-1 rounded-full text-sm border border-yellow-500/20">Housing</span>
+                    <span class="sector-pill bg-yellow-500/10 text-yellow-400 px-3 py-1 rounded-full text-sm border border-yellow-500/20">Water Supply</span>
+                    <span class="sector-pill bg-yellow-500/10 text-yellow-400 px-3 py-1 rounded-full text-sm border border-yellow-500/20">Transport</span>
+                    <span class="sector-pill bg-yellow-500/10 text-yellow-400 px-3 py-1 rounded-full text-sm border border-yellow-500/20">Roads</span>
+                    <span class="sector-pill bg-yellow-500/10 text-yellow-400 px-3 py-1 rounded-full text-sm border border-yellow-500/20">Port</span>
+                    <span class="sector-pill bg-yellow-500/10 text-yellow-400 px-3 py-1 rounded-full text-sm border border-yellow-500/20">Aviation</span>
+                </div>
+                <p class="text-gray-300 mt-4">
+                    Comprehensive infrastructure development including energy, water, transport, and urban planning.
+                </p>
+            </div>
+
+            <!-- Regional Development -->
+            <div class="bg-gradient-to-br from-gray-900 to-gray-800 rounded-2xl p-6 border border-gray-700">
+                <div class="w-14 h-14 rounded-xl bg-purple-500/20 flex items-center justify-center mb-6">
+                    <i class="fas fa-map-marked-alt text-2xl text-purple-400"></i>
+                </div>
+                <h3 class="text-xl font-bold mb-4">Regional Development</h3>
+                <div class="flex flex-wrap gap-2">
+                    <span class="sector-pill bg-purple-500/10 text-purple-400 px-3 py-1 rounded-full text-sm border border-purple-500/20">Regional Development</span>
+                    <span class="sector-pill bg-purple-500/10 text-purple-400 px-3 py-1 rounded-full text-sm border border-purple-500/20">Rural Development</span>
+                </div>
+                <p class="text-gray-300 mt-4">
+                    Balanced regional development focusing on both urban centers and rural communities.
+                </p>
+            </div>
+
+            <!-- Human Resource Development -->
+            <div class="bg-gradient-to-br from-gray-900 to-gray-800 rounded-2xl p-6 border border-gray-700">
+                <div class="w-14 h-14 rounded-xl bg-pink-500/20 flex items-center justify-center mb-6">
+                    <i class="fas fa-user-graduate text-2xl text-pink-400"></i>
+                </div>
+                <h3 class="text-xl font-bold mb-4">Human Resource Development</h3>
+                <div class="flex flex-wrap gap-2">
+                    <span class="sector-pill bg-pink-500/10 text-pink-400 px-3 py-1 rounded-full text-sm border border-pink-500/20">Health</span>
+                    <span class="sector-pill bg-pink-500/10 text-pink-400 px-3 py-1 rounded-full text-sm border border-pink-500/20">Education</span>
+                    <span class="sector-pill bg-pink-500/10 text-pink-400 px-3 py-1 rounded-full text-sm border border-pink-500/20">Higher Education</span>
+                    <span class="sector-pill bg-pink-500/10 text-pink-400 px-3 py-1 rounded-full text-sm border border-pink-500/20">Skill development</span>
+                    <span class="sector-pill bg-pink-500/10 text-pink-400 px-3 py-1 rounded-full text-sm border border-pink-500/20">Labour</span>
+                    <span class="sector-pill bg-pink-500/10 text-pink-400 px-3 py-1 rounded-full text-sm border border-pink-500/20">Foreign Employment</span>
+                    <span class="sector-pill bg-pink-500/10 text-pink-400 px-3 py-1 rounded-full text-sm border border-pink-500/20">Sports</span>
+                    <span class="sector-pill bg-pink-500/10 text-pink-400 px-3 py-1 rounded-full text-sm border border-pink-500/20">Youth Affairs</span>
+                </div>
+                <p class="text-gray-300 mt-4">
+                    Developing human capital through education, healthcare, skills training, and youth empowerment.
+                </p>
+            </div>
+
+            <!-- Environment Management -->
+            <div class="bg-gradient-to-br from-gray-900 to-gray-800 rounded-2xl p-6 border border-gray-700">
+                <div class="w-14 h-14 rounded-xl bg-teal-500/20 flex items-center justify-center mb-6">
+                    <i class="fas fa-leaf text-2xl text-teal-400"></i>
+                </div>
+                <h3 class="text-xl font-bold mb-4">Environment Management</h3>
+                <div class="flex flex-wrap gap-2">
+                    <span class="sector-pill bg-teal-500/10 text-teal-400 px-3 py-1 rounded-full text-sm border border-teal-500/20">Environment</span>
+                    <span class="sector-pill bg-teal-500/10 text-teal-400 px-3 py-1 rounded-full text-sm border border-teal-500/20">Wildlife and Forest</span>
+                    <span class="sector-pill bg-teal-500/10 text-teal-400 px-3 py-1 rounded-full text-sm border border-teal-500/20">Disaster Management</span>
+                    <span class="sector-pill bg-teal-500/10 text-teal-400 px-3 py-1 rounded-full text-sm border border-teal-500/20">Land</span>
+                </div>
+                <p class="text-gray-300 mt-4">
+                    Sustainable environmental management, conservation, and disaster risk reduction.
+                </p>
+            </div>
+
+            <!-- Social Protection -->
+            <div class="bg-gradient-to-br from-gray-900 to-gray-800 rounded-2xl p-6 border border-gray-700">
+                <div class="w-14 h-14 rounded-xl bg-orange-500/20 flex items-center justify-center mb-6">
+                    <i class="fas fa-hands-helping text-2xl text-orange-400"></i>
+                </div>
+                <h3 class="text-xl font-bold mb-4">Social Protection</h3>
+                <div class="flex flex-wrap gap-2">
+                    <span class="sector-pill bg-orange-500/10 text-orange-400 px-3 py-1 rounded-full text-sm border border-orange-500/20">Women Empowerment</span>
+                    <span class="sector-pill bg-orange-500/10 text-orange-400 px-3 py-1 rounded-full text-sm border border-orange-500/20">Child Protection</span>
+                    <span class="sector-pill bg-orange-500/10 text-orange-400 px-3 py-1 rounded-full text-sm border border-orange-500/20">Elderly Care</span>
+                    <span class="sector-pill bg-orange-500/10 text-orange-400 px-3 py-1 rounded-full text-sm border border-orange-500/20">Empowerment of Differently Abled</span>
+                    <span class="sector-pill bg-orange-500/10 text-orange-400 px-3 py-1 rounded-full text-sm border border-orange-500/20">Prisoners Welfare</span>
+                    <span class="sector-pill bg-orange-500/10 text-orange-400 px-3 py-1 rounded-full text-sm border border-orange-500/20">Empowerment of Marginalized Groups</span>
+                    <span class="sector-pill bg-orange-500/10 text-orange-400 px-3 py-1 rounded-full text-sm border border-orange-500/20">Welfare and Social Security</span>
+                </div>
+                <p class="text-gray-300 mt-4">
+                    Inclusive social protection systems and empowerment of vulnerable groups.
+                </p>
+            </div>
+
+            <!-- Communication, Technology and Research -->
+            <div class="bg-gradient-to-br from-gray-900 to-gray-800 rounded-2xl p-6 border border-gray-700">
+                <div class="w-14 h-14 rounded-xl bg-indigo-500/20 flex items-center justify-center mb-6">
+                    <i class="fas fa-satellite-dish text-2xl text-indigo-400"></i>
+                </div>
+                <h3 class="text-xl font-bold mb-4">Communication, Technology & Research</h3>
+                <div class="flex flex-wrap gap-2">
+                    <span class="sector-pill bg-indigo-500/10 text-indigo-400 px-3 py-1 rounded-full text-sm border border-indigo-500/20">Information Technology</span>
+                    <span class="sector-pill bg-indigo-500/10 text-indigo-400 px-3 py-1 rounded-full text-sm border border-indigo-500/20">Communication</span>
+                    <span class="sector-pill bg-indigo-500/10 text-indigo-400 px-3 py-1 rounded-full text-sm border border-indigo-500/20">Science and Technology</span>
+                    <span class="sector-pill bg-indigo-500/10 text-indigo-400 px-3 py-1 rounded-full text-sm border border-indigo-500/20">Posts</span>
+                    <span class="sector-pill bg-indigo-500/10 text-indigo-400 px-3 py-1 rounded-full text-sm border border-indigo-500/20">Mass Media</span>
+                    <span class="sector-pill bg-indigo-500/10 text-indigo-400 px-3 py-1 rounded-full text-sm border border-indigo-500/20">Telecommunication</span>
+                </div>
+                <p class="text-gray-300 mt-4">
+                    Digital transformation, technological innovation, and research & development.
+                </p>
+            </div>
+
+            <!-- Governance -->
+            <div class="bg-gradient-to-br from-gray-900 to-gray-800 rounded-2xl p-6 border border-gray-700">
+                <div class="w-14 h-14 rounded-xl bg-gray-500/20 flex items-center justify-center mb-6">
+                    <i class="fas fa-landmark text-2xl text-gray-400"></i>
+                </div>
+                <h3 class="text-xl font-bold mb-4">Governance</h3>
+                <div class="flex flex-wrap gap-2">
+                    <span class="sector-pill bg-gray-500/10 text-gray-400 px-3 py-1 rounded-full text-sm border border-gray-500/20">Public Administration</span>
+                    <span class="sector-pill bg-gray-500/10 text-gray-400 px-3 py-1 rounded-full text-sm border border-gray-500/20">Special Spending Units</span>
+                    <span class="sector-pill bg-gray-500/10 text-gray-400 px-3 py-1 rounded-full text-sm border border-gray-500/20">Foreign Affairs</span>
+                    <span class="sector-pill bg-gray-500/10 text-gray-400 px-3 py-1 rounded-full text-sm border border-gray-500/20">Internal Affairs</span>
+                    <span class="sector-pill bg-gray-500/10 text-gray-400 px-3 py-1 rounded-full text-sm border border-gray-500/20">Defense</span>
+                    <span class="sector-pill bg-gray-500/10 text-gray-400 px-3 py-1 rounded-full text-sm border border-gray-500/20">Justice</span>
+                    <span class="sector-pill bg-gray-500/10 text-gray-400 px-3 py-1 rounded-full text-sm border border-gray-500/20">Law and Order</span>
+                    <span class="sector-pill bg-gray-500/10 text-gray-400 px-3 py-1 rounded-full text-sm border border-gray-500/20">Cultural and Religious Affairs</span>
+                    <span class="sector-pill bg-gray-500/10 text-gray-400 px-3 py-1 rounded-full text-sm border border-gray-500/20">National Integration</span>
+                </div>
+                <p class="text-gray-300 mt-4">
+                    Efficient governance systems, legal frameworks, and public administration.
+                </p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- OSSI Portal Section -->
+<section id="ossi-portal" class="section-padding bg-gradient-to-b from-gray-900 to-gray-950">
+  <div class="max-w-6xl mx-auto px-6">
+
+    <!-- Header Section -->
+    <div class="text-center mb-16" data-aos="fade-up">
+      <span class="text-[#FFD369] font-bold text-sm uppercase tracking-wider">Official Portal</span>
+
+      <h2 class="text-4xl md:text-5xl font-bold mb-6 mt-3">
+        One Stop Shop <span class="text-[#3DDAD7]">Investment Portal</span>
+      </h2>
+
+      <p class="text-xl text-gray-300 max-w-3xl mx-auto mb-8">
+        Northern Province, Sri Lanka. Official investment and proposal management portal operated under the Northern Province.
+      </p>
+    </div>
+
+    <!-- Partner Institutions Grid -->
+    <div id="partnersGrid" class="grid md:grid-cols-3 gap-8 mb-16" data-aos="fade-up" data-aos-delay="200"></div>
+
+  </div>
+</section>
+
+
+
+<!-- Modal for District Details -->
+<div x-show="modalOpen" x-cloak
+     x-transition:enter="transition ease-out duration-300"
+     x-transition:enter-start="opacity-0"
+     x-transition:enter-end="opacity-100"
+     x-transition:leave="transition ease-in duration-200"
+     x-transition:leave-start="opacity-100"
+     x-transition:leave-end="opacity-0"
+     class="fixed inset-0 bg-black/70 backdrop-blur-sm z-50 flex items-center justify-center p-4"
+     @click.away="closeModal">
+    <div class="modal-animation bg-gray-900 rounded-2xl max-w-4xl w-full max-h-[90vh] overflow-hidden border border-gray-700 shadow-2xl"
+         @click.stop>
+        <div class="bg-gradient-to-r from-gray-800 to-gray-900 p-6 border-b border-gray-700">
+    
+            <div class="flex justify-between items-center">
+                <h3 class="text-2xl font-bold" x-text="currentDistrict ? currentDistrict + ' District' : 'District Information'"></h3>
+                <button @click="closeModal" class="text-2xl hover:text-[#3DDAD7] transition-colors">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+        </div>
+        <div class="p-6 overflow-y-auto max-h-[calc(90vh-80px)]">
+            <div x-html="modalContent"></div>
+        </div>
+    </div>
+</div>
+
+<!-- FAQ Section -->
+<section id="faq" class="section-padding bg-gray-950">
+    <div class="max-w-4xl mx-auto px-6">
+        <!-- Section Header -->
+        <div class="text-center mb-12" data-aos="fade-up">
+            <div class="inline-block mb-4">
+                <span class="text-[#FFD369] font-bold text-sm uppercase tracking-wider">Got Questions?</span>
+            </div>
+            <h2 class="text-4xl md:text-5xl font-bold mb-6">
+                Frequently Asked <span class="text-[#3DDAD7]">Questions</span>
+            </h2>
+            <p class="text-xl text-gray-300 max-w-3xl mx-auto">
+                Everything you need to know about investing in Northern Sri Lanka
+            </p>
+        </div>
+
+        <!-- FAQ Accordion -->
+        <div class="space-y-4" x-data="{ activeFaq: null }">
+            <!-- FAQ 1 -->
+            <div class="bg-gray-800/50 rounded-xl border border-gray-700 overflow-hidden" 
+                 data-aos="fade-up" data-aos-delay="100">
+                <button @click="activeFaq = activeFaq === 1 ? null : 1" 
+                        class="w-full px-6 py-5 flex items-center justify-between text-left hover:bg-gray-800/80 transition-colors">
+                    <span class="text-lg font-bold">What is the Northern Investment Summit 2026?</span>
+                    <i class="fas fa-chevron-down text-[#3DDAD7] transition-transform duration-300" 
+                       :class="{ 'rotate-180': activeFaq === 1 }"></i>
+                </button>
+                <div x-show="activeFaq === 1" 
+                     x-collapse
+                     class="px-6 pb-5 text-gray-300 leading-relaxed">
+                    The Northern Investment Summit 2026 is a premier investment platform showcasing opportunities across all five districts of Northern Sri Lanka. It brings together global investors, government stakeholders, and local enterprises to drive sustainable economic development through strategic partnerships and investments.
+                </div>
+            </div>
+
+            <!-- FAQ 2 -->
+            <div class="bg-gray-800/50 rounded-xl border border-gray-700 overflow-hidden" 
+                 data-aos="fade-up" data-aos-delay="200">
+                <button @click="activeFaq = activeFaq === 2 ? null : 2" 
+                        class="w-full px-6 py-5 flex items-center justify-between text-left hover:bg-gray-800/80 transition-colors">
+                    <span class="text-lg font-bold">How do I access the OSSI investment portal?</span>
+                    <i class="fas fa-chevron-down text-[#3DDAD7] transition-transform duration-300" 
+                       :class="{ 'rotate-180': activeFaq === 2 }"></i>
+                </button>
+                <div x-show="activeFaq === 2" 
+                     x-collapse
+                     class="px-6 pb-5 text-gray-300 leading-relaxed">
+                    You can access the One-Stop Shop for Investment (OSSI) portal by clicking the "Access OSSI Portal" button in the OSSI section above. The portal provides comprehensive information on investment opportunities, project proposals, regulatory frameworks, and connects you directly with key stakeholders across all districts.
+                </div>
+            </div>
+
+            <!-- FAQ 3 -->
+            <div class="bg-gray-800/50 rounded-xl border border-gray-700 overflow-hidden" 
+                 data-aos="fade-up" data-aos-delay="300">
+                <button @click="activeFaq = activeFaq === 3 ? null : 3" 
+                        class="w-full px-6 py-5 flex items-center justify-between text-left hover:bg-gray-800/80 transition-colors">
+                    <span class="text-lg font-bold">What are the main investment sectors in Northern Province?</span>
+                    <i class="fas fa-chevron-down text-[#3DDAD7] transition-transform duration-300" 
+                       :class="{ 'rotate-180': activeFaq === 3 }"></i>
+                </button>
+                <div x-show="activeFaq === 3" 
+                     x-collapse
+                     class="px-6 pb-5 text-gray-300 leading-relaxed">
+                    The Northern Province offers diverse investment opportunities across 9 main sectors: Agriculture, Industry & Trade, Infrastructure, Regional Development, Human Resource Development, Environment Management, Social Protection, Communication Technology & Research, and Governance. Each sector has multiple sub-sectors for targeted investments.
+                </div>
+            </div>
+
+            <!-- FAQ 4 -->
+            <div class="bg-gray-800/50 rounded-xl border border-gray-700 overflow-hidden" 
+                 data-aos="fade-up" data-aos-delay="400">
+                <button @click="activeFaq = activeFaq === 4 ? null : 4" 
+                        class="w-full px-6 py-5 flex items-center justify-between text-left hover:bg-gray-800/80 transition-colors">
+                    <span class="text-lg font-bold">What incentives are available for investors?</span>
+                    <i class="fas fa-chevron-down text-[#3DDAD7] transition-transform duration-300" 
+                       :class="{ 'rotate-180': activeFaq === 4 }"></i>
+                </button>
+                <div x-show="activeFaq === 4" 
+                     x-collapse
+                     class="px-6 pb-5 text-gray-300 leading-relaxed">
+                    Investors benefit from comprehensive incentives including tax holidays, capital allowances, full foreign ownership, strategic public-private partnerships, and streamlined approval processes. The region offers 30-40% lower operating costs compared to other South Asian investment destinations, with dedicated 24/7 investor support.
+                </div>
+            </div>
+
+            <!-- FAQ 5 -->
+            <div class="bg-gray-800/50 rounded-xl border border-gray-700 overflow-hidden" 
+                 data-aos="fade-up" data-aos-delay="500">
+                <button @click="activeFaq = activeFaq === 5 ? null : 5" 
+                        class="w-full px-6 py-5 flex items-center justify-between text-left hover:bg-gray-800/80 transition-colors">
+                    <span class="text-lg font-bold">How can I explore specific district opportunities?</span>
+                    <i class="fas fa-chevron-down text-[#3DDAD7] transition-transform duration-300" 
+                       :class="{ 'rotate-180': activeFaq === 5 }"></i>
+                </button>
+                <div x-show="activeFaq === 5" 
+                     x-collapse
+                     class="px-6 pb-5 text-gray-300 leading-relaxed">
+                    You can explore district-specific opportunities through our interactive investment map in the Districts section. Simply hover over any district for quick information, or click to view detailed investment profiles including ongoing developments, key projects, and contact information for local investment authorities.
+                </div>
+            </div>
+
+            <!-- FAQ 6 -->
+            <div class="bg-gray-800/50 rounded-xl border border-gray-700 overflow-hidden" 
+                 data-aos="fade-up" data-aos-delay="600">
+                <button @click="activeFaq = activeFaq === 6 ? null : 6" 
+                        class="w-full px-6 py-5 flex items-center justify-between text-left hover:bg-gray-800/80 transition-colors">
+                    <span class="text-lg font-bold">What is the process for submitting investment proposals?</span>
+                    <i class="fas fa-chevron-down text-[#3DDAD7] transition-transform duration-300" 
+                       :class="{ 'rotate-180': activeFaq === 6 }"></i>
+                </button>
+                <div x-show="activeFaq === 6" 
+                     x-collapse
+                     class="px-6 pb-5 text-gray-300 leading-relaxed">
+                    Investment proposals can be submitted through the OSSI portal, where you'll find a structured submission process. The portal guides you through required documentation, connects you with relevant authorities, and provides real-time tracking of your proposal status. For complex projects, our investment facilitation team provides personalized assistance.
+                </div>
+            </div>
+
+            <!-- FAQ 7 -->
+            <div class="bg-gray-800/50 rounded-xl border border-gray-700 overflow-hidden" 
+                 data-aos="fade-up" data-aos-delay="700">
+                <button @click="activeFaq = activeFaq === 7 ? null : 7" 
+                        class="w-full px-6 py-5 flex items-center justify-between text-left hover:bg-gray-800/80 transition-colors">
+                    <span class="text-lg font-bold">Are there opportunities for small and medium enterprises?</span>
+                    <i class="fas fa-chevron-down text-[#3DDAD7] transition-transform duration-300" 
+                       :class="{ 'rotate-180': activeFaq === 7 }"></i>
+                </button>
+                <div x-show="activeFaq === 7" 
+                     x-collapse
+                     class="px-6 pb-5 text-gray-300 leading-relaxed">
+                    Yes, the Northern Province actively supports SME development with dedicated programs including technical training, marketing support, financial assistance, and mentorship. Special MSME clusters are being developed across districts, offering affordable access to infrastructure, shared facilities, and business development services.
+                </div>
+            </div>
+        </div>
+
+        <!-- Still Have Questions CTA -->
+       
+    </div>
+</section>
+
+<!-- Footer -->
+<footer id="contact" class="bg-gray-950 border-t border-gray-800 py-12">
+    <div class="max-w-6xl mx-auto px-6">
+        <div class="grid md:grid-cols-4 gap-8">
+            <div>
+                <div class="flex items-center mb-6">
+                    <img src="./logo7.png" alt="Logo" class="h-16">
+                    <!-- <span class="ml-2 text-lg font-bold bg-gradient-to-r from-[#3DDAD7] to-[#FF8360] bg-clip-text text-transparent">
+                        NIS 2026
+                    </span> -->
+                </div>
+                <p class="text-gray-400 mb-6">
+                    Northern Investment Summit 2026 - Connecting investors with opportunities in Northern Sri Lanka.
+                </p>
+                <div class="flex space-x-4">
+                    <a href="#" class="w-10 h-10 rounded-full bg-gray-800 flex items-center justify-center hover:bg-[#3DDAD7] transition-colors">
+                        <i class="fab fa-twitter"></i>
+                    </a>
+                    <a href="#" class="w-10 h-10 rounded-full bg-gray-800 flex items-center justify-center hover:bg-[#3DDAD7] transition-colors">
+                        <i class="fab fa-linkedin-in"></i>
+                    </a>
+                    <a href="#" class="w-10 h-10 rounded-full bg-gray-800 flex items-center justify-center hover:bg-[#3DDAD7] transition-colors">
+                        <i class="fab fa-facebook-f"></i>
+                    </a>
+                </div>
+            </div>
+            
+            <div>
+                <h4 class="text-lg font-bold mb-6">Quick Links</h4>
+                <ul class="space-y-3">
+                    <li><a href="#about" class="text-gray-400 hover:text-[#3DDAD7] transition-colors">About the Region</a></li>
+                    <li><a href="#districts" class="text-gray-400 hover:text-[#3DDAD7] transition-colors">Investment Districts</a></li>
+                    <li><a href="#sectors" class="text-gray-400 hover:text-[#3DDAD7] transition-colors">Investment Sectors</a></li>
+                    <li><a href="#summit" class="text-gray-400 hover:text-[#3DDAD7] transition-colors">Summit 2026</a></li>
+                </ul>
+            </div>
+            
+            <div>
+                <h4 class="text-lg font-bold mb-6">Contact</h4>
+                <ul class="space-y-3 text-gray-400">
+                    <li class="flex items-center gap-2">
+                        <i class="fas fa-map-marker-alt text-[#3DDAD7]"></i>
+                        <span>Northern Province Secretariat, Jaffna, Sri Lanka</span>
+                    </li>
+                    <li class="flex items-center gap-2">
+                        <i class="fas fa-phone text-[#3DDAD7]"></i>
+                        <span>+94 21 222 2222</span>
+                    </li>
+                    <li class="flex items-center gap-2">
+                        <i class="fas fa-envelope text-[#3DDAD7]"></i>
+                        <span>invest@nis2026.gov.lk</span>
+                    </li>
+
+                </ul>
+            </div>
+            
+            <div>
+                <h4 class="text-lg font-bold mb-6">Newsletter</h4>
+                <p class="text-gray-400 mb-4">Subscribe for investment updates</p>
+                <div class="flex">
+                    <input type="email" placeholder="Your email" class="bg-gray-800 text-white px-4 py-3 rounded-l-lg flex-grow focus:outline-none focus:ring-2 focus:ring-[#3DDAD7]">
+                    <button class="bg-[#3DDAD7] text-gray-900 px-4 py-3 rounded-r-lg font-bold hover:bg-[#2ac8c5] transition-colors">
+                        <i class="fas fa-paper-plane"></i>
+                    </button>
+                </div>
+
+            </div>
+                             <a href="#faq" class="mt-4 text-gray-400 hover:text-[#3DDAD7] transition-colors">FAQ</a>
+
+        </div>
+        
+        <div class="border-t border-gray-800 mt-8 pt-8 text-center text-gray-500 text-sm">
+            <p>&copy; 2026, Northern Investment Summit 2026. All rights reserved. | Designed for the Northern Province of Sri Lanka</p>
+        </div>
+    </div>
+</footer>
+
+<!-- JavaScript -->
+<script>
+const partners = [
+  {
+    title: "Governor's Office",
+    subtitle: "Northern Province, Sri Lanka",
+    logo: "./logo/2.png",
+    glow1: "#3DDAD7",
+    glow2: "#FF8360",
+    ring: "#3DDAD7",
+    emailLabel: "Primary Contact:",
+    email: "hgnp.op@gmail.com",
+    emailColor: "#FFD369",
+    description: "Official administrative body coordinating investment initiatives and policy implementation across the Northern Province.",
+    footerIcon: "fa-phone",
+    footerText: "+94 21 222 2222"
+  },
+
+  {
+    title: "University of Vavuniya",
+    subtitle: "Sri Lanka",
+    logo: "./logo/1.png",
+    glow1: "#2ecc71",
+    glow2: "#3DDAD7",
+    ring: "#2ecc71",
+    emailLabel: "Academic Contact:",
+    email: "info@vau.ac.lk",
+    emailColor: "#2ecc71",
+    description: "Leading academic institution providing research support, technical expertise, and innovation development for sustainable regional growth.",
+    footerIcon: "fa-globe",
+    footerText: "vau.ac.lk",
+    footerLink: "https://vau.ac.lk"
+  },
+
+  {
+    title: "NIS 2026",
+    subtitle: "Northern Investment Summit",
+    logo: "./logo/3.png",
+    glow1: "#FF8360",
+    glow2: "#FFD369",
+    ring: "#FF8360",
+    emailLabel: "Summit Contact:",
+    email: "hgnp.op@gmail.com",
+    emailColor: "#FF8360",
+    description: "Premier investment summit driving economic transformation through strategic partnerships, innovation, and sustainable development initiatives.",
+footerText: "nis26.lk",
+    footerLink: "https://nis26.lk"
+  }
+];
+
+const grid = document.getElementById("partnersGrid");
+
+partners.forEach(p => {
+  grid.innerHTML += `
+    <div class="card-hover bg-gradient-to-br from-gray-900 to-gray-800 rounded-2xl p-8 border border-gray-700 relative overflow-hidden group">
+
+      <!-- Glow -->
+      <div class="absolute -inset-0.5 bg-gradient-to-r from-[${p.glow1}] to-[${p.glow2}] rounded-2xl opacity-0 group-hover:opacity-20 blur transition duration-500"></div>
+
+      <div class="relative z-10">
+        <div class="flex items-center mb-6">
+          <div class="bg-white p-2 rounded-full mr-4 ring-2 ring-[${p.ring}]/30">
+            <div class="h-20 w-20 rounded-full overflow-hidden flex items-center justify-center">
+              <img src="${p.logo}" class="h-full w-full object-cover" alt="${p.title}">
+            </div>
+          </div>
+
+          <div>
+            <h3 class="text-xl font-bold">${p.title}</h3>
+            <p class="text-gray-400 text-sm">${p.subtitle}</p>
+          </div>
+        </div>
+
+        <div class="space-y-4">
+          <div>
+            <p class="text-gray-400 text-sm mb-2">${p.emailLabel}</p>
+            <a href="mailto:${p.email}" class="inline-flex items-center gap-2 font-medium transition-colors group/email" style="color:${p.emailColor}">
+              <i class="fas fa-envelope"></i>
+              <span>${p.email}</span>
+              <i class="fas fa-arrow-right text-xs opacity-0 group-hover/email:opacity-100 transition-opacity"></i>
+            </a>
+          </div>
+
+          <p class="text-gray-300 text-sm leading-relaxed">${p.description}</p>
+
+          <div class="pt-4 border-t border-gray-700">
+            <div class="flex items-center gap-2 text-sm text-gray-400">
+              <i class="fas ${p.footerIcon} text-xs"></i>
+              ${
+                p.footerLink 
+                ? `<a href="${p.footerLink}" class="hover:text-[#3DDAD7] transition-colors">${p.footerText}</a>` 
+                : `<span>${p.footerText}</span>`
+              }
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  `;
+});
+</script>
+<script>
+    // District data
+    const districtData = {
+        "Jaffna": {
+            section: "01",
+             pdfpath:"./districts/jaffna.pdf",
+
+            description: "The cultural and economic capital of the Northern Province, known for its rich heritage and strategic location.",
+            basicFeatures: {
+                dsDivisions: 15,
+                gnDivisions: 435,
+                villages: 1435,
+                families: 213315,
+                population: "634,874",
+                male: "281,553",
+                female: "313,198",
+                area: "1,025 sq km",
+                coastalLength: "288 km",
+                jobSeekers: "8,293"
+            },
+            agriculture: {
+                paddyLand: "10,748 Ha (Maha)",
+                production: "16,703 Mt (Maha)"
+            },
+            animalProduction: {
+                cattle: "57,012",
+                goats: "85,393",
+                chicks: "279,370",
+                milk: "18,605,563 L annually"
+            },
+            fisheries: {
+                families: "23,807",
+                production: "29,335 Mt",
+                landingCenters: 118,
+                harbors: "Myliddy, Point Pedro"
+            },
+            tourism: [
+                "Jaffna Fort - Colonial history restoration",
+                "Jaffna Old Kachcheri - Dutch-Colonial architecture",
+                "Sarasalai Kuruvikkadu - Community ecotourism",
+                "Mandaitivu & Sirutivu - Island ecosystem tourism"
+            ],
+            developments: [
+                "Kankesanthurai (KKS) - 350-acre IT park",
+                "Achchuveli Industrial Estate - 65 acres (25 developed)",
+                "Industries: Animal feeds, engineering, recycling, organic fertilizer"
+            ],
+            investmentOpportunities: [
+                "Higher Education & Research Centers",
+                "Specialized Healthcare Facilities",
+                "IT and Business Process Outsourcing",
+                "Cultural Tourism & Hospitality"
+            ]
+        },
+        "Kilinochchi": {
+            section: "02",
+                pdfpath:"./districts/kilinochchi.pdf",
+
+            description: "Agricultural heartland with significant potential for agro-processing and modern farming.",
+            basicFeatures: {
+                dsDivisions: 4,
+                gnDivisions: 95,
+                villages: 354,
+                families: 50454,
+                population: "149,781",
+                male: "73,027",
+                female: "76,754",
+                area: "1,279 sq km",
+                paddyLand: "28,434 ha",
+                forestLand: "37,013 ha",
+                jobSeekers: "1,242",
+                nonRegJobSeekers: "3,682"
+            },
+            agriculture: {
+                mahaLand: "28,000 Ha",
+                yalaLand: "14,000 Ha",
+                mahaProduction: "112,000 Mt",
+                yalaProduction: "56,000 Mt"
+            },
+            animalProduction: {
+                cows: "33,505",
+                goats: "28,584",
+                chicks: "964,440",
+                meat: "564,480 Kg",
+                milk: "6,470,720 L annually",
+                eggs: "9,546,575 annually"
+            },
+            fisheries: {
+                villages: 29,
+                production: "5,232 Mt",
+                landingCenters: 26
+            },
+            tourism: [
+                "Vannerikulam Tourism - Bird sanctuary, boating",
+                "Kilinochchi Tank Area - Recreation development",
+                "Poonakary Port - Green park development"
+            ],
+            developments: [
+                "Paranthan Chemical Factory - 30 acres, 500 direct jobs",
+                "Paranthan Industrial Zone (BoI) - 140 acres",
+                "Kurinchathivu Saltern - Salt production restoration"
+            ],
+            requirements: [
+                "Animal Feed Factory",
+                "Processing Factory"
+            ],
+            investmentOpportunities: [
+                "Modern Irrigation Systems",
+                "Agro-processing Plants",
+                "Cold Storage Facilities",
+                "Organic Farming Initiatives"
+            ]
+        },
+        "Mannar": {
+            section: "03",
+                pdfpath:"./districts/mannar.pdf",
+            description: "Island district with excellent potential for wind energy, fisheries, and tourism.",
+            basicFeatures: {
+                dsDivisions: 5,
+                gnDivisions: 153,
+                villages: 600,
+                families: 49423,
+                population: "115,972",
+                male: "58,298",
+                female: "57,674",
+                area: "1,996 sq km",
+                coastalLength: "163 km",
+                jobSeekers: "1,051"
+            },
+            agriculture: {
+                paddyLand: "22,512 Ha"
+            },
+            fisheries: {
+                families: "10,988",
+                production: "22,467 Mt"
+            },
+            tourism: {
+                nature: [
+                    "Vankalai Bird Sanctuary",
+                    "Giant's Tank Sanctuary",
+                    "Wilpattu Wildlife Sanctuary"
+                ],
+                religious: [
+                    "Our Lady of Madhu Shrine",
+                    "Thiruketheeswaram Temple"
+                ],
+                historical: [
+                    "Adam's Bridge",
+                    "Mannar Fort",
+                    "Baobab Tree"
+                ],
+                ecoTourism: [
+                    "Vidathaltivu Corals & Mangroves",
+                    "Arippu Coastal Area"
+                ]
+            },
+            developments: [
+                "Mannar Township Development - Park, fort renovation, commercial development",
+                "Transport & Connectivity - Thalaimannar ferry, logistics hub",
+                "Small & Medium Enterprises Support - Marketing, finance, technical training",
+                "Renewable Energy - Solar PV projects, green hydrogen initiatives"
+            ],
+            investmentOpportunities: [
+                "Wind Power Generation",
+                "Deep Sea Fishing",
+                "Salt Processing",
+                "Eco-Tourism Development"
+            ]
+        },
+        "Mullaitivu": {
+            section: "04",
+                pdfpath:"./districts/mullithuvu.pdf",
+
+            description: "Coastal district with pristine beaches and significant potential for fisheries and tourism.",
+            basicFeatures: {
+                dsDivisions: 6,
+                gnDivisions: 136,
+                villages: 646,
+                families: 48219,
+                population: "99,482",
+                male: "49,651",
+                female: "49,831",
+                area: "2,517 sq km",
+                coastalLength: "70 km",
+                jobSeekers: "812"
+            },
+            agriculture: {
+                land: "57,000 Ha"
+            },
+            animalProduction: {
+                cattle: "93,912",
+                milkProduction: "7,365,600 L",
+                localMilk: "3,916,080 L",
+                collection: "3,449,520 L"
+            },
+            fisheries: {
+                villages: 29,
+                production: "7,730 Mt",
+                landingSites: 33
+            },
+            tourism: {
+                nature: [
+                    "Vadduvagal Estuary",
+                    "Kokkilai Bird Sanctuary",
+                    "Chemmalai Beach"
+                ],
+                historical: [
+                    "Mannakandal Historical Area",
+                    "Mullaitivu Fort",
+                    "Kumbakarana Rock"
+                ]
+            },
+            developments: {
+                manufacturing: "Nascent base with SMEs, construction, fisheries processing",
+                services: "Emerging economy with public administration dominance",
+                proposed: [
+                    "Mankulam Industrial Park",
+                    "Mangulam Investment Zone",
+                    "Coconut & Palmyrah value addition clusters",
+                    "Fisheries processing centers"
+                ],
+                renewableEnergy: "Abundant solar & wind potential, biomass opportunities",
+                mining: "Active sand, gravel & clay quarrying, mineral sands identified"
+            },
+            investmentOpportunities: [
+                "Beach Resort Development",
+                "Fisheries Infrastructure",
+                "Marine Research Centers",
+                "Community-based Tourism"
+            ]
+        },
+        "Vavuniya": {
+            section: "05",
+                pdfpath:"./districts/vavuniya.pdf",
+            description: "Transportation hub connecting Northern and Eastern provinces with growing urban infrastructure.",
+            basicFeatures: {
+                dsDivisions: 4,
+                gnDivisions: 102,
+                villages: "93 in Vengalacheddikulam division",
+                families: "35,634",
+                population: "193,891",
+                labor: "68,577",
+                youth: "29,843",
+                area: "2,012 km²",
+                forestLand: "10,954 Ha in Vavuniya North",
+                unemployed: "8,153"
+            },
+            agriculture: {
+                mahaProduction: "6,270 Mt/Ha",
+                yalaProduction: "1,974 Mt/Ha"
+            },
+            animalProduction: "Common cattle, goats and poultry rearing with dairy products",
+            fisheries: {
+                fishermen: 208,
+                production: "256 tons in Vavuniya and Vavuniya North",
+                minorTanks: "90 in Vavuniya South"
+            },
+            tourism: [
+                "Madukanda Viharaya - Ancient Buddhist temple",
+                "Poovarasankulam - Old stone ruins",
+                "Periyakaddu Church - Catholic parish",
+                "Santhirasekareecharam - Hindu temple complex"
+            ],
+            developments: {
+                manufacturing: [
+                    "Dehydrated food processing plant",
+                    "Light assembly factories",
+                    "Value-added rice milling",
+                    "Garment manufacturing"
+                ],
+                services: [
+                    "Agri-logistics hub & cold storage",
+                    "Vocational training centers",
+                    "IT training & digital skills"
+                ],
+                renewableEnergy: [
+                    "Commercial solar power generation",
+                    "Agri-solar integration",
+                    "Solar home systems"
+                ],
+                mining: "GIS-based mapping & permit monitoring"
+            },
+            investmentOpportunities: [
+                "Logistics & Warehousing",
+                "Commercial Real Estate",
+                "Manufacturing Units",
+                "Service Sector Expansion"
+            ]
+        }
+    };
+
+    // Alpine.js Data and Functions
+    function appData() {
+        return {
+            mobileMenuOpen: false,
+            modalOpen: false,
+            currentDistrict: null,
+            modalContent: '',
+            
+            init() {
+                // Initialize map interactions with tooltips
+                this.initMapInteractions();
+                // Initialize smooth scroll
+                this.initSmoothScroll();
+            },
+            
+            initMapInteractions() {
+                // Create tooltip element
+                const tooltip = document.createElement('div');
+                tooltip.className = 'tooltip';
+                document.getElementById('tooltip-container').appendChild(tooltip);
+                
+                // Add map hover effects with tooltips
+                const paths = document.querySelectorAll('.district-path');
+                paths.forEach(path => {
+                    const district = path.getAttribute('data-district');
+                    
+                    path.addEventListener('mouseenter', function(e) {
+                        this.style.filter = 'brightness(1.3)';
+                        this.style.transform = 'scale(1.02)';
+                        
+                        // Show tooltip
+                        const rect = this.getBoundingClientRect();
+                        const svgRect = this.closest('svg').getBoundingClientRect();
+                        
+                        tooltip.textContent = district;
+                        tooltip.style.left = `${rect.left + rect.width/2 - svgRect.left}px`;
+                        tooltip.style.top = `${rect.top - svgRect.top}px`;
+                        tooltip.style.opacity = '1';
+                    });
+                    
+                    path.addEventListener('mouseleave', function() {
+                        this.style.filter = 'brightness(1)';
+                        this.style.transform = 'scale(1)';
+                        
+                        // Hide tooltip
+                        tooltip.style.opacity = '0';
+                    });
+                    
+                    path.addEventListener('click', () => {
+                        this.openDistrictModal(district);
+                    });
+                });
+            },
+            
+            initSmoothScroll() {
+                document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+                    anchor.addEventListener('click', function(e) {
+                        const targetId = this.getAttribute('href');
+                        if (targetId === '#') return;
+                        
+                        const target = document.querySelector(targetId);
+                        if (target) {
+                            e.preventDefault();
+                            target.scrollIntoView({
+                                behavior: 'smooth',
+                                block: 'start'
+                            });
+                            
+                            // Close mobile menu if open
+                            if (window.innerWidth < 768) {
+                                this.mobileMenuOpen = false;
+                            }
+                        }
+                    }.bind(this));
+                });
+            },
+            
+            openDistrictModal(district) {
+                const data = districtData[district];
+                if (!data) return;
+                
+                this.currentDistrict = district;
+                this.modalContent = this.generateModalContent(district, data);
+                this.modalOpen = true;
+                
+                // Prevent body scroll when modal is open
+                document.body.style.overflow = 'hidden';
+            },
+            
+            closeModal() {
+                this.modalOpen = false;
+                this.currentDistrict = null;
+                this.modalContent = '';
+                document.body.style.overflow = '';
+            },
+            
+            generateModalContent(district, data) {
+                let content = `
+                    <div class="space-y-6">
+                        <!-- Header -->
+                        <div class="mb-8">
+                            <div class="inline-flex items-center gap-2 px-4 py-2 bg-gradient-to-r from-[#3DDAD7]/20 to-[#FF8360]/20 rounded-full mb-4">
+                                <span class="w-2 h-2 bg-[#3DDAD7] rounded-full animate-pulse"></span>
+                                <span class="text-sm font-bold text-[#3DDAD7]">SECTION ${data.section}</span>
+                            </div>
+                            <h2 class="text-3xl font-bold mb-4">${district} District</h2>
+                            <p class="text-gray-300 text-lg leading-relaxed">${data.description}</p>
+                         <a href="${data.pdfpath}" download
+   class="text-sm px-4 py-1.5 border border-gray-600 rounded-lg hover:bg-gray-700 transition inline-block">
+    Download full report
+</a>
+
+                        </div>
+                        
+                        <!-- Stats Grid -->
+                        <div class="grid grid-cols-2 md:grid-cols-3 gap-4 mb-8">
+                `;
+                
+                // Basic features stats
+                const stats = [
+                    { key: 'population', label: 'Population', icon: 'fa-users', color: 'text-blue-400' },
+                    { key: 'area', label: 'Area', icon: 'fa-map', color: 'text-green-400' },
+                    { key: 'dsDivisions', label: 'DS Divisions', icon: 'fa-layer-group', color: 'text-purple-400' }
+                ];
+                
+                stats.forEach(stat => {
+                    if (data.basicFeatures && data.basicFeatures[stat.key]) {
+                        content += `
+                            <div class="bg-gray-800/50 rounded-xl p-4 text-center">
+                                <i class="fas ${stat.icon} ${stat.color} text-xl mb-2"></i>
+                                <div class="text-2xl font-bold">${data.basicFeatures[stat.key]}</div>
+                                <div class="text-sm text-gray-400">${stat.label}</div>
+                            </div>
+                        `;
+                    }
+                });
+                
+                content += `
+                        </div>
+                        
+                        <!-- Investment Opportunities -->
+                        <div class="mb-8">
+                            <h3 class="text-xl font-bold mb-4 flex items-center gap-2">
+                                <i class="fas fa-chart-line text-[#3DDAD7]"></i>
+                                Key Investment Opportunities
+                            </h3>
+                            <div class="grid md:grid-cols-2 gap-3">
+                `;
+                
+                // Investment opportunities
+                data.investmentOpportunities.forEach((opp, index) => {
+                    const colors = ['from-blue-500/20 to-blue-600/20', 'from-green-500/20 to-green-600/20', 'from-purple-500/20 to-purple-600/20', 'from-orange-500/20 to-orange-600/20'];
+                    const color = colors[index % colors.length];
+                    
+                    content += `
+                        <div class="bg-gradient-to-br ${color} border border-white/10 rounded-xl p-4">
+                            <div class="flex items-start gap-3">
+                                <div class="w-8 h-8 rounded-full bg-white/10 flex items-center justify-center flex-shrink-0 mt-1">
+                                    <i class="fas fa-check text-white"></i>
+                                </div>
+                                <p class="text-gray-200">${opp}</p>
+                            </div>
+                        </div>
+                    `;
+                });
+                
+                content += `
+                            </div>
+                        </div>
+                        
+                        <!-- Key Developments -->
+                        <div class="pt-6 border-t border-gray-700">
+                            <h3 class="text-xl font-bold mb-4 flex items-center gap-2">
+                                <i class="fas fa-cogs text-[#3DDAD7]"></i>
+                                Ongoing Developments
+                            </h3>
+                            <div class="space-y-3">
+                `;
+                
+                // Developments
+                if (data.developments) {
+                    if (Array.isArray(data.developments)) {
+                        data.developments.forEach(dev => {
+                            content += `
+                                <div class="flex items-start gap-3 bg-gray-800/30 rounded-xl p-4">
+                                    <i class="fas fa-arrow-right text-[#3DDAD7] mt-1"></i>
+                                    <p class="text-gray-200">${dev}</p>
+                                </div>
+                            `;
+                        });
+                    }
+                }
+                
+                content += `
+                            </div>
+                        </div>
+                    </div>
+                `;
+                
+                return content;
+            }
+        };
+    }
+
+    // Close modal on escape key
+    document.addEventListener('keydown', function(e) {
+        if (e.key === 'Escape') {
+            const app = document.querySelector('[x-data]').__x.$data;
+            if (app.modalOpen) {
+                app.closeModal();
+            }
+        }
+    });
+</script>
+
+<!-- AOS JS -->
+<script src="https://unpkg.com/aos@2.3.4/dist/aos.js"></script>
+<script>
+    AOS.init({
+        once: true,
+        duration: 800,
+        offset: 100
+    });
+</script>
+
+</body>
+</html>

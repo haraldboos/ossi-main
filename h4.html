@@ -1,0 +1,717 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Account Creation Guide | Northern Investment Summit 2026</title>
+    
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- AOS CSS -->
+    <link href="https://unpkg.com/aos@2.3.4/dist/aos.css" rel="stylesheet">
+    
+    <!-- Font Awesome for icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- Alpine.js -->
+    <script src="https://unpkg.com/alpinejs@3.12.0/dist/cdn.min.js" defer></script>
+    
+    <style>
+        /* Custom styles matching the main theme */
+        .gradient-bg {
+            background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
+        }
+        
+        .section-padding {
+            padding-top: 5rem;
+            padding-bottom: 5rem;
+        }
+        
+        .card-hover {
+            transition: all 0.3s ease;
+        }
+        
+        .card-hover:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+        }
+        
+        .nav-link {
+            position: relative;
+        }
+        
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            bottom: -5px;
+            left: 0;
+            background-color: #3DDAD7;
+            transition: width 0.3s ease;
+        }
+        
+        .nav-link:hover::after {
+            width: 100%;
+        }
+        
+        .modal-animation {
+            animation: modalFadeIn 0.3s ease-out;
+        }
+        
+        @keyframes modalFadeIn {
+            from {
+                opacity: 0;
+                transform: scale(0.9);
+            }
+            to {
+                opacity: 1;
+                transform: scale(1);
+            }
+        }
+        
+        .stat-card {
+            background: linear-gradient(135deg, rgba(61, 218, 215, 0.1) 0%, rgba(61, 218, 215, 0.05) 100%);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(61, 218, 215, 0.2);
+        }
+        
+        .hero-text-shadow {
+            text-shadow: 0 4px 12px rgba(0, 0, 0, 0.5);
+        }
+        
+        /* Custom scrollbar */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        
+        ::-webkit-scrollbar-track {
+            background: rgba(30, 41, 59, 0.5);
+        }
+        
+        ::-webkit-scrollbar-thumb {
+            background: #3DDAD7;
+            border-radius: 4px;
+        }
+        
+        ::-webkit-scrollbar-thumb:hover {
+            background: #2ac8c5;
+        }
+        
+        /* Step indicator */
+        .step-indicator {
+            width: 40px;
+            height: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 50%;
+            font-weight: bold;
+            margin-right: 16px;
+            flex-shrink: 0;
+        }
+        
+        /* Process flow line */
+        .process-line {
+            position: relative;
+        }
+        
+        .process-line::before {
+            content: '';
+            position: absolute;
+            left: 20px;
+            top: 0;
+            bottom: 0;
+            width: 2px;
+            background: linear-gradient(to bottom, #3DDAD7, #FF8360);
+        }
+    </style>
+</head>
+<body class="gradient-bg text-white" x-data="{ mobileMenuOpen: false }">
+
+<!-- Navigation -->
+<header class="fixed top-0 left-0 w-full z-50 bg-gray-950/90 backdrop-blur-md border-b border-gray-800">
+    <nav class="max-w-7xl mx-auto flex items-center justify-between px-6 py-4">
+        <!-- Logo -->
+        <div class="flex items-center">
+            <img src="./logo7.png" alt="Northern Investment Summit Logo" class="h-20 md:h-24">
+            <!-- <span class="ml-3 text-lg font-bold bg-gradient-to-r from-[#3DDAD7] to-[#FF8360] bg-clip-text text-transparent">
+                NIS 2026
+            </span> -->
+        </div>
+
+        <!-- Desktop Menu -->
+        <ul class="hidden md:flex items-center space-x-10">
+            <li><a href="../index.html" class="nav-link font-medium hover:text-[#3DDAD7] transition-colors duration-300">Home</a></li>
+            <li><a href="../index.html#districts" class="nav-link font-medium hover:text-[#3DDAD7] transition-colors duration-300">Districts</a></li>
+            <li><a href="../index.html#sectors" class="nav-link font-medium hover:text-[#3DDAD7] transition-colors duration-300">Sectors</a></li>
+            <li><a href="../index.html#summit" class="nav-link font-medium hover:text-[#3DDAD7] transition-colors duration-300">Summit</a></li>
+            <li>
+                <a href="../index.html#contact" class="bg-gradient-to-r from-[#FF8360] to-[#FF6B4A] px-6 py-2.5 rounded-lg font-semibold hover:shadow-lg hover:shadow-orange-500/20 transition-all duration-300">
+                    Contact Us
+                </a>
+            </li>
+        </ul>
+
+        <!-- Mobile Menu Button -->
+        <button @click="mobileMenuOpen = !mobileMenuOpen" class="md:hidden p-2 rounded-lg hover:bg-gray-800 transition-colors">
+            <svg :class="{ 'hidden': mobileMenuOpen, 'block': !mobileMenuOpen }" class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/>
+            </svg>
+            <svg :class="{ 'block': mobileMenuOpen, 'hidden': !mobileMenuOpen }" class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/>
+            </svg>
+        </button>
+    </nav>
+
+    <!-- Mobile Menu -->
+    <div x-show="mobileMenuOpen" x-transition:enter="transition ease-out duration-300"
+         x-transition:enter-start="opacity-0 -translate-y-4"
+         x-transition:enter-end="opacity-100 translate-y-0"
+         x-transition:leave="transition ease-in duration-200"
+         x-transition:leave-start="opacity-100 translate-y-0"
+         x-transition:leave-end="opacity-0 -translate-y-4"
+         class="md:hidden bg-gray-900/95 backdrop-blur-lg border-b border-gray-800">
+        <div class="px-6 py-4 space-y-4">
+            <a href="../index.html" @click="mobileMenuOpen = false" class="block py-2 font-medium hover:text-[#3DDAD7] transition-colors">Home</a>
+            <a href="../index.html#districts" @click="mobileMenuOpen = false" class="block py-2 font-medium hover:text-[#3DDAD7] transition-colors">Districts</a>
+            <a href="../index.html#sectors" @click="mobileMenuOpen = false" class="block py-2 font-medium hover:text-[#3DDAD7] transition-colors">Sectors</a>
+            <a href="../index.html#summit" @click="mobileMenuOpen = false" class="block py-2 font-medium hover:text-[#3DDAD7] transition-colors">Summit</a>
+            <a href="../index.html#contact" @click="mobileMenuOpen = false" class="block py-3 mt-4 bg-gradient-to-r from-[#FF8360] to-[#FF6B4A] text-center rounded-lg font-semibold hover:shadow-lg transition-all">
+                Contact Us
+            </a>
+        </div>
+    </div>
+</header>
+
+<!-- Main Content -->
+<main class="pt-52 pb-16">
+    <div class="max-w-6xl mx-auto px-6">
+        <!-- Header Section -->
+        <section class="text-center  pt-5 mb-16" data-aos="fade-up">
+            <!-- <div class="inline-flex items-center gap-2 px-6 py-2 bg-gradient-to-r from-[#3DDAD7]/20 to-[#FF8360]/20 rounded-full mb-6"> -->
+                <!-- <span class="w-2 h-2 bg-[#3DDAD7] rounded-full animate-pulse"></span> -->
+                <!-- <span class="text-sm font-bold text-[#FFD369] uppercase tracking-wider">Portal Guide</span> -->
+            <!-- </div> -->
+            
+            <h1 class="text-4xl md:text-5xl lg:text-6xl font-bold mb-6 hero-text-shadow">
+                Account Creation <span class="bg-gradient-to-r from-[#3DDAD7] via-[#3DDAD7] to-[#FF8360] bg-clip-text text-transparent">Guide</span>
+            </h1>
+            
+            <p class="text-xl text-gray-300 max-w-3xl mx-auto mb-10 leading-relaxed">
+                Learn how to register as a <span class="text-[#3DDAD7] font-semibold">Creator</span> or <span class="text-[#FF8360] font-semibold">Investor</span> 
+                and choose between Individual or Company accounts on the Northern Investment Portal.
+            </p>
+            
+            <!-- Quick Stats -->
+           
+        </section>
+
+        <!-- Account Type Explanation -->
+        <section class="mb-20" data-aos="fade-up">
+            <div class="text-center mb-12">
+                <h2 class="text-3xl md:text-4xl font-bold mb-4">Understanding Account Types</h2>
+                <p class="text-xl text-gray-300 max-w-3xl mx-auto">
+                    Choose the account type that matches your role in the investment ecosystem
+                </p>
+            </div>
+            
+            <div class="grid md:grid-cols-2 gap-8">
+                <!-- Creator Card -->
+                <div class="card-hover bg-gradient-to-br from-gray-900 to-gray-800 rounded-2xl p-8 border border-gray-700">
+                    <div class="flex items-center gap-4 mb-6">
+                        <div class="w-16 h-16 rounded-xl bg-blue-500/20 flex items-center justify-center">
+                            <i class="fas fa-lightbulb text-blue-400 text-2xl"></i>
+                        </div>
+                        <div>
+                            <h3 class="text-2xl font-bold text-blue-400">Creator</h3>
+                            <p class="text-gray-400">Project & Proposal Submitter</p>
+                        </div>
+                    </div>
+                    
+                    <p class="text-gray-300 mb-6 text-lg">
+                        A <span class="text-blue-400 font-semibold">Creator</span> is an individual or organization that submits project proposals, 
+                        uploads business ideas, and seeks funding opportunities through the portal.
+                    </p>
+                    
+                    <div class="space-y-4">
+                        <h4 class="text-lg font-bold text-[#FFD369]">Key Responsibilities:</h4>
+                        <ul class="space-y-3">
+                            <li class="flex items-start gap-3">
+                                <div class="w-6 h-6 rounded-full bg-blue-500/20 flex items-center justify-center flex-shrink-0 mt-1">
+                                    <i class="fas fa-check text-blue-400 text-xs"></i>
+                                </div>
+                                <span class="text-gray-300">Create and submit detailed project proposals</span>
+                            </li>
+                            <li class="flex items-start gap-3">
+                                <div class="w-6 h-6 rounded-full bg-blue-500/20 flex items-center justify-center flex-shrink-0 mt-1">
+                                    <i class="fas fa-check text-blue-400 text-xs"></i>
+                                </div>
+                                <span class="text-gray-300">Upload supporting documents and project files</span>
+                            </li>
+                            <li class="flex items-start gap-3">
+                                <div class="w-6 h-6 rounded-full bg-blue-500/20 flex items-center justify-center flex-shrink-0 mt-1">
+                                    <i class="fas fa-check text-blue-400 text-xs"></i>
+                                </div>
+                                <span class="text-gray-300">Manage and edit submitted proposals</span>
+                            </li>
+                            <li class="flex items-start gap-3">
+                                <div class="w-6 h-6 rounded-full bg-blue-500/20 flex items-center justify-center flex-shrink-0 mt-1">
+                                    <i class="fas fa-check text-blue-400 text-xs"></i>
+                                </div>
+                                <span class="text-gray-300">Wait for approval from authorized reviewers</span>
+                            </li>
+                            <li class="flex items-start gap-3">
+                                <div class="w-6 h-6 rounded-full bg-blue-500/20 flex items-center justify-center flex-shrink-0 mt-1">
+                                    <i class="fas fa-check text-blue-400 text-xs"></i>
+                                </div>
+                                <span class="text-gray-300">Respond to investor inquiries and follow-ups</span>
+                            </li>
+                        </ul>
+                    </div>
+                    
+                    <div class="mt-8 pt-6 border-t border-gray-700">
+                        <p class="text-gray-400 text-sm">
+                            <i class="fas fa-info-circle text-blue-400 mr-2"></i>
+                            Ideal for: Entrepreneurs, Project Developers, Business Owners, NGOs
+                        </p>
+                    </div>
+                </div>
+
+                <!-- Investor Card -->
+                <div class="card-hover bg-gradient-to-br from-gray-900 to-gray-800 rounded-2xl p-8 border border-gray-700">
+                    <div class="flex items-center gap-4 mb-6">
+                        <div class="w-16 h-16 rounded-xl bg-green-500/20 flex items-center justify-center">
+                            <i class="fas fa-hand-holding-usd text-green-400 text-2xl"></i>
+                        </div>
+                        <div>
+                            <h3 class="text-2xl font-bold text-green-400">Investor</h3>
+                            <p class="text-gray-400">Funding & Investment Partner</p>
+                        </div>
+                    </div>
+                    
+                    <p class="text-gray-300 mb-6 text-lg">
+                        An <span class="text-green-400 font-semibold">Investor</span> is an individual or organization that reviews approved proposals 
+                        and provides funding for viable projects submitted by Creators.
+                    </p>
+                    
+                    <div class="space-y-4">
+                        <h4 class="text-lg font-bold text-[#FFD369]">Key Responsibilities:</h4>
+                        <ul class="space-y-3">
+                            <li class="flex items-start gap-3">
+                                <div class="w-6 h-6 rounded-full bg-green-500/20 flex items-center justify-center flex-shrink-0 mt-1">
+                                    <i class="fas fa-check text-green-400 text-xs"></i>
+                                </div>
+                                <span class="text-gray-300">Browse approved and verified investment opportunities</span>
+                            </li>
+                            <li class="flex items-start gap-3">
+                                <div class="w-6 h-6 rounded-full bg-green-500/20 flex items-center justify-center flex-shrink-0 mt-1">
+                                    <i class="fas fa-check text-green-400 text-xs"></i>
+                                </div>
+                                <span class="text-gray-300">Click the <strong class="text-green-400">Invest</strong> button to fund selected projects</span>
+                            </li>
+                            <li class="flex items-start gap-3">
+                                <div class="w-6 h-6 rounded-full bg-green-500/20 flex items-center justify-center flex-shrink-0 mt-1">
+                                    <i class="fas fa-check text-green-400 text-xs"></i>
+                                </div>
+                                <span class="text-gray-300">Access detailed project information and financial data</span>
+                            </li>
+                            <li class="flex items-start gap-3">
+                                <div class="w-6 h-6 rounded-full bg-green-500/20 flex items-center justify-center flex-shrink-0 mt-1">
+                                    <i class="fas fa-check text-green-400 text-xs"></i>
+                                </div>
+                                <span class="text-gray-300">Track investments and portfolio performance</span>
+                            </li>
+                            <li class="flex items-start gap-3">
+                                <div class="w-6 h-6 rounded-full bg-green-500/20 flex items-center justify-center flex-shrink-0 mt-1">
+                                    <i class="fas fa-check text-green-400 text-xs"></i>
+                                </div>
+                                <span class="text-gray-300">Communicate directly with project creators</span>
+                            </li>
+                        </ul>
+                    </div>
+                    
+                    <div class="mt-8 pt-6 border-t border-gray-700">
+                        <p class="text-gray-400 text-sm">
+                            <i class="fas fa-info-circle text-green-400 mr-2"></i>
+                            Ideal for: Angel Investors, Venture Capitalists, Banks, Corporate Investors
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Registration Process -->
+        <section class="mb-20" data-aos="fade-up" data-aos-delay="100">
+            <div class="text-center mb-12">
+                <h2 class="text-3xl md:text-4xl font-bold mb-4">3-Step Registration Process</h2>
+                <p class="text-xl text-gray-300 max-w-3xl mx-auto">
+                    Simple and straightforward account creation process
+                </p>
+            </div>
+            
+            <div class="relative process-line">
+                <!-- Step 1 -->
+                <div class="flex items-start mb-12 relative">
+                    <div class="step-indicator bg-gradient-to-r from-blue-500 to-blue-600 text-white">
+                        1
+                    </div>
+                    <div class="flex-grow">
+                        <div class="bg-gradient-to-br from-gray-900 to-gray-800 rounded-2xl p-8 border border-gray-700">
+                            <div class="flex items-center gap-4 mb-4">
+                                <div class="w-12 h-12 rounded-xl bg-blue-500/20 flex items-center justify-center">
+                                    <i class="fas fa-user-tag text-blue-400 text-xl"></i>
+                                </div>
+                                <div>
+                                    <h3 class="text-2xl font-bold">Select Your Account Type</h3>
+                                    <p class="text-gray-400">Choose between Creator or Investor</p>
+                                </div>
+                            </div>
+                            <p class="text-gray-300">
+                                Based on your role in the investment ecosystem, select either <span class="text-blue-400 font-semibold">Creator</span> 
+                                (if you want to submit projects) or <span class="text-green-400 font-semibold">Investor</span> (if you want to fund projects).
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Step 2 -->
+                <div class="flex items-start mb-12 relative">
+                    <div class="step-indicator bg-gradient-to-r from-purple-500 to-purple-600 text-white">
+                        2
+                    </div>
+                    <div class="flex-grow">
+                        <div class="bg-gradient-to-br from-gray-900 to-gray-800 rounded-2xl p-8 border border-gray-700">
+                            <div class="flex items-center gap-4 mb-4">
+                                <div class="w-12 h-12 rounded-xl bg-purple-500/20 flex items-center justify-center">
+                                    <i class="fas fa-building text-purple-400 text-xl"></i>
+                                </div>
+                                <div>
+                                    <h3 class="text-2xl font-bold">Choose Registration Type</h3>
+                                    <p class="text-gray-400">Select Individual or Company</p>
+                                </div>
+                            </div>
+                            <p class="text-gray-300 mb-4">
+                                Both Creators and Investors can register as:
+                            </p>
+                            <div class="grid md:grid-cols-2 gap-4">
+                                <div class="bg-gray-800/50 rounded-xl p-4">
+                                    <h4 class="font-bold text-[#3DDAD7] mb-2">Individual Account</h4>
+                                    <p class="text-gray-300 text-sm">Personal account for solo entrepreneurs or individual investors</p>
+                                </div>
+                                <div class="bg-gray-800/50 rounded-xl p-4">
+                                    <h4 class="font-bold text-[#FF8360] mb-2">Company Account</h4>
+                                    <p class="text-gray-300 text-sm">Business/organization account for companies, NGOs, or institutions</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Step 3 -->
+                <div class="flex items-start relative">
+                    <div class="step-indicator bg-gradient-to-r from-green-500 to-green-600 text-white">
+                        3
+                    </div>
+                    <div class="flex-grow">
+                        <div class="bg-gradient-to-br from-gray-900 to-gray-800 rounded-2xl p-8 border border-gray-700">
+                            <div class="flex items-center gap-4 mb-4">
+                                <div class="w-12 h-12 rounded-xl bg-green-500/20 flex items-center justify-center">
+                                    <i class="fas fa-user-check text-green-400 text-xl"></i>
+                                </div>
+                                <div>
+                                    <h3 class="text-2xl font-bold">Complete Registration</h3>
+                                    <p class="text-gray-400">Enter details and submit application</p>
+                                </div>
+                            </div>
+                            <p class="text-gray-300 mb-4">
+                                Fill in the required information based on your selected account type and registration category:
+                            </p>
+                            <div class="grid md:grid-cols-2 gap-6">
+                                <div>
+                                    <h4 class="font-bold text-[#FFD369] mb-3">Required Information:</h4>
+                                    <ul class="space-y-2 text-gray-300">
+                                        <li class="flex items-center gap-2">
+                                            <i class="fas fa-user text-[#3DDAD7]"></i>
+                                            <span>Personal/Company details</span>
+                                        </li>
+                                        <li class="flex items-center gap-2">
+                                            <i class="fas fa-envelope text-[#3DDAD7]"></i>
+                                            <span>Contact information</span>
+                                        </li>
+                                        <li class="flex items-center gap-2">
+                                            <i class="fas fa-shield-alt text-[#3DDAD7]"></i>
+                                            <span>Verification documents</span>
+                                        </li>
+                                        <li class="flex items-center gap-2">
+                                            <i class="fas fa-key text-[#3DDAD7]"></i>
+                                            <span>Secure password setup</span>
+                                        </li>
+                                    </ul>
+                                </div>
+                                <div>
+                                    <h4 class="font-bold text-[#FFD369] mb-3">After Registration:</h4>
+                                    <ul class="space-y-2 text-gray-300">
+                                        <li class="flex items-center gap-2">
+                                            <i class="fas fa-clock text-[#FF8360]"></i>
+                                            <span>Account verification (24-48 hours)</span>
+                                        </li>
+                                        <li class="flex items-center gap-2">
+                                            <i class="fas fa-check-circle text-[#FF8360]"></i>
+                                            <span>Email confirmation</span>
+                                        </li>
+                                        <li class="flex items-center gap-2">
+                                            <i class="fas fa-sign-in-alt text-[#FF8360]"></i>
+                                            <span>Access to portal features</span>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Visual Guide Section -->
+        <section class="mb-20" data-aos="fade-up" data-aos-delay="200">
+            <div class="text-center mb-12">
+                <h2 class="text-3xl md:text-4xl font-bold mb-4">Visual Registration Guide</h2>
+                <p class="text-xl text-gray-300 max-w-3xl mx-auto">
+                    Follow the step-by-step process illustrated below
+                </p>
+            </div>
+            
+            <div class="bg-gradient-to-br from-gray-900 to-gray-800 rounded-3xl p-1 shadow-2xl">
+                <div class="bg-gray-900 rounded-2xl p-8">
+                    <div class="flex items-center justify-between mb-6">
+                        <div>
+                            <h3 class="text-2xl font-bold">Account Selection Process Flow</h3>
+                            <p class="text-gray-400">Visual representation of the registration journey</p>
+                        </div>
+                        <div class="text-sm text-gray-400">
+                            <i class="fas fa-expand-arrows-alt mr-2"></i>
+                            Click to enlarge
+                        </div>
+                    </div>
+                    
+                    <div class="bg-gray-800/50 rounded-xl p-6 border border-gray-700">
+                        <img 
+                            src="guid/3.png" 
+                            alt="User Account Creation Guide - Northern Investment Portal"
+                            class="rounded-lg w-full border-2 border-gray-700 shadow-lg hover:shadow-xl transition-shadow duration-300 cursor-pointer"
+                            onclick="window.open(this.src, '_blank')"
+                        >
+                    </div>
+                    
+                    <div class="grid grid-cols-1 md:grid-cols-3 gap-4 mt-6">
+                        <div class="bg-gray-800/30 rounded-lg p-4 text-center">
+                            <div class="text-[#3DDAD7] text-sm font-bold mb-1">STEP 1</div>
+                            <div class="text-gray-300">Select Account Type</div>
+                        </div>
+                        <div class="bg-gray-800/30 rounded-lg p-4 text-center">
+                            <div class="text-[#FF8360] text-sm font-bold mb-1">STEP 2</div>
+                            <div class="text-gray-300">Choose Registration Type</div>
+                        </div>
+                        <div class="bg-gray-800/30 rounded-lg p-4 text-center">
+                            <div class="text-[#FFD369] text-sm font-bold mb-1">STEP 3</div>
+                            <div class="text-gray-300">Complete Registration</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- FAQ Section -->
+        <section data-aos="fade-up" data-aos-delay="300">
+            <div class="text-center mb-12">
+                <h2 class="text-3xl md:text-4xl font-bold mb-4">Frequently Asked Questions</h2>
+                <p class="text-xl text-gray-300 max-w-3xl mx-auto">
+                    Common questions about account registration
+                </p>
+            </div>
+            
+            <div class="grid md:grid-cols-2 gap-6">
+                <!-- FAQ Column 1 -->
+                <div class="space-y-6">
+                    <div class="bg-gradient-to-br from-gray-900 to-gray-800 rounded-2xl p-6 border border-gray-700">
+                        <h4 class="text-lg font-bold mb-3 text-[#3DDAD7]">Can I switch between Creator and Investor accounts?</h4>
+                        <p class="text-gray-300">
+                            Yes, but you need to create separate accounts for each role. One email can be used for multiple account types, 
+                            but they function independently with different permissions and features.
+                        </p>
+                    </div>
+                    
+                    <div class="bg-gradient-to-br from-gray-900 to-gray-800 rounded-2xl p-6 border border-gray-700">
+                        <h4 class="text-lg font-bold mb-3 text-[#3DDAD7]">What documents do I need for Company registration?</h4>
+                        <p class="text-gray-300">
+                            For Company accounts, you'll need: Business Registration Certificate, Company Director's ID, 
+                            Tax Registration Number, and authorized representative documents.
+                        </p>
+                    </div>
+                    
+                    <div class="bg-gradient-to-br from-gray-900 to-gray-800 rounded-2xl p-6 border border-gray-700">
+                        <h4 class="text-lg font-bold mb-3 text-[#3DDAD7]">How long does account verification take?</h4>
+                        <p class="text-gray-300">
+                            Individual accounts are typically verified within 24 hours. Company accounts may take 24-48 hours 
+                            due to additional document verification requirements.
+                        </p>
+                    </div>
+                </div>
+                
+                <!-- FAQ Column 2 -->
+                <div class="space-y-6">
+                    <div class="bg-gradient-to-br from-gray-900 to-gray-800 rounded-2xl p-6 border border-gray-700">
+                        <h4 class="text-lg font-bold mb-3 text-[#3DDAD7]">Can I upgrade from Individual to Company account?</h4>
+                        <p class="text-gray-300">
+                            Yes, you can request an account type upgrade through the portal's support system. 
+                            You'll need to submit company documents and go through a verification process.
+                        </p>
+                    </div>
+                    
+                    <div class="bg-gradient-to-br from-gray-900 to-gray-800 rounded-2xl p-6 border border-gray-700">
+                        <h4 class="text-lg font-bold mb-3 text-[#3DDAD7]">Is there a fee for account creation?</h4>
+                        <p class="text-gray-300">
+                            No, account creation on the Northern Investment Portal is completely free for both 
+                            Creators and Investors. We believe in removing barriers to investment opportunities.
+                        </p>
+                    </div>
+                    
+                    <div class="bg-gradient-to-br from-gray-900 to-gray-800 rounded-2xl p-6 border border-gray-700">
+                        <h4 class="text-lg font-bold mb-3 text-[#3DDAD7]">What if I need help during registration?</h4>
+                        <p class="text-gray-300">
+                            Our support team is available 24/7. You can contact us at 
+                            <span class="text-[#FF8360]">support@nisportal.gov.lk</span> or call 
+                            <span class="text-[#FF8360]">+94 21 222 2222</span> for immediate assistance.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- CTA Section -->
+        <section class="mt-20" data-aos="fade-up" data-aos-delay="400">
+            <div class="bg-gradient-to-r from-[#3DDAD7]/10 to-[#FF8360]/10 rounded-2xl p-8 border border-gray-700 text-center">
+                <div class="inline-flex items-center gap-3 px-6 py-2 bg-gradient-to-r from-[#3DDAD7]/20 to-[#FF8360]/20 rounded-full mb-6">
+                    <span class="w-2 h-2 bg-[#3DDAD7] rounded-full animate-pulse"></span>
+                    <span class="text-sm font-bold text-[#FFD369]">READY TO GET STARTED</span>
+                </div>
+                
+                <h3 class="text-2xl font-bold mb-4">Create Your Account Today</h3>
+                <p class="text-gray-300 mb-6 max-w-2xl mx-auto">
+                    Join the Northern Investment Portal and become part of Sri Lanka's economic transformation. 
+                    Whether you're a Creator with innovative projects or an Investor seeking opportunities, 
+                    your journey starts here.
+                </p>
+                
+                <div class="flex flex-col sm:flex-row gap-4 justify-center">
+                    <a href="#"
+                       class="group bg-gradient-to-r from-[#FF8360] to-[#FF6B4A] px-8 py-3 rounded-xl font-bold text-lg hover:shadow-2xl hover:shadow-orange-500/30 transition-all duration-300 flex items-center justify-center gap-3">
+                        <i class="fas fa-user-plus"></i>
+                        <span>Register as Creator</span>
+                        <i class="fas fa-arrow-right group-hover:translate-x-1 transition-transform"></i>
+                    </a>
+                    <a href="#"
+                       class="group border-2 border-[#3DDAD7] text-[#3DDAD7] px-8 py-3 rounded-xl font-bold text-lg hover:bg-[#3DDAD7] hover:text-gray-900 transition-all duration-300 flex items-center justify-center gap-3">
+                        <i class="fas fa-hand-holding-usd"></i>
+                        <span>Register as Investor</span>
+                    </a>
+                </div>
+                
+                <p class="text-gray-400 text-sm mt-6">
+                    Already have an account? 
+                    <a href="#" class="text-[#3DDAD7] hover:text-[#2ac8c5] transition-colors font-medium">
+                        Sign in here
+                    </a>
+                </p>
+            </div>
+        </section>
+    </div>
+</main>
+
+<!-- Footer -->
+<footer class="bg-gray-950 border-t border-gray-800 py-12">
+    <div class="max-w-6xl mx-auto px-6">
+        <div class="grid md:grid-cols-4 gap-8">
+            <div>
+                <div class="flex items-center mb-6">
+                    <img src="./logo7.png" alt="Logo" class="h-16">
+                    <span class="ml-2 text-lg font-bold bg-gradient-to-r from-[#3DDAD7] to-[#FF8360] bg-clip-text text-transparent">
+                        NIS 2026
+                    </span>
+                </div>
+                <p class="text-gray-400 mb-6">
+                    Northern Investment Summit 2026 - Your gateway to investment opportunities in Northern Sri Lanka.
+                </p>
+                <div class="flex space-x-4">
+                    <a href="#" class="w-10 h-10 rounded-full bg-gray-800 flex items-center justify-center hover:bg-[#3DDAD7] transition-colors">
+                        <i class="fab fa-twitter"></i>
+                    </a>
+                    <a href="#" class="w-10 h-10 rounded-full bg-gray-800 flex items-center justify-center hover:bg-[#3DDAD7] transition-colors">
+                        <i class="fab fa-linkedin-in"></i>
+                    </a>
+                    <a href="#" class="w-10 h-10 rounded-full bg-gray-800 flex items-center justify-center hover:bg-[#3DDAD7] transition-colors">
+                        <i class="fab fa-facebook-f"></i>
+                    </a>
+                </div>
+            </div>
+            
+            <div>
+                <h4 class="text-lg font-bold mb-6">Quick Links</h4>
+                <ul class="space-y-3">
+                    <li><a href="../index.html" class="text-gray-400 hover:text-[#3DDAD7] transition-colors">Home Page</a></li>
+                    <li><a href="../index.html#districts" class="text-gray-400 hover:text-[#3DDAD7] transition-colors">Investment Districts</a></li>
+                    <li><a href="../index.html#sectors" class="text-gray-400 hover:text-[#3DDAD7] transition-colors">Investment Sectors</a></li>
+                    <li><a href="../index.html#summit" class="text-gray-400 hover:text-[#3DDAD7] transition-colors">Summit 2026</a></li>
+                </ul>
+            </div>
+            
+            <div>
+                <h4 class="text-lg font-bold mb-6">Support</h4>
+                <ul class="space-y-3 text-gray-400">
+                    <li class="flex items-center gap-2">
+                        <i class="fas fa-envelope text-[#3DDAD7]"></i>
+                        <span>support@nisportal.gov.lk</span>
+                    </li>
+                    <li class="flex items-center gap-2">
+                        <i class="fas fa-phone text-[#3DDAD7]"></i>
+                        <span>+94 21 222 2222</span>
+                    </li>
+                    <li class="flex items-center gap-2">
+                        <i class="fas fa-clock text-[#3DDAD7]"></i>
+                        <span>24/7 Support Available</span>
+                    </li>
+                </ul>
+            </div>
+            
+            <div>
+                <h4 class="text-lg font-bold mb-6">Portal Updates</h4>
+                <p class="text-gray-400 mb-4">Subscribe for portal updates and announcements</p>
+                <div class="flex">
+                    <input type="email" placeholder="Your email" class="bg-gray-800 text-white px-4 py-3 rounded-l-lg flex-grow focus:outline-none focus:ring-2 focus:ring-[#3DDAD7]">
+                    <button class="bg-[#3DDAD7] text-gray-900 px-4 py-3 rounded-r-lg font-bold hover:bg-[#2ac8c5] transition-colors">
+                        <i class="fas fa-paper-plane"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+        
+        <div class="border-t border-gray-800 mt-8 pt-8 text-center text-gray-500 text-sm">
+            <p>&copy; 2024 Northern Investment Summit 2026. All rights reserved. | Account Creation Guide v1.0</p>
+        </div>
+    </div>
+</footer>
+
+<!-- AOS JS -->
+<script src="https://unpkg.com/aos@2.3.4/dist/aos.js"></script>
+<script>
+    AOS.init({
+        once: true,
+        duration: 800,
+        offset: 100
+    });
+</script>
+
+</body>
+</html>

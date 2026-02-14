@@ -1,0 +1,861 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>OneShot Portal | Northern Province Sri Lanka - Verified Investment Platform</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --gold: #efb814;
+            --burgundy: #a51334;
+            --orange: #e17007;
+            --teal-dark: #026c64;
+            --teal: #006e65;
+            --text-dark: #1F2937;
+            --text-light: #6B7280;
+            --border-light: #E5E7EB;
+            --bg-light: #F9FAFB;
+        }
+        body {
+            font-family: 'Inter', sans-serif;
+            color: var(--text-dark);
+            background-color: #FFFFFF;
+            overflow-x: hidden;
+        }
+        h1, h2, h3, h4, h5, h6 {
+            font-family: 'Poppins', sans-serif;
+            font-weight: 600;
+        }
+        .gradient-text {
+            background: linear-gradient(135deg, var(--orange), var(--gold));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        .gradient-text-teal {
+            background: linear-gradient(135deg, var(--teal), var(--teal-dark));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        .gradient-border {
+            border: 2px solid transparent;
+            border-radius: 12px;
+            background: linear-gradient(white, white), 
+                        linear-gradient(135deg, var(--gold), var(--orange), var(--burgundy));
+            background-origin: border-box;
+            background-clip: padding-box, border-box;
+        }
+        .portal-highlight {
+            position: relative;
+            display: inline-block;
+        }
+        .portal-highlight::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 6px;
+            background: linear-gradient(90deg, var(--gold), var(--orange), var(--burgundy));
+            border-radius: 3px;
+            opacity: 0.3;
+        }
+        .sri-lanka-flag {
+            background: linear-gradient(90deg, #ffbe29 33%, #eb7400 33%, #eb7400 67%, #00534e 67%);
+        }
+        .verified-badge {
+            position: relative;
+            padding-left: 2rem;
+        }
+        .verified-badge::before {
+            content: '✓';
+            position: absolute;
+            left: 0;
+            top: 0;
+            width: 1.5rem;
+            height: 1.5rem;
+            background: var(--teal);
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+        }
+        
+        /* Hero Animation Styles */
+        .hero-glow {
+            animation: glow 3s ease-in-out infinite alternate;
+        }
+        
+        @keyframes glow {
+            from {
+                box-shadow: 0 0 20px rgba(239, 184, 20, 0.3),
+                            0 0 40px rgba(229, 112, 7, 0.2);
+            }
+            to {
+                box-shadow: 0 0 30px rgba(239, 184, 20, 0.5),
+                            0 0 60px rgba(229, 112, 7, 0.3);
+            }
+        }
+        
+        .float-animation {
+            animation: float 6s ease-in-out infinite;
+        }
+        
+        @keyframes float {
+            0% {
+                transform: translateY(0px);
+            }
+            50% {
+                transform: translateY(-20px);
+            }
+            100% {
+                transform: translateY(0px);
+            }
+        }
+        
+        .pulse-animation {
+            animation: pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+        }
+        
+        @keyframes pulse {
+            0%, 100% {
+                opacity: 1;
+            }
+            50% {
+                opacity: 0.7;
+            }
+        }
+        
+        .spin-slow {
+            animation: spin 20s linear infinite;
+        }
+        
+        @keyframes spin {
+            from {
+                transform: rotate(0deg);
+            }
+            to {
+                transform: rotate(360deg);
+            }
+        }
+        
+        .wave-pattern {
+            background-image: url("data:image/svg+xml,%3Csvg width='100' height='100' viewBox='0 0 100 100' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M11 18c3.866 0 7-3.134 7-7s-3.134-7-7-7-7 3.134-7 7 3.134 7 7 7zm48 25c3.866 0 7-3.134 7-7s-3.134-7-7-7-7 3.134-7 7 3.134 7 7 7zm-43-7c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zm63 31c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zM34 90c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zm56-76c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zM12 86c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm28-65c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm23-11c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm-6 60c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm29 22c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zM32 63c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm57-13c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm-9-21c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM60 91c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM35 41c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM12 60c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2z' fill='%23efb814' fill-opacity='0.05' fill-rule='evenodd'/%3E%3C/svg%3E");
+        }
+    </style>
+</head>
+<body class="bg-white">
+    <!-- Navigation -->
+    <header class="sticky top-0 z-50 bg-white/95 backdrop-blur-sm border-b border-gray-100 shadow-sm">
+        <div class="container mx-auto px-4 sm:px-6 py-4">
+            <div class="flex justify-between items-center">
+                <div class="flex items-center space-x-3">
+                    <div class="w-10 h-10 rounded-lg bg-gradient-to-br from-teal to-teal-dark flex items-center justify-center hero-glow">
+                        <i class="fas fa-bolt text-white text-xl"></i>
+                    </div>
+                    <div>
+                        <h1 class="text-xl font-bold text-gray-900">OneShot Portal</h1>
+                        <p class="text-xs text-gray-500">Northern Province Sri Lanka</p>
+                    </div>
+                </div>
+                
+                <nav class="hidden md:block">
+                    <ul class="flex space-x-6 lg:space-x-8">
+                        <li><a href="#home" class="text-gray-600 hover:text-burgundy font-medium transition-colors relative after:content-[''] after:absolute after:bottom-[-6px] after:left-0 after:w-0 after:h-0.5 after:bg-burgundy after:transition-all hover:after:w-full active:text-burgundy active:after:w-full">Home</a></li>
+                        <li><a href="#verification" class="text-gray-600 hover:text-burgundy font-medium transition-colors relative after:content-[''] after:absolute after:bottom-[-6px] after:left-0 after:w-0 after:h-0.5 after:bg-burgundy after:transition-all hover:after:w-full">Verification</a></li>
+                        <li><a href="#sectors" class="text-gray-600 hover:text-burgundy font-medium transition-colors relative after:content-[''] after:absolute after:bottom-[-6px] after:left-0 after:w-0 after:h-0.5 after:bg-burgundy after:transition-all hover:after:w-full">Sectors</a></li>
+                        <li><a href="#northern-province" class="text-gray-600 hover:text-burgundy font-medium transition-colors relative after:content-[''] after:absolute after:bottom-[-6px] after:left-0 after:w-0 after:h-0.5 after:bg-burgundy after:transition-all hover:after:w-full">Northern Province</a></li>
+                        <li><a href="#contact" class="text-gray-600 hover:text-burgundy font-medium transition-colors relative after:content-[''] after:absolute after:bottom-[-6px] after:left-0 after:w-0 after:h-0.5 after:bg-burgundy after:transition-all hover:after:w-full">Contact</a></li>
+                    </ul>
+                </nav>
+                
+                <div class="flex items-center space-x-4">
+                    <button onclick="redirectToInvestorPortal()" class="hidden md:block bg-gradient-to-r from-teal to-teal-dark text-white font-semibold py-2 px-4 rounded-lg hover:shadow-lg transition-all duration-300 hover:-translate-y-0.5 text-sm">
+                        Investor Portal
+                    </button>
+                    <button onclick="redirectToCreatorPortal()" class="bg-gradient-to-r from-orange to-gold text-white font-semibold py-2 px-6 rounded-lg hover:shadow-lg transition-all duration-300 hover:-translate-y-0.5">
+                        Creator Portal
+                    </button>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero Section with Animations -->
+    <section id="home" class="pt-12 md:pt-16 lg:pt-20 pb-12 md:pb-20 lg:pb-24 bg-gradient-to-b from-white to-gray-50 wave-pattern relative overflow-hidden">
+        <!-- Animated Background Elements -->
+        <div class="absolute inset-0 overflow-hidden">
+            <div class="absolute -top-40 -right-40 w-80 h-80 bg-gradient-to-r from-gold/5 to-orange/5 rounded-full blur-3xl"></div>
+            <div class="absolute top-1/4 -left-40 w-80 h-80 bg-gradient-to-r from-teal/5 to-burgundy/5 rounded-full blur-3xl"></div>
+            <div class="absolute bottom-0 left-1/3 w-60 h-60 bg-gradient-to-r from-burgundy/3 to-teal/3 rounded-full blur-2xl"></div>
+        </div>
+        
+        <div class="container mx-auto px-4 sm:px-6 relative z-10">
+            <div class="max-w-6xl mx-auto">
+                <!-- Sri Lanka & Northern Province Banner -->
+                <div class="flex flex-col md:flex-row items-center justify-between mb-8 md:mb-12 bg-gradient-to-r from-teal/10 to-teal-dark/10 rounded-2xl p-6 border border-teal/20 backdrop-blur-sm">
+                    <div class="flex items-center mb-4 md:mb-0">
+                        <div class="w-16 h-10 sri-lanka-flag rounded-lg mr-4 float-animation"></div>
+                        <div>
+                            <h3 class="font-bold text-gray-900">Northern Province Sri Lanka</h3>
+                            <p class="text-sm text-gray-600">Verified Investment Platform</p>
+                        </div>
+                    </div>
+                    <div class="bg-white px-4 py-2 rounded-full border border-teal/30 pulse-animation">
+                        <span class="text-teal-dark font-semibold text-sm">🇱🇰 Local Infrastructure Deployment</span>
+                    </div>
+                </div>
+                
+                <!-- Animated Hero Content -->
+                <div class="text-center mb-12 md:mb-16">
+                    <div class="inline-flex items-center px-4 py-2 rounded-full bg-gradient-to-r from-orange/10 to-gold/10 border border-orange/20 mb-6 float-animation">
+                        <span class="w-2 h-2 rounded-full bg-burgundy mr-2 animate-pulse"></span>
+                        <span class="text-sm font-medium" style="color: var(--burgundy);">✅ Governor-Verified Platform</span>
+                    </div>
+                    
+                    <!-- Animated Main Title -->
+                    <div class="relative mb-6">
+                        <h1 class="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold text-gray-900 mb-6 leading-tight">
+                            <span class="portal-highlight relative">
+                                <span class="absolute -inset-1 bg-gradient-to-r from-gold/20 to-orange/20 blur-lg opacity-50"></span>
+                                OneShot
+                            </span>
+                            <br class="sm:hidden">
+                            <span class="gradient-text relative">
+                                <span class="absolute -inset-1 bg-gradient-to-r from-orange/10 to-gold/10 blur-lg opacity-30"></span>
+                                Investment Portal
+                            </span>
+                        </h1>
+                        
+                        <!-- Animated Orbital Rings -->
+                        <div class="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-full max-w-2xl h-64 -z-10">
+                            <div class="absolute inset-0 border-2 border-teal/10 rounded-full animate-spin-slow"></div>
+                            <div class="absolute inset-8 border-2 border-gold/10 rounded-full animate-spin-slow" style="animation-direction: reverse; animation-duration: 25s;"></div>
+                            <div class="absolute inset-16 border-2 border-burgundy/10 rounded-full animate-spin-slow" style="animation-duration: 35s;"></div>
+                        </div>
+                    </div>
+                    
+                    <p class="text-xl md:text-2xl text-gray-600 max-w-3xl mx-auto mb-10 leading-relaxed relative z-10">
+                        Northern Province's <span class="font-bold relative">
+                            <span class="absolute -inset-1 bg-gradient-to-r from-burgundy/10 to-burgundy/5 blur-sm"></span>
+                            <span style="color: var(--burgundy);">official platform</span>
+                        </span> for verified investment connections. 
+                        All proposals are government-verified and processed within Northern Province.
+                    </p>
+                </div>
+                
+                <!-- Animated Verification Badge -->
+                <div class="bg-gradient-to-r from-white to-gray-50 rounded-2xl p-8 border-2 border-teal/30 mb-12 md:mb-16 backdrop-blur-sm relative overflow-hidden">
+                    <div class="absolute -right-20 -top-20 w-60 h-60 bg-gradient-to-r from-teal/10 to-teal-dark/10 rounded-full blur-xl"></div>
+                    <div class="absolute -left-20 -bottom-20 w-60 h-60 bg-gradient-to-r from-gold/10 to-orange/10 rounded-full blur-xl"></div>
+                    
+                    <div class="relative z-10">
+                        <div class="flex flex-col md:flex-row items-center justify-between">
+                            <div class="mb-6 md:mb-0 md:mr-8">
+                                <div class="flex items-center mb-4">
+                                    <div class="w-12 h-12 rounded-full bg-teal flex items-center justify-center mr-4 hero-glow">
+                                        <i class="fas fa-shield-alt text-white text-2xl"></i>
+                                    </div>
+                                    <h3 class="text-2xl font-bold text-gray-900">Governor-Verified Platform</h3>
+                                </div>
+                                <p class="text-gray-600 mb-4">
+                                    All investment proposals on OneShot Portal undergo rigorous verification by 
+                                    the Northern Provincial Council Governor's office and relevant government authorities.
+                                </p>
+                                <div class="flex flex-wrap gap-2">
+                                    <span class="px-3 py-1 bg-teal/10 text-teal-dark rounded-full text-sm font-medium float-animation" style="animation-delay: 0s;">Government Verified</span>
+                                    <span class="px-3 py-1 bg-gold/10 text-gold rounded-full text-sm font-medium float-animation" style="animation-delay: 0.2s;">Local Processing</span>
+                                    <span class="px-3 py-1 bg-burgundy/10 text-burgundy rounded-full text-sm font-medium float-animation" style="animation-delay: 0.4s;">Secure Infrastructure</span>
+                                </div>
+                            </div>
+                            <div class="bg-white p-6 rounded-xl border border-gray-200 text-center hero-glow">
+                                <div class="text-4xl font-bold mb-2" style="color: var(--teal);">100%</div>
+                                <div class="text-gray-900 font-semibold mb-1">Verified Proposals</div>
+                                <div class="text-gray-600 text-sm">Northern Provincial Council</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Animated Portal Buttons -->
+                <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 mb-16">
+                    <!-- Investor Portal Button -->
+                    <div class="gradient-border bg-white p-8 md:p-10 rounded-2xl hover:shadow-2xl transition-all duration-500 hover:-translate-y-2 relative overflow-hidden group">
+                        <div class="absolute -right-10 -top-10 w-40 h-40 bg-gradient-to-r from-teal/5 to-teal-dark/5 rounded-full group-hover:scale-150 transition-transform duration-700"></div>
+                        <div class="absolute -left-10 -bottom-10 w-40 h-40 bg-gradient-to-r from-teal/5 to-teal-dark/5 rounded-full group-hover:scale-150 transition-transform duration-700" style="animation-delay: 0.3s;"></div>
+                        
+                        <div class="flex flex-col items-center text-center relative z-10">
+                            <div class="w-24 h-24 rounded-full bg-gradient-to-br from-white to-gray-50 border-8 border-white shadow-xl flex items-center justify-center mb-6 float-animation">
+                                <i class="fas fa-user-tie text-4xl" style="color: var(--teal);"></i>
+                            </div>
+                            
+                            <h2 class="text-2xl md:text-3xl font-bold mb-4 text-gray-900">
+                                <span class="gradient-text-teal">Investor Portal</span>
+                            </h2>
+                            
+                            <p class="text-gray-600 mb-6 md:mb-8 text-lg">
+                                Access <span class="font-semibold text-teal-dark">government-verified</span> investment opportunities from Northern Province. 
+                                All proposals processed through secure infrastructure.
+                            </p>
+                            
+                            <div class="space-y-3 mb-8 w-full max-w-md">
+                                <div class="verified-badge text-gray-700 pulse-animation" style="animation-delay: 0s;">
+                                    Governor-verified investment proposals
+                                </div>
+                                <div class="verified-badge text-gray-700 pulse-animation" style="animation-delay: 0.2s;">
+                                    Local infrastructure processing
+                                </div>
+                                <div class="verified-badge text-gray-700 pulse-animation" style="animation-delay: 0.4s;">
+                                    Direct Northern Province connections
+                                </div>
+                            </div>
+                            
+                            <button onclick="redirectToInvestorPortal()" class="w-full max-w-md bg-gradient-to-r from-teal to-teal-dark text-white font-bold py-4 px-8 rounded-xl hover:shadow-xl transition-all duration-300 hover:-translate-y-1 text-xl group relative overflow-hidden">
+                                <span class="absolute inset-0 bg-gradient-to-r from-teal-dark to-teal translate-y-full group-hover:translate-y-0 transition-transform duration-300"></span>
+                                <span class="relative z-10">
+                                    <i class="fas fa-arrow-right mr-3"></i>
+                                    Enter Investor Portal
+                                </span>
+                            </button>
+                        </div>
+                    </div>
+                    
+                    <!-- Creator Portal Button -->
+                    <div class="gradient-border bg-white p-8 md:p-10 rounded-2xl hover:shadow-2xl transition-all duration-500 hover:-translate-y-2 relative overflow-hidden group">
+                        <div class="absolute -right-10 -top-10 w-40 h-40 bg-gradient-to-r from-orange/5 to-gold/5 rounded-full group-hover:scale-150 transition-transform duration-700"></div>
+                        <div class="absolute -left-10 -bottom-10 w-40 h-40 bg-gradient-to-r from-orange/5 to-gold/5 rounded-full group-hover:scale-150 transition-transform duration-700" style="animation-delay: 0.3s;"></div>
+                        
+                        <div class="flex flex-col items-center text-center relative z-10">
+                            <div class="w-24 h-24 rounded-full bg-gradient-to-br from-white to-gray-50 border-8 border-white shadow-xl flex items-center justify-center mb-6 float-animation">
+                                <i class="fas fa-file-contract text-4xl" style="color: var(--gold);"></i>
+                            </div>
+                            
+                            <h2 class="text-2xl md:text-3xl font-bold mb-4 text-gray-900">
+                                <span class="gradient-text">Creator Portal</span>
+                            </h2>
+                            
+                            <p class="text-gray-600 mb-6 md:mb-8 text-lg">
+                                Submit proposals for <span class="font-semibold" style="color: var(--burgundy);">government verification</span>. 
+                                All data processed securely within Northern Province infrastructure.
+                            </p>
+                            
+                            <div class="space-y-3 mb-8 w-full max-w-md">
+                                <div class="verified-badge text-gray-700 pulse-animation" style="animation-delay: 0s;">
+                                    Government verification process
+                                </div>
+                                <div class="verified-badge text-gray-700 pulse-animation" style="animation-delay: 0.2s;">
+                                    Northern Province security
+                                </div>
+                                <div class="verified-badge text-gray-700 pulse-animation" style="animation-delay: 0.4s;">
+                                    Direct investor matching
+                                </div>
+                            </div>
+                            
+                            <button onclick="redirectToCreatorPortal()" class="w-full max-w-md bg-gradient-to-r from-orange to-gold text-white font-bold py-4 px-8 rounded-xl hover:shadow-xl transition-all duration-300 hover:-translate-y-1 text-xl group relative overflow-hidden">
+                                <span class="absolute inset-0 bg-gradient-to-r from-gold to-orange translate-y-full group-hover:translate-y-0 transition-transform duration-300"></span>
+                                <span class="relative z-10">
+                                    <i class="fas fa-arrow-right mr-3"></i>
+                                    Enter Creator Portal
+                                </span>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Animated Quick Access Section -->
+                <div class="text-center relative">
+                    <div class="absolute -top-20 left-1/2 transform -translate-x-1/2 w-64 h-64 bg-gradient-to-r from-teal/5 to-burgundy/5 rounded-full blur-3xl"></div>
+                    
+                    <h3 class="text-2xl md:text-3xl font-bold mb-6 text-gray-900 relative z-10">
+                        Ready for <span class="gradient-text">OneShot Access</span>?
+                    </h3>
+                    <p class="text-gray-600 mb-8 text-lg max-w-2xl mx-auto relative z-10">
+                        Choose your portal and access Northern Province's verified investment platform.
+                        All data processed within secure Northern Province infrastructure.
+                    </p>
+                    
+                    <div class="flex flex-col sm:flex-row gap-4 justify-center relative z-10">
+                        <button onclick="redirectToInvestorPortal()" class="bg-gradient-to-r from-teal to-teal-dark text-white font-semibold py-4 px-8 rounded-xl hover:shadow-lg transition-all duration-300 hover:-translate-y-0.5 text-lg flex items-center justify-center group relative overflow-hidden">
+                            <span class="absolute inset-0 bg-gradient-to-r from-teal-dark to-teal translate-x-full group-hover:translate-x-0 transition-transform duration-300"></span>
+                            <span class="relative z-10">
+                                <i class="fas fa-user-tie mr-3"></i>
+                                Investor Portal Access
+                            </span>
+                        </button>
+                        <button onclick="redirectToCreatorPortal()" class="bg-gradient-to-r from-orange to-gold text-white font-semibold py-4 px-8 rounded-xl hover:shadow-lg transition-all duration-300 hover:-translate-y-0.5 text-lg flex items-center justify-center group relative overflow-hidden">
+                            <span class="absolute inset-0 bg-gradient-to-r from-gold to-orange translate-x-full group-hover:translate-x-0 transition-transform duration-300"></span>
+                            <span class="relative z-10">
+                                <i class="fas fa-file-contract mr-3"></i>
+                                Creator Portal Access
+                            </span>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Northern Province Focus Section -->
+    <section id="northern-province" class="py-12 md:py-16 lg:py-20 bg-gradient-to-b from-white to-teal/5 relative overflow-hidden">
+        <!-- Background Pattern -->
+        <div class="absolute inset-0 opacity-5">
+            <div class="absolute inset-0" style="background-image: url('data:image/svg+xml,%3Csvg width=\"100\" height=\"100\" viewBox=\"0 0 100 100\" xmlns=\"http://www.w3.org/2000/svg\"%3E%3Cpath d=\"M11 18c3.866 0 7-3.134 7-7s-3.134-7-7-7-7 3.134-7 7 3.134 7 7 7zm48 25c3.866 0 7-3.134 7-7s-3.134-7-7-7-7 3.134-7 7 3.134 7 7 7zm-43-7c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zm63 31c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zM34 90c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zm56-76c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zM12 86c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm28-65c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm23-11c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm-6 60c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm29 22c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zM32 63c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm57-13c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm-9-21c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM60 91c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM35 41c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM12 60c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2z\" fill=\"%23006e65\" fill-opacity=\"0.05\" fill-rule=\"evenodd\"/%3E%3C/svg%3E');"></div>
+        </div>
+        
+        <div class="container mx-auto px-4 sm:px-6 relative z-10">
+            <div class="max-w-6xl mx-auto">
+                <div class="text-center mb-12 md:mb-16">
+                    <h2 class="text-2xl sm:text-3xl md:text-4xl font-bold mb-3 md:mb-4">
+                        <span class="gradient-text-teal">Northern Province Focus</span>
+                    </h2>
+                    <p class="text-lg md:text-xl text-gray-600">
+                        Proudly serving investment needs within Sri Lanka's Northern Province
+                    </p>
+                </div>
+                
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-6 md:gap-8 mb-12">
+                    <div class="bg-white p-6 md:p-8 rounded-xl border border-gray-200 hover:shadow-lg transition-all hover:-translate-y-1 duration-300">
+                        <div class="w-12 h-12 rounded-full bg-gradient-to-r from-teal/20 to-teal-dark/20 flex items-center justify-center mb-4 float-animation">
+                            <i class="fas fa-map-marker-alt" style="color: var(--teal-dark);"></i>
+                        </div>
+                        <h3 class="text-lg md:text-xl font-bold mb-3 text-gray-900">Local Infrastructure</h3>
+                        <p class="text-gray-600">Processing located entirely within Northern Province</p>
+                    </div>
+                    
+                    <div class="bg-white p-6 md:p-8 rounded-xl border border-gray-200 hover:shadow-lg transition-all hover:-translate-y-1 duration-300">
+                        <div class="w-12 h-12 rounded-full bg-gradient-to-r from-gold/20 to-orange/20 flex items-center justify-center mb-4 float-animation" style="animation-delay: 0.2s;">
+                            <i class="fas fa-users" style="color: var(--orange);"></i>
+                        </div>
+                        <h3 class="text-lg md:text-xl font-bold mb-3 text-gray-900">Community Development</h3>
+                        <p class="text-gray-600">Supporting Northern Province economic growth and employment</p>
+                    </div>
+                    
+                    <div class="bg-white p-6 md:p-8 rounded-xl border border-gray-200 hover:shadow-lg transition-all hover:-translate-y-1 duration-300">
+                        <div class="w-12 h-12 rounded-full bg-gradient-to-r from-burgundy/20 to-burgundy/10 flex items-center justify-center mb-4 float-animation" style="animation-delay: 0.4s;">
+                            <i class="fas fa-handshake" style="color: var(--burgundy);"></i>
+                        </div>
+                        <h3 class="text-lg md:text-xl font-bold mb-3 text-gray-900">Government Partnership</h3>
+                        <p class="text-gray-600">Verified and supported by Northern Provincial Council</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer id="contact" class="bg-gray-900 text-white py-12 md:py-16 relative overflow-hidden">
+        <!-- Animated Background -->
+        <div class="absolute inset-0 opacity-5">
+            <div class="absolute inset-0" style="background-image: url('data:image/svg+xml,%3Csvg width=\"100\" height=\"100\" viewBox=\"0 0 100 100\" xmlns=\"http://www.w3.org/2000/svg\"%3E%3Cpath d=\"M11 18c3.866 0 7-3.134 7-7s-3.134-7-7-7-7 3.134-7 7 3.134 7 7 7zm48 25c3.866 0 7-3.134 7-7s-3.134-7-7-7-7 3.134-7 7 3.134 7 7 7zm-43-7c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zm63 31c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zM34 90c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zm56-76c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zM12 86c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm28-65c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm23-11c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm-6 60c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm29 22c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zM32 63c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm57-13c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm-9-21c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM60 91c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM35 41c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM12 60c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2z\" fill=\"%23ffffff\" fill-opacity=\"0.1\" fill-rule=\"evenodd\"/%3E%3C/svg%3E');"></div>
+        </div>
+        
+        <div class="container mx-auto px-4 sm:px-6 relative z-10">
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-6 md:gap-8 lg:gap-10">
+                <div>
+                    <div class="flex items-center space-x-3 mb-4 md:mb-6">
+                        <div class="w-10 h-10 rounded-lg bg-gradient-to-br from-teal to-teal-dark flex items-center justify-center hero-glow">
+                            <i class="fas fa-bolt text-white"></i>
+                        </div>
+                        <div>
+                            <h3 class="text-xl md:text-2xl font-bold">OneShot Portal</h3>
+                            <p class="text-xs text-gray-400">Northern Province Sri Lanka</p>
+                        </div>
+                    </div>
+                    <p class="text-gray-400 leading-relaxed text-sm md:text-base">
+                        Northern Province's official investment portal. All proposals verified by government authorities.
+                    </p>
+                </div>
+                
+                <div>
+                    <h4 class="text-base md:text-lg font-bold mb-3 md:mb-6">Quick Access</h4>
+                    <ul class="space-y-2 md:space-y-3">
+                        <li><button onclick="redirectToInvestorPortal()" class="text-gray-400 hover:text-gold transition-colors text-sm md:text-base">Investor Portal</button></li>
+                        <li><button onclick="redirectToCreatorPortal()" class="text-gray-400 hover:text-gold transition-colors text-sm md:text-base">Creator Portal</button></li>
+                        <li><a href="#verification" class="text-gray-400 hover:text-gold transition-colors text-sm md:text-base">Verification Process</a></li>
+                        <li><a href="#northern-province" class="text-gray-400 hover:text-gold transition-colors text-sm md:text-base">Northern Province</a></li>
+                    </ul>
+                </div>
+                
+                <div>
+                    <h4 class="text-base md:text-lg font-bold mb-3 md:mb-6">Verification</h4>
+                    <ul class="space-y-2 md:space-y-3">
+                        <li class="text-gray-400 text-sm md:text-base">✓ Governor Verified</li>
+                        <li class="text-gray-400 text-sm md:text-base">✓ Local Processing</li>
+                        <li class="text-gray-400 text-sm md:text-base">✓ Sri Lanka Data</li>
+                        <li class="text-gray-400 text-sm md:text-base">✓ Secure Infrastructure</li>
+                    </ul>
+                </div>
+                
+                <div>
+                    <h4 class="text-base md:text-lg font-bold mb-3 md:mb-6">Contact</h4>
+                    <ul class="space-y-3 md:space-y-4">
+                        <li class="flex items-center space-x-3">
+                            <div class="w-8 h-8 md:w-10 md:h-10 rounded-full bg-gray-800 flex items-center justify-center flex-shrink-0">
+                                <i class="fas fa-map-marker-alt" style="color: var(--teal);"></i>
+                            </div>
+                            <div>
+                                <div class="text-xs md:text-sm text-gray-400">Location</div>
+                                <div class="text-sm md:text-base">Northern Province, Sri Lanka</div>
+                            </div>
+                        </li>
+                        <li class="flex items-center space-x-3">
+                            <div class="w-8 h-8 md:w-10 md:h-10 rounded-full bg-gray-800 flex items-center justify-center flex-shrink-0">
+                                <i class="fas fa-university" style="color: var(--teal);"></i>
+                            </div>
+                            <div>
+                                <div class="text-xs md:text-sm text-gray-400">Affiliation</div>
+                                <div class="text-sm md:text-base">University of Vavuniya</div>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            
+            <!-- University Copyright Section -->
+            <div class="border-t border-gray-800 mt-8 md:mt-12 pt-6 md:pt-8">
+                <div class="flex flex-col items-center justify-center text-center">
+                    <!-- Animated University Logo -->
+                    <div class="mb-4">
+                        <div class="w-16 h-16 rounded-full bg-gradient-to-r from-teal to-teal-dark flex items-center justify-center mx-auto hero-glow spin-slow" style="animation-duration: 8s;">
+                            <i class="fas fa-university text-white text-2xl"></i>
+                        </div>
+                    </div>
+                    
+                    <!-- Copyright Text -->
+                    <div class="mb-4">
+                        <p class="text-gray-400 text-sm md:text-base">
+                            © 2023 OneShot Portal - Northern Province Sri Lanka. All Rights Reserved.
+                        </p>
+                        <p class="text-teal font-semibold mt-2 text-lg md:text-xl">
+                            University of Vavuniya - Faculty of Technological Studies
+                        </p>
+                    </div>
+                    
+                    <!-- Additional University Info -->
+                    <div class="text-gray-500 text-xs md:text-sm max-w-2xl mx-auto">
+                        <p class="mb-2">Official investment portal of Northern Province Sri Lanka</p>
+                        <p>All proposals verified by Northern Provincial Council Governor's office</p>
+                        <p class="mt-2 font-medium text-gold">Secure Infrastructure: Northern Province</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Investor Portal Registration Page -->
+    <div id="investorPortalPage" class="hidden fixed inset-0 bg-white z-50 overflow-y-auto">
+        <div class="min-h-screen">
+            <!-- Investor Portal Header -->
+            <div class="bg-gradient-to-r from-teal to-teal-dark text-white py-8">
+                <div class="container mx-auto px-4 sm:px-6">
+                    <div class="flex justify-between items-center mb-8">
+                        <div class="flex items-center space-x-3">
+                            <button onclick="closeInvestorPortal()" class="text-white hover:text-gray-200">
+                                <i class="fas fa-arrow-left text-2xl"></i>
+                            </button>
+                            <div>
+                                <h1 class="text-2xl md:text-3xl font-bold">Investor Portal - OneShot</h1>
+                                <p class="text-teal-100">Northern Province Verified Investments</p>
+                            </div>
+                        </div>
+                        <div class="w-12 h-12 rounded-full bg-white/20 flex items-center justify-center">
+                            <i class="fas fa-user-tie text-xl"></i>
+                        </div>
+                    </div>
+                    
+                    <!-- Verification Banner -->
+                    <div class="bg-white/20 rounded-xl p-4 mt-6">
+                        <div class="flex items-center">
+                            <i class="fas fa-shield-alt text-2xl mr-3"></i>
+                            <div>
+                                <h3 class="font-bold">Governor-Verified Platform</h3>
+                                <p class="text-sm text-white/90">All investment proposals verified by Northern Provincial Council</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Investor Registration Form -->
+            <div class="container mx-auto px-4 sm:px-6 py-8 md:py-12">
+                <div class="max-w-2xl mx-auto">
+                    <div class="bg-white rounded-2xl shadow-xl p-6 md:p-10">
+                        <h2 class="text-2xl md:text-3xl font-bold mb-2" style="color: var(--teal);">Investor Registration</h2>
+                        <p class="text-gray-600 mb-8">Access verified investment opportunities from Northern Province Sri Lanka</p>
+                        
+                        <form id="investorForm" class="space-y-6">
+                            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                                <div>
+                                    <label class="block text-gray-700 mb-2 font-medium">First Name</label>
+                                    <input type="text" required class="w-full p-4 border border-gray-300 rounded-lg focus:ring-2 focus:ring-teal focus:border-transparent">
+                                </div>
+                                <div>
+                                    <label class="block text-gray-700 mb-2 font-medium">Last Name</label>
+                                    <input type="text" required class="w-full p-4 border border-gray-300 rounded-lg focus:ring-2 focus:ring-teal focus:border-transparent">
+                                </div>
+                            </div>
+                            
+                            <div>
+                                <label class="block text-gray-700 mb-2 font-medium">Email Address</label>
+                                <input type="email" required class="w-full p-4 border border-gray-300 rounded-lg focus:ring-2 focus:ring-teal focus:border-transparent">
+                            </div>
+                            
+                            <div>
+                                <label class="block text-gray-700 mb-2 font-medium">Investment Focus in Northern Province</label>
+                                <select class="w-full p-4 border border-gray-300 rounded-lg focus:ring-2 focus:ring-teal focus:border-transparent">
+                                    <option>Select investment focus</option>
+                                    <option>Agriculture & Fisheries</option>
+                                    <option>Tourism Development</option>
+                                    <option>Renewable Energy</option>
+                                    <option>Technology & IT</option>
+                                    <option>Manufacturing</option>
+                                    <option>All Northern Province Sectors</option>
+                                </select>
+                            </div>
+                            
+                            <div>
+                                <label class="block text-gray-700 mb-2 font-medium">Investment Range (USD)</label>
+                                <select class="w-full p-4 border border-gray-300 rounded-lg focus:ring-2 focus:ring-teal focus:border-transparent">
+                                    <option>Select investment range</option>
+                                    <option>$10K - $100K</option>
+                                    <option>$100K - $500K</option>
+                                    <option>$500K - $2M</option>
+                                    <option>$2M - $10M</option>
+                                    <option>$10M+</option>
+                                </select>
+                            </div>
+                            
+                            <div>
+                                <label class="block text-gray-700 mb-2 font-medium">Password</label>
+                                <input type="password" required class="w-full p-4 border border-gray-300 rounded-lg focus:ring-2 focus:ring-teal focus:border-transparent">
+                            </div>
+                            
+                            <div class="bg-teal/10 p-4 rounded-lg border border-teal/30">
+                                <div class="flex items-start">
+                                    <i class="fas fa-info-circle text-teal mt-1 mr-3"></i>
+                                    <div class="text-sm text-gray-700">
+                                        <p class="font-medium mb-1">Northern Province Data Processing</p>
+                                        <p>All your data will be processed through secure infrastructure located in Northern Province Sri Lanka, in compliance with local data protection regulations.</p>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <button type="submit" class="w-full bg-gradient-to-r from-teal to-teal-dark text-white font-bold py-4 px-8 rounded-xl hover:shadow-xl transition-all duration-300 text-lg">
+                                Create Investor Account
+                            </button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Creator Portal Registration Page -->
+    <div id="creatorPortalPage" class="hidden fixed inset-0 bg-white z-50 overflow-y-auto">
+        <div class="min-h-screen">
+            <!-- Creator Portal Header -->
+            <div class="bg-gradient-to-r from-orange to-gold text-white py-8">
+                <div class="container mx-auto px-4 sm:px-6">
+                    <div class="flex justify-between items-center mb-8">
+                        <div class="flex items-center space-x-3">
+                            <button onclick="closeCreatorPortal()" class="text-white hover:text-gray-200">
+                                <i class="fas fa-arrow-left text-2xl"></i>
+                            </button>
+                            <div>
+                                <h1 class="text-2xl md:text-3xl font-bold">Creator Portal - OneShot</h1>
+                                <p class="text-orange-100">Submit Governor-Verified Proposals</p>
+                            </div>
+                        </div>
+                        <div class="w-12 h-12 rounded-full bg-white/20 flex items-center justify-center">
+                            <i class="fas fa-file-contract text-xl"></i>
+                        </div>
+                    </div>
+                    
+                    <!-- Verification Banner -->
+                    <div class="bg-white/20 rounded-xl p-4 mt-6">
+                        <div class="flex items-center">
+                            <i class="fas fa-check-circle text-2xl mr-3"></i>
+                            <div>
+                                <h3 class="font-bold">Government Verification Process</h3>
+                                <p class="text-sm text-white/90">All proposals undergo Northern Provincial Council verification</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Creator Registration Form -->
+            <div class="container mx-auto px-4 sm:px-6 py-8 md:py-12">
+                <div class="max-w-2xl mx-auto">
+                    <div class="bg-white rounded-2xl shadow-xl p-6 md:p-10">
+                        <h2 class="text-2xl md:text-3xl font-bold mb-2" style="color: var(--orange);">Creator Registration</h2>
+                        <p class="text-gray-600 mb-8">Submit investment proposals for Northern Provincial Council verification</p>
+                        
+                        <form id="creatorForm" class="space-y-6">
+                            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                                <div>
+                                    <label class="block text-gray-700 mb-2 font-medium">First Name</label>
+                                    <input type="text" required class="w-full p-4 border border-gray-300 rounded-lg focus:ring-2 focus:ring-orange focus:border-transparent">
+                                </div>
+                                <div>
+                                    <label class="block text-gray-700 mb-2 font-medium">Last Name</label>
+                                    <input type="text" required class="w-full p-4 border border-gray-300 rounded-lg focus:ring-2 focus:ring-orange focus:border-transparent">
+                                </div>
+                            </div>
+                            
+                            <div>
+                                <label class="block text-gray-700 mb-2 font-medium">Email Address</label>
+                                <input type="email" required class="w-full p-4 border border-gray-300 rounded-lg focus:ring-2 focus:ring-orange focus:border-transparent">
+                            </div>
+                            
+                            <div>
+                                <label class="block text-gray-700 mb-2 font-medium">Organization/Company</label>
+                                <input type="text" class="w-full p-4 border border-gray-300 rounded-lg focus:ring-2 focus:ring-orange focus:border-transparent" placeholder="Based in Northern Province">
+                            </div>
+                            
+                            <div>
+                                <label class="block text-gray-700 mb-2 font-medium">Proposal Category</label>
+                                <select class="w-full p-4 border border-gray-300 rounded-lg focus:ring-2 focus:ring-orange focus:border-transparent">
+                                    <option>Select proposal category</option>
+                                    <option>Agriculture & Fisheries</option>
+                                    <option>Tourism Development</option>
+                                    <option>Renewable Energy Projects</option>
+                                    <option>Technology & IT Services</option>
+                                    <option>Manufacturing & Industry</option>
+                                    <option>Infrastructure Development</option>
+                                </select>
+                            </div>
+                            
+                            <div>
+                                <label class="block text-gray-700 mb-2 font-medium">Funding Needed (USD)</label>
+                                <select class="w-full p-4 border border-gray-300 rounded-lg focus:ring-2 focus:ring-orange focus:border-transparent">
+                                    <option>Select funding amount needed</option>
+                                    <option>$10K - $100K</option>
+                                    <option>$100K - $500K</option>
+                                    <option>$500K - $2M</option>
+                                    <option>$2M - $10M</option>
+                                    <option>$10M+</option>
+                                </select>
+                            </div>
+                            
+                            <div>
+                                <label class="block text-gray-700 mb-2 font-medium">Password</label>
+                                <input type="password" required class="w-full p-4 border border-gray-300 rounded-lg focus:ring-2 focus:ring-orange focus:border-transparent">
+                            </div>
+                            
+                            <div class="bg-orange/10 p-4 rounded-lg border border-orange/30">
+                                <div class="flex items-start">
+                                    <i class="fas fa-info-circle text-orange mt-1 mr-3"></i>
+                                    <div class="text-sm text-gray-700">
+                                        <p class="font-medium mb-1">Northern Province Verification</p>
+                                        <p>Your proposal will be reviewed and verified by the Northern Provincial Council Governor's office. All data remains within secure Northern Province infrastructure.</p>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <button type="submit" class="w-full bg-gradient-to-r from-orange to-gold text-white font-bold py-4 px-8 rounded-xl hover:shadow-xl transition-all duration-300 text-lg">
+                                Create Creator Account
+                            </button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Portal Navigation Functions
+        function redirectToInvestorPortal() {
+            document.getElementById('investorPortalPage').classList.remove('hidden');
+            document.body.style.overflow = 'hidden';
+        }
+        
+        function closeInvestorPortal() {
+            document.getElementById('investorPortalPage').classList.add('hidden');
+            document.body.style.overflow = 'auto';
+        }
+        
+        function redirectToCreatorPortal() {
+            document.getElementById('creatorPortalPage').classList.remove('hidden');
+            document.body.style.overflow = 'hidden';
+        }
+        
+        function closeCreatorPortal() {
+            document.getElementById('creatorPortalPage').classList.add('hidden');
+            document.body.style.overflow = 'auto';
+        }
+        
+        // Form submissions
+        document.getElementById('investorForm')?.addEventListener('submit', function(e) {
+            e.preventDefault();
+            const submitBtn = this.querySelector('button[type="submit"]');
+            const originalText = submitBtn.innerHTML;
+            
+            submitBtn.innerHTML = '<i class="fas fa-spinner fa-spin mr-2"></i>Creating Account...';
+            submitBtn.disabled = true;
+            
+            setTimeout(() => {
+                alert('Investor account created successfully! Welcome to the OneShot Investor Portal. All data processed through secure Northern Province infrastructure.');
+                submitBtn.innerHTML = originalText;
+                submitBtn.disabled = false;
+                closeInvestorPortal();
+            }, 1500);
+        });
+        
+        document.getElementById('creatorForm')?.addEventListener('submit', function(e) {
+            e.preventDefault();
+            const submitBtn = this.querySelector('button[type="submit"]');
+            const originalText = submitBtn.innerHTML;
+            
+            submitBtn.innerHTML = '<i class="fas fa-spinner fa-spin mr-2"></i>Creating Account...';
+            submitBtn.disabled = true;
+            
+            setTimeout(() => {
+                alert('Creator account created successfully! Welcome to the OneShot Creator Portal. Your proposals will be verified by Northern Provincial Council.');
+                submitBtn.innerHTML = originalText;
+                submitBtn.disabled = false;
+                closeCreatorPortal();
+            }, 1500);
+        });
+        
+        // Smooth scroll for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const targetId = this.getAttribute('href');
+                if (targetId === '#') return;
+                
+                const targetElement = document.querySelector(targetId);
+                if (targetElement) {
+                    window.scrollTo({
+                        top: targetElement.offsetTop - 100,
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+        
+        // Add animation classes to elements on scroll
+        function animateOnScroll() {
+            const elements = document.querySelectorAll('.float-animation, .pulse-animation');
+            
+            elements.forEach(element => {
+                const elementTop = element.getBoundingClientRect().top;
+                const elementVisible = 150;
+                
+                if (elementTop < window.innerHeight - elementVisible) {
+                    element.style.opacity = "1";
+                }
+            });
+        }
+        
+        // Initial call
+        animateOnScroll();
+        window.addEventListener('scroll', animateOnScroll);
+    </script>
+</body>
+</html>

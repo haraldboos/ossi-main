@@ -1,0 +1,775 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>OSSI Portal - Northern Province Investment Platform</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#1a5276',
+                        secondary: '#2e86c1',
+                        accent: '#e74c3c',
+                        success: '#27ae60',
+                        warning: '#f39c12',
+                        dark: '#2c3e50',
+                    },
+                    fontFamily: {
+                        'inter': ['Inter', 'sans-serif'],
+                    },
+                    animation: {
+                        'fade-in': 'fadeIn 0.5s ease-in-out',
+                        'slide-up': 'slideUp 0.5s ease-out',
+                    },
+                    keyframes: {
+                        fadeIn: {
+                            '0%': { opacity: '0' },
+                            '100%': { opacity: '1' },
+                        },
+                        slideUp: {
+                            '0%': { transform: 'translateY(20px)', opacity: '0' },
+                            '100%': { transform: 'translateY(0)', opacity: '1' },
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        .district-map path {
+            stroke: white;
+            stroke-width: 2;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            opacity: 0.9;
+        }
+        .district-map path:hover {
+            opacity: 1;
+            filter: brightness(1.1);
+            transform: scale(1.005);
+        }
+        .smooth-transition {
+            transition: all 0.3s ease;
+        }
+        .hover-lift:hover {
+            transform: translateY(-5px);
+        }
+    </style>
+</head>
+<body class="font-inter bg-gradient-to-br from-blue-50 to-gray-100 text-dark">
+    <!-- Header -->
+    <!-- <header class="bg-gradient-to-r from-primary to-secondary text-white shadow-lg sticky top-0 z-50"> -->
+           <header class="bg-white text-black shadow-lg sticky top-0 z-50">
+
+        <div class="container mx-auto px-4 py-6">
+            <div class="flex flex-col md:flex-row justify-between items-center">
+                <div class="flex items-center space-x-4 mb-4 md:mb-0">
+                    <!-- <div class="bg-white text-primary p-3 rounded-xl shadow-md">
+                        <i class="fas fa-landmark text-2xl"></i>
+                    </div> -->
+                    <div>
+                        <img src="./logo6.png" class="rounded-xl">
+                        <!-- <h1 class="text-2xl md:text-3xl font-bold">OSSI<span class="text-warning">PORTAL</span></h1>
+                        <p class="text-blue-100 text-sm md:text-base">Northern Province Investment Gateway</p> -->
+                    </div>
+                </div>
+                <nav class="flex space-x-2 md:space-x-6">
+                    <a href="#home" class="px-3 py-2 rounded-lg hover:bg-white/10 smooth-transition">Home</a>
+                    <a href="#sectors" class="px-3 py-2 rounded-lg hover:bg-white/10 smooth-transition">Sectors</a>
+                    <a href="#guidance" class="px-3 py-2 rounded-lg hover:bg-white/10 smooth-transition">Guidance</a>
+                    <a href="#proposals" class="px-3 py-2 rounded-lg hover:bg-white/10 smooth-transition">Proposals</a>
+                    <a href="#contact" class="px-3 py-2 rounded-lg hover:bg-white/10 smooth-transition">Contact</a>
+                </nav>
+            </div>
+        </div>
+    </header>
+
+ <section id="home" class="relative py-20 md:py-28 overflow-hidden">
+    
+    <!-- Background Gradient -->
+    <div class="absolute inset-0 bg-gradient-to-br from-blue-50 via-white to-red-50"></div>
+
+    <div class="relative container mx-auto px-6">
+        <div class="grid md:grid-cols-2 gap-12 items-center max-w-6xl mx-auto">
+            
+            <!-- Left Content -->
+            <div class="animate-fade-in">
+                <span class="inline-block mb-4 px-4 py-1 text-sm font-semibold text-red-600 bg-red-100 rounded-full">
+                    Northern Province • Sri Lanka
+                </span>
+
+                <h1 class="text-4xl md:text-5xl xl:text-6xl font-extrabold text-gray-900 leading-tight mb-6">
+                    Invest in the Future of  
+                    <span class="text-primary">Northern Province</span>
+                </h1>
+
+                <p class="text-gray-600 text-lg mb-8 leading-relaxed">
+                    Unlock high-potential investment opportunities in Sri Lanka’s fastest-growing region. 
+                    Backed by government incentives, expanding infrastructure, and emerging industries.
+                </p>
+
+                <div class="flex flex-wrap gap-4">
+                    <button onclick="openModal('investment')" 
+                        class="bg-red-600 hover:bg-red-700 text-white font-semibold py-3 px-8 rounded-full shadow-lg transition transform hover:-translate-y-1">
+                        Explore Opportunities
+                    </button>
+
+                    <button onclick="openModal('about')" 
+                        class="border border-gray-300 hover:border-primary hover:text-primary text-gray-700 font-semibold py-3 px-8 rounded-full transition">
+                        Learn More
+                    </button>
+                </div>
+
+                <!-- Stats -->
+                <div class="mt-10 grid grid-cols-3 gap-6 text-center">
+                    <div>
+                        <h3 class="text-2xl font-bold text-primary">25+</h3>
+                        <p class="text-gray-500 text-sm">Active Projects</p>
+                    </div>
+                    <div>
+                        <h3 class="text-2xl font-bold text-primary">$120M+</h3>
+                        <p class="text-gray-500 text-sm">Invested Capital</p>
+                    </div>
+                    <div>
+                        <h3 class="text-2xl font-bold text-primary">12</h3>
+                        <p class="text-gray-500 text-sm">Key Sectors</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Right Visual -->
+            <div class="relative">
+                <div class="rounded-2xl overflow-hidden shadow-2xl">
+                    <img 
+                        src="https://images.unsplash.com/photo-1504384308090-c894fdcc538d?auto=format&fit=crop&w=1200&q=80" 
+                        alt="Infrastructure Development Sri Lanka" 
+                        class="w-full h-full object-cover">
+                </div>
+
+                <!-- Floating Card -->
+                <div class="absolute -bottom-6 -left-6 bg-white p-5 rounded-xl shadow-lg hidden md:block">
+                    <p class="text-sm text-gray-500">Top Sector</p>
+                    <h4 class="font-bold text-primary">Renewable Energy</h4>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</section>
+
+
+
+    <!-- Main Content Grid -->
+    <section class="py-12">
+        <div class="container mx-auto px-4">
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
+                <!-- Map Section -->
+                <div id="map" class="bg-white rounded-2xl shadow-xl p-8 animate-fade-in">
+                    <h3 class="text-2xl font-bold text-primary mb-6">Northern Province Districts</h3>
+                    <div class="border-2 border-gray-200 rounded-xl overflow-hidden">
+                        <svg class="district-map w-full h-96" viewBox="0 0 300 300">
+                            <!-- Jaffna -->
+                            <path
+                                d="m 190.72712,72.870747 4.93,4.06 -5.31999,-1.13 0.38999,-2.93 z m -187.949995,-15.45 1.9,0.11 1.51,2.76 2.41,1.13 0.22,0.73 5.71,0.45 0.95,0.68 1.12,7.11 -1.34,2.82 -3.36,0.17 -2.46,-0.85 -8.34,-5.07 -0.84,-8.06 1.12,-1.92 1.23,-0.51 0.17,0.45 z m 26.71,-9.36 0.45,1.75 1.01,0.62 -0.39,2.37 -1.9,-1.13 0.06,-2.93 0.77,-0.68 z m -4.87,-4.4 0.9,0.4 -0.33,7.39 -1.74,-0.68 -0.62,-1.58 0.06,-3.95 1.73,-1.58 z m 16.91,-2.71 1.9,2.03 -0.56,1.86 -1.74,-1.52 -0.39,-1.86 0.79,-0.51 z m -14.56,-10.61 0.73,4.51 -2.57,2.6 0.84,0.28 -0.51,1.58 -2.52,-2.82 1.57,-3.67 2.46,-2.48 z m 15.45,-3.33 2.46,2.09 1.68,-0.28 0.95,-1.02 1.4,0.96 0.56,1.69 1.29,0.85 -0.9,1.69 1.96,2.6 0.39,-1.02 -1.18,-0.9 4.09,-0.96 -1.4,-0.96 3.92,0.85 0.39,-0.51 0,2.82 -0.73,-0.34 -0.73,0.56 -0.73,0.11 -0.22,0.68 5.15,3.67 4.37,2.14 1.74,-0.11 -0.11,-0.68 1.17,-0.34 -0.33,-1.24 3.14,1.13 1.45,1.64 -0.95,1.92 0.34,1.81 -0.56,1.18 -2.91,1.69 -2.69,-0.56 -1.51,-1.02 -0.34,-1.19 0.73,0.06 -0.06,0.96 1.96,0.11 0.95,-3.27 -1.46,1.86 -2.63,-0.34 -1.74,-1.75 -3.42,-1.58 -3.58,-0.56 -2.3,3.44 -1.73,-0.11 -1.34,-1.24 -5.88,3.27 0.33,0.68 -1.06,2.06 0.78,1.38 -0.78,1.69 0.62,1.52 -0.73,0.4 -2.63,0.45 -8.34,-1.8 -0.27,-2.93 0.95,-0.23 0.5,-1.35 -1.06,-1.02 0.84,-0.62 -0.28,-2.71 0.95,-1.69 0.9,0.96 0.9,-0.68 -0.11,1.69 0.95,0.56 -1.01,2.54 2.13,1.75 0.9,-0.23 0,-0.85 2.91,0.62 -1.62,-1.02 -0.39,-1.81 -0.17,0.85 -3.36,-0.11 0.56,-1.64 2.01,0.63 1.9,-1.74 3.58,2.54 6.16,-3.39 -3.3,-2.37 -0.84,0.23 -1.57,-3.16 0.42,-1.05 1.59,-0.19 0.73,-0.85 0,-1.52 -1.29,-1.18 -1.62,-0.11 -0.17,1.02 0.5,-0.4 1.06,1.24 -0.67,1.47 -1.23,0.06 -1.51,-1.81 -1.79,-2.76 -0.22,-1.3 1.23,-0.9 -1.85,-1.3 -0.11,-1.13 2.74,0.34 1.18,-0.63 z m -9.07,-2.31 -0.56,6.26 -0.9,-2.43 0.34,-2.37 1.12,-1.46 z m 80.619995,-24.4400002 7.61001,2.09 2.07,5.02 4.31,7.2300002 9.73999,14 6.05,6.54 29.62001,23.58 3.36,2.99 0.45,1.18 12.53999,9.64 0.34001,1.52 -0.5,0.45 -1.85,-0.56 -8.17,-5.58 1.29,0.34 -0.45,-0.68 -2.35,-0.45 -4.25,-2.82 -5.54,-1.48 -1.62,0.41 -0.39,-0.9 -3.83,-2.14 0,0 0.16,-3.85 -1.72,-3.62 -9.3,-7.24 -13.82,-7.83 -7.32,-8.43 -8.11,15.58 0,0 -9.08,-5.14 -6.61,-2.93 -2.29,-0.28 -2.18,1.98 1.34,1.24 1.06,-1.41 0.9,0.79 0.22,2.65 -0.78,0.68 0.67,0.68 -2.66,-0.25 2.3,0.9 1.62,-0.9 0.67,0.4 0.78,-0.23 1.29,0.34 1.01,0.73 -0.62,1.02 0.9,0.28 -2.63,1.41 -1.85,-0.9 -1.23,0.28 0.67,0.96 1.45,-0.51 1.00999,0.73 -0.34,0.79 1.79,-0.68 -0.06,1.07 -1.57,0.39 1.51,0.85 0.39,0.56 2.74,0.34 -1.61,0.73 -5.89,-3.16 -5.539995,-5.25 -7.45,-3.33 -5.37,-2.99 -0.5,-1.03 -0.17,1.77 0.39,0.79 0.22,0.96 3.53,1.41 4.59,4.63 3.08,0.73 -1.57,0.34 -5.77,-2.09 -9.52,-6.32 -1.4,-0.34 -1.01,0.85 -4.09,-0.73 -2.8,-2.54 -1.96,2.99 2.13,1.92 -2.13,-0.39 -0.73,-1.13 2.63,-3.55 -1.29,-1.64 -0.11,-3.27 -1.73,-0.96 -1.18,1.64 -0.84,-0.23 -2.35,-2.2 -0.51,-1.58 -2.07,2.2 0.17,0.62 -2.74,-0.23 -1.06,-2.99 -1.29,-1.35 0.28,-2.43 -2.52,-3.89 -4.59,0.96 -0.06,2.26 -1.51,-0.17 0.84,2.99 -2.52,1.69 -3.14,-0.17 -0.17,-0.62 -2.74,-0.85 2.24,-3.05 -1.46,-4.29 1.74,-2.6 3.42,0.23 3.97,-1.3 0.11,0.9 -1.08,0.4 0.68,1.07 -0.62,2.88 4.7,-0.51 -0.79,-1.41 -1.28,-0.34 -0.84,-1.81 1.23,-2.77 3.69,-0.45 2.74,-1.69 0.62,-1.7500002 8.23,-3.39 6.49,-1.19 2.63,0.23 0.84,-0.51 7.05,1.47 6.33,0.45 2.18,-0.45 3.14,-1.92 1.18,0.62 1.12,-1.58 9.849995,-0.45 5.22,-1.67 z"
+                                title="Jaffna"
+                                id="LK-41"
+                                fill="#3498db"
+                                onclick="openDistrictModal('Jaffna')" />
+                            
+                            <!-- Kilinochchi -->
+                            <path
+                                d="m 67.727125,107.37075 1.23,2.08 0.17,1.92 0.73,0.51 0.45,-1.01 1.51,0.96 0.06,2.03 -1.29,1.18 -0.78,-2.25 -1.18,-0.62 -2.24,1.01 -1.4,-0.96 -0.22,-2.14 1.57,-0.62 1.39,-2.09 z m 18.08,-2.93 1.73,0.23 1.46,2.03 -2.3,-0.17 -1.34,-1.47 0.45,-0.62 z m -3.58,-5.180003 0.45,3.780003 -1.29,-0.79 0.84,-2.990003 z m -8.9,-27.68 1,0.68 0.06,0.96 -0.67,1.97 -0.67,0.23 -1.4,-3.1 0.28,-0.68 1.4,-0.06 z m 48.929995,-26.34 8.11,-15.58 7.32,8.43 13.82,7.83 9.3,7.24 1.72,3.62 -0.16,3.85 0,0 -0.87,-1.3 -1.46,2.82 -2.07,-0.34 0.17,1.41 0.73,-0.11 -0.11,1.35 1.06,0.68 -1.57,-0.23 -2.63,-2.31 -3.92,-1.58 1.57,2.59 -0.56,0.17 -0.06,2.03 1.29,1.41 0.5,-0.23 0.84,0.51 0.5,-0.79 -0.38,-0.94 3.02,1.92 1.12,0.17 0.39,0.73 5.15,-0.56 1.23,0.62 -0.06,1.02 1.62,0.39 -0.17,0.73 1.18,-0.79 0.22,0.73 -0.78,0.79 1.51,0.11 0.78,1.24 2.86,-0.28 0.5,0.51 0.62,-1.58 0.39,1.24 2.74,-0.73 2.86,1.52 2.52,0.4 -0.39,1.8 0.67,0.34 -1.45,1.3 -1.12,-0.11 1.9,1.64 2.85,-0.06 1.85,0.79 0.06,-1.58 1.18,-0.11 1.18,-1.24 4.81,1.02 0,0 0.33,1.13 -0.65,0.74 0.25,0.39 -0.94,3.6 -2,2.23 -0.91,-0.57 -1.75,1.86 -0.47999,2.56 0.47999,3.94 -0.53999,1.09 0.5,1.65 -5.71001,-3.16 -5.31,-5.44 -0.46,5.51 -2.2,3.72 -0.40999,2.87 -21.87001,1.220003 -0.27,6.39 -2.32,1.42 -14.85,-1.51 -8.45999,2.17 -3.06,-1.04 -4.74,1.11 -1.39,0.48 -4.06,3.72 1.34,7.74 -0.42,0.92 -5.32,-0.65 0,0 -8.62,5.31 -6.430005,0.33 0,0 0.73,-2.9 -0.78,-3.32 0.78,-4.4 -1.9,-1.52 -0.28,-1.47 1.12,-2.31 1.23,-0.75 0.06,-1.85 -6.27,-5.24 -1.29,-0.45 -0.73,0.79 -2.07,-0.11 -1.51,-1.18 0.11,-2.31 -0.9,-1.470003 0.84,-1.52 -1.74,-1.52 -0.17,-5.19 3.75,-2.71 7.84,-2.54 3.02,-2.37 4.310005,-1.97 1.74,-2.54 0.39,-0.62 2.69,-2.88 2.35,-1.3 0.61,-2.48 -3.81,-5.92 -4.03,-4.12 -8.680005,-6.94 -10.53,-5.98 1.96,-2.43 0.23,1.97 1.9,-0.17 0.56,0.23 -0.11,0.96 3.58,0.66 1.51,1.54 1.06,-0.4 0.62,1.58 1.18,1.02 2.46,-0.62 3.47,4.23 6.890005,2.99 3.58,-0.79 -0.39,1.75 1.12,-1.02 0.56,1.02 1.51,0.28 0.62,1.64 1.85,-0.9 -0.84,-1.3 0.67,-0.11 5.82,4.91 1.01,0.4 0.56,0.11 1.06,-0.34 2.41,1.92 -0.5,0.79 1.57,0.73 0.11,1.41 -0.62,-0.45 -0.5,-0.62 -2.58,-0.73 -1.51,2.03 3.92,2.03 0.72999,1.24 -1.74,-0.73 -1.85,0.96 -1.56999,-0.62 -0.33001,1.3 6.21,2.88 3.13,-0.73 1.12,0.06 2.58,-0.79 -0.84,-0.28 0.45,-0.51 0.95,-0.06 0.23,1.07 2.35,1.13 1.12,-0.73 0.17,-2.2 1.18,-0.06 1.9,0.9 0.22,-0.66 1.62,0.27 3.08,-2.2 0.22,-0.45 1.18,0.68 1.85,-0.68 -0.28,-3.1 1.06,-1.75 -0.89,-1.92 2.69,-0.28 0.06,-1.69 -1.62,-0.51 -0.62,1.07 -1.2,-0.26 0.64,-0.75 -2.69,-1.24 1.63,2.65 -0.85,0.4 -2.69,-3.61 -3.42,-2.93 -0.34,-1.24 -4.98,-3.44 -0.5,0.17 1.4,1.52 -1.57,-0.68 -5.03999,-3.84 0.36,-0.8 -8.84,-5.02 z"
+                                title="Kilinochchi"
+                                id="LK-42"
+                                fill="#2ecc71"
+                                onclick="openDistrictModal('Kilinochchi')" />
+                            
+                            <!-- Mannar -->
+                            <path
+                                d="m 54.737125,209.37075 0.39,-1.14 -1.34,-0.5 0.95,-6.25 1.29,-4.56 0.5,0.11 -0.17,1.41 1.34,-3.04 -0.45,-1.01 -0.28,2.2 -0.67,-0.06 0.45,-3.43 -0.73,-2.81 -4.99,-7.6 1.58,1.18 0.72,-2.08 -1.28,0.56 -1.01,-0.56 0.56,-1.3 -0.73,0.23 -2.02,-1.52 0.78,-0.73 -0.22,-0.96 -1.9,-0.45 -4.81,-6.36 -8.9,-7.21 -5.26,-3.44 -8.9,-4.05 -9.91,-2.14 0.06,-1.92 -1.34,-0.39 2.29,-2.25 7.45,-1.18 9.01,1.35 15.34,5.41 5.21,4.28 3.36,3.21 1.62,2.76 3.47,2.65 -2.01,0.17 -3.19,-2.7 -5.88,-2.08 0.95,2.87 2.74,2.87 2.63,2.25 4.7,2.48 -0.17,1.18 -4.87,-0.34 -0.45,1.01 0.95,0.28 -1.85,0.56 0.11,1.58 2.41,0.28 -0.67,2.2 2.91,-2.65 0.84,2.87 3.7,0.34 5.15,-4.79 3.81,-1.24 0.95,-4.05 2.63,-1.07 1.9,-2.25 2.91,-1.01 2.52,0.11 -0.39,-0.84 2.46,-3.1 1.29,-3.55 2.3,-2.48 0.89,-3.15 -0.28,-2.31 1.23,-1.24 -0.78,-1.58 0.78,-2.87 -0.34,-1.24 1.51,-1.75 0.67,-2.25 2.01,-1.63 0.95,-1.8 0.95,-7.27 0.73,0.28 1.45,-2.4 0,0 6.430005,-0.33 8.62,-5.31 0,0 0.75,12.42 4.36,6.67 1.75,6.08 -1.95,3.23 0.79,8.6 -5.07,1.82 -3.77,9.98 2.59,2.36 0.21,1.13 -2.61,1.64 0.19,3.3 -0.61,0.96 15.01,-0.27 18.25999,-1.51 0,0 5.8,2.38 2.46001,2.53 1.00999,5.63 2.91,6.34 0.39,3.81 -1.73,1.59 -4.55,1.85 -10.84,1.89 -4.05,2.1 -13.66,-1.55 -4.52,7.87 -1.86,4.94 -4.07,-2 -1.4,5.22 4.7,3.1 1.76,3.33 2.03,1.61 0.55,1.38 1.08,0.31 0.87,2.11 2,2 0,0 -24.509995,6.27 -5.49,-1.38 -1.3,0.53 -7.19,-3.97 2.19,7.34 -1,23.29 -3.18,-0.44 -0.42,-0.62 0,0 -4.14,-1.44 -2.21,-2.33 -2.08,0.46 -2.59,-2.09 -1.9,0.53 -2.22,-0.43 -1.64,-1.49 -2.42,0.68 -2.6,-1.64 0,0 -0.95,-1 -0.13,-3.75 2.63,-4.33 2.41,-2.25 0.73,-2.59 -0.9,-3.94 1.9,-5.01 -0.56,-6.19 2.07,-3.49 -3.75,-6.75 -1.85,-5.35 -2.85,-3.1 1.01,0.39 1.23,-0.84 -1.73,-0.38 z"
+                                title="Mannar"
+                                id="LK-43"
+                                fill="#e74c3c"
+                                onclick="openDistrictModal('Mannar')" />
+                            
+                            <!-- Vavuniya -->
+                            <path
+                                d="m 139.31712,178.23075 10.23,-6.5 8.65,-7.88 -1.52,-12.34 -4.42,0.02 -0.07,-4.94 17.59,-0.5 3.82,4.86 0.55,3.46 3.44,0.1 6.03,-6.35 5.04,-0.7 -0.64,-3.07 4.37,-0.07 3.83,0.5 2.37001,1.61 0.59999,-0.91 1.88,0.69 1.13,7.87 3.22,0.7 2.86,-1.7 1.88,1.76 -1.06,4.82 -1.91999,1.89 0.08,1.96 1.62,0.19 6.53,-4.21 13.99,8.39 -4.29,14.85 0,0 -0.73,0.16 -1.83,6.27 0,0 -5.45,1.46 -2.85,-0.12 -3.97,1.87 -4.96,3.63 -4.34,0.68 -10.21,-0.33 -0.61,4.42 1.46,0.99 5.54,1.2 2.04,4.39 2.84,2.44 0.02,2.62 -3.52,2.13 -2.05,2.65 -1.06,2.88 -3.48,1.67 -2.4,4.51 -3.16,1.09 -0.74,3.31 -3.89,2.49 -1.06,1.69 -3.07,1.41 -2.11,2.84 -2.61001,0.07 -7.61,-5.37 -3.56,-1.53 -4.75,3.92 -0.72,-0.17 -0.46,2.42 -2.29,0.51 -2.24,5.15 -3.71,2.49 -0.42,2.13 0.77,1.85 -0.83,0.92 0.27,2.8 -2.09,1.77 -3.59,0.45 -2.86,5.42 -4.86,-0.94 -5.04,-2 -0.76,-4.18 -1.00999,-0.69 0.41999,-1.16 -0.69999,0 -0.89,-2.09 0.11,-2.09 -2.98,-1.43 -1.96,0.38 -1.87,-2.58 -0.7,-0.02 0.37,-1.69 -1.12,-2.99 0.91,-2.28 -0.52,-3.45 0,0 -2,-2.01 -0.87,-2.1 -1.08,-0.32 -0.55001,-1.38 -2.03,-1.61 -1.77,-3.33 -4.7,-3.11 1.40001,-5.22 4.06999,2 1.86001,-4.93 4.52,-7.87 13.64999,1.54 4.05001,-2.09 10.84,-1.9 4.55,-1.85 1.73,-1.59 -0.39,-3.81 -2.91,-6.34 -1.01,-5.63 -2.46,-2.53 z"
+                                title="Vavuniya"
+                                id="LK-44"
+                                fill="#f39c12"
+                                onclick="openDistrictModal('Vavuniya')" />
+                            
+                            <!-- Mullaitivu -->
+                            <path
+                                d="m 196.48712,77.050747 8.96,7.44 -0.11,1.07 -0.78,0 -0.17,1.8 3.53,2.76 0.61,1.64 4.93001,1.8 -6.66,-6.09 -0.67,-2.09 14.27,13.71 9.97,7.330003 3.69,4 -0.34,0.56 1.23,0.34 1.23,3.95 4.53,7.33 4.31,13.97 3.69,7.15 -1.34,0.45 -0.9,-0.68 -0.22,-2.31 -2.63,-0.39 1.4,0.62 -0.28,2.14 1.79,2.31 -0.11,0.56 -1.34,-0.45 -0.45,2.03 1.51,-0.11 1.4,1.41 -0.73,-1.63 2.24,-3.21 9.69,17.52 6.33,9.91 -2.69,0.51 -4.93,-7.04 -4.93,-5.07 -1.85,-0.45 -0.78,1.18 0.45,1.13 -2.02,1.3 -0.73,-0.23 -0.22,1.75 2.24,2.53 3.36,1.52 0.39,0.96 0.62,0.06 0.28,-1.3 0.45,0.44 0.73,-0.61 0.06,-1.24 0.67,0.28 0.78,1.75 -1.79,2.59 2.01,-0.62 0.67,0 -0.17,0.47 0,0 -1.69,1.35 -1.83,-0.32 -2.32,1.4 -2.02,-0.26 -0.22,1.43 -2.67,0.95 -1.25,1.75 -7.04001,-0.35 -1.19999,1.18 -10.54,1.75 -1.8,2.06 0,0 4.28,-14.85 -13.98,-8.39 -6.54,4.21 -1.62,-0.19 -0.08,-1.96 1.91999,-1.89 1.06,-4.82 -1.88,-1.76 -2.86,1.7 -3.22,-0.7 -1.13,-7.87 -1.88999,-0.69 -0.6,0.91 -2.37,-1.61 -3.83001,-0.49 -4.37,0.06 0.63,3.08 -5.04,0.7 -6.03,6.35 -3.44,-0.1 -0.55,-3.46 -3.82,-4.86 -17.58,0.5 0.06,4.95 4.42,-0.03 1.53,12.34 -8.65,7.89 -10.23,6.5 0,0 -18.25999,1.51 -15.01,0.27 0.61,-0.96 -0.19,-3.3 2.61,-1.64 -0.21,-1.13 -2.59,-2.36 3.77,-9.98 5.07,-1.82 -0.79,-8.6 1.95,-3.23 -1.75,-6.08 -4.36,-6.67 -0.75,-12.42 0,0 5.32,0.65 0.42,-0.92 -1.34001,-7.74 4.06001,-3.72 1.38999,-0.48 4.74,-1.11 3.06,1.04 8.46,-2.17 14.85,1.51 2.32,-1.42 0.27,-6.39 21.87,-1.220003 0.41,-2.87 2.2,-3.72 0.46,-5.51 5.31,5.44 5.71,3.16 -0.5,-1.65 0.54,-1.09 -0.48,-3.94 0.48,-2.56 1.75,-1.86 0.92,0.56 2,-2.23 0.94,-3.6 -1.38,-1.09 1.13,0.7 0.65,-0.74 -0.33,-1.13 0,0 1.88,-0.7 z"
+                                title="Mullaitivu"
+                                id="LK-45"
+                                fill="#9b59b6"
+                                onclick="openDistrictModal('Mullaitivu')" />
+                        </svg>
+                    </div>
+                    <p class="text-gray-500 text-sm mt-4">Click on any district to view investment opportunities</p>
+                </div>
+                
+                <!-- Sectors Section -->
+                <div id="sectors" class="bg-white rounded-2xl shadow-xl p-8 animate-fade-in">
+                    <h3 class="text-2xl font-bold text-primary mb-6">Key Investment Sectors</h3>
+                    <div class="space-y-4">
+                        <div class="bg-blue-50 p-6 rounded-xl border-l-4 border-secondary hover-lift smooth-transition">
+                            <h4 class="font-semibold text-lg mb-2"><i class="fas fa-fish text-secondary mr-3"></i> Fisheries & Aquaculture</h4>
+                            <p class="text-gray-600">Leverage the extensive coastline for marine fishing, aquaculture, and seafood processing industries.</p>
+                        </div>
+                        
+                        <div class="bg-green-50 p-6 rounded-xl border-l-4 border-success hover-lift smooth-transition">
+                            <h4 class="font-semibold text-lg mb-2"><i class="fas fa-tractor text-success mr-3"></i> Agriculture & Agro-processing</h4>
+                            <p class="text-gray-600">Invest in modern farming, organic agriculture, and value-added food processing facilities.</p>
+                        </div>
+                        
+                        <div class="bg-yellow-50 p-6 rounded-xl border-l-4 border-warning hover-lift smooth-transition">
+                            <h4 class="font-semibold text-lg mb-2"><i class="fas fa-solar-panel text-warning mr-3"></i> Renewable Energy</h4>
+                            <p class="text-gray-600">Invest in solar, wind, and biomass energy projects with government incentives.</p>
+                        </div>
+                        
+                        <div class="bg-purple-50 p-6 rounded-xl border-l-4 border-purple-500 hover-lift smooth-transition">
+                            <h4 class="font-semibold text-lg mb-2"><i class="fas fa-umbrella-beach text-purple-500 mr-3"></i> Tourism & Hospitality</h4>
+                            <p class="text-gray-600">Develop hotels, resorts, eco-tourism, and cultural tourism initiatives.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Statistics Section -->
+    <section class="py-12 bg-gradient-to-r from-primary to-secondary text-white">
+        <div class="container mx-auto px-4">
+            <h3 class="text-3xl font-bold text-center mb-12">Northern Province At a Glance</h3>
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-8">
+                <div class="text-center">
+                    <div class="text-4xl font-bold mb-2">5</div>
+                    <div class="text-blue-100">Districts</div>
+                </div>
+                <div class="text-center">
+                    <div class="text-4xl font-bold mb-2">1.1M</div>
+                    <div class="text-blue-100">Population</div>
+                </div>
+                <div class="text-center">
+                    <div class="text-4xl font-bold mb-2">$2.1B</div>
+                    <div class="text-blue-100">GDP</div>
+                </div>
+                <div class="text-center">
+                    <div class="text-4xl font-bold mb-2">15%</div>
+                    <div class="text-blue-100">Growth Rate</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Guidance Section -->
+    <section id="guidance" class="py-12 bg-gradient-to-r from-blue-50 to-white">
+        <div class="container mx-auto px-4">
+            <h2 class="text-3xl font-bold text-primary text-center mb-12">Investment Guidance</h2>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                <!-- Guide for Investors -->
+                <div class="bg-white rounded-2xl shadow-xl p-8 hover-lift smooth-transition animate-slide-up border-l-4 border-secondary">
+                    <div class="flex items-center mb-6">
+                        <div class="bg-secondary text-white p-4 rounded-xl mr-4">
+                            <i class="fas fa-user-tie text-2xl"></i>
+                        </div>
+                        <h3 class="text-2xl font-bold text-dark">Guide for Investors</h3>
+                    </div>
+                    
+                    <div class="space-y-6">
+                        <div class="flex items-start">
+                            <div class="bg-blue-100 text-secondary p-2 rounded-lg mr-4">
+                                <i class="fas fa-search"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-semibold text-lg mb-1">Market Research</h4>
+                                <p class="text-gray-600">Understand the Northern Province market dynamics, consumer behavior, and competitive landscape.</p>
+                            </div>
+                        </div>
+                        
+                        <div class="flex items-start">
+                            <div class="bg-blue-100 text-secondary p-2 rounded-lg mr-4">
+                                <i class="fas fa-file-contract"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-semibold text-lg mb-1">Legal Requirements</h4>
+                                <p class="text-gray-600">Complete guide to business registration, licensing, and compliance with local regulations.</p>
+                            </div>
+                        </div>
+                        
+                        <div class="flex items-start">
+                            <div class="bg-blue-100 text-secondary p-2 rounded-lg mr-4">
+                                <i class="fas fa-hand-holding-usd"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-semibold text-lg mb-1">Financial Incentives</h4>
+                                <p class="text-gray-600">Tax benefits, grants, and financial support available for qualifying investments.</p>
+                            </div>
+                        </div>
+                        
+                        <div class="flex items-start">
+                            <div class="bg-blue-100 text-secondary p-2 rounded-lg mr-4">
+                                <i class="fas fa-network-wired"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-semibold text-lg mb-1">Local Partnerships</h4>
+                                <p class="text-gray-600">Connect with local businesses, suppliers, and service providers for successful operations.</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="mt-8 pt-6 border-t border-gray-200">
+                        <a href="#" class="text-secondary font-semibold hover:text-primary smooth-transition">
+                            Download Investor Handbook <i class="fas fa-download ml-2"></i>
+                        </a>
+                    </div>
+                </div>
+                
+                <!-- Guide for Proposals -->
+                <div class="bg-white rounded-2xl shadow-xl p-8 hover-lift smooth-transition animate-slide-up border-l-4 border-success">
+                    <div class="flex items-center mb-6">
+                        <div class="bg-success text-white p-4 rounded-xl mr-4">
+                            <i class="fas fa-file-alt text-2xl"></i>
+                        </div>
+                        <h3 class="text-2xl font-bold text-dark">Guide to Create Proposals</h3>
+                    </div>
+                    
+                    <div class="space-y-6">
+                        <div class="flex items-start">
+                            <div class="bg-green-100 text-success p-2 rounded-lg mr-4">
+                                <i class="fas fa-clipboard-list"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-semibold text-lg mb-1">Proposal Structure</h4>
+                                <p class="text-gray-600">Step-by-step guide to creating comprehensive and compelling investment proposals.</p>
+                            </div>
+                        </div>
+                        
+                        <div class="flex items-start">
+                            <div class="bg-green-100 text-success p-2 rounded-lg mr-4">
+                                <i class="fas fa-chart-line"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-semibold text-lg mb-1">Financial Projections</h4>
+                                <p class="text-gray-600">Templates and guidelines for creating realistic financial models and projections.</p>
+                            </div>
+                        </div>
+                        
+                        <div class="flex items-start">
+                            <div class="bg-green-100 text-success p-2 rounded-lg mr-4">
+                                <i class="fas fa-check-circle"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-semibold text-lg mb-1">Compliance Checklist</h4>
+                                <p class="text-gray-600">Ensure your proposal meets all regulatory requirements and standards.</p>
+                            </div>
+                        </div>
+                        
+                        <div class="flex items-start">
+                            <div class="bg-green-100 text-success p-2 rounded-lg mr-4">
+                                <i class="fas fa-clock"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-semibold text-lg mb-1">Timeline & Milestones</h4>
+                                <p class="text-gray-600">Plan your project implementation with clear timelines and measurable milestones.</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="mt-8 pt-6 border-t border-gray-200">
+                        <a href="#" class="text-success font-semibold hover:text-green-700 smooth-transition">
+                            Access Proposal Templates <i class="fas fa-external-link-alt ml-2"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Process Flow -->
+            <div class="mt-12 bg-white rounded-2xl shadow-xl p-8">
+                <h3 class="text-2xl font-bold text-primary mb-8 text-center">Investment Process Flow</h3>
+                <div class="grid grid-cols-1 md:grid-cols-4 gap-6">
+                    <div class="text-center p-6 bg-blue-50 rounded-xl">
+                        <div class="bg-secondary text-white w-12 h-12 rounded-full flex items-center justify-center mx-auto mb-4">
+                            <span class="font-bold">1</span>
+                        </div>
+                        <h4 class="font-semibold mb-2">Initial Inquiry</h4>
+                        <p class="text-sm text-gray-600">Submit your investment interest</p>
+                    </div>
+                    
+                    <div class="text-center p-6 bg-blue-50 rounded-xl">
+                        <div class="bg-secondary text-white w-12 h-12 rounded-full flex items-center justify-center mx-auto mb-4">
+                            <span class="font-bold">2</span>
+                        </div>
+                        <h4 class="font-semibold mb-2">Proposal Submission</h4>
+                        <p class="text-sm text-gray-600">Submit detailed project proposal</p>
+                    </div>
+                    
+                    <div class="text-center p-6 bg-blue-50 rounded-xl">
+                        <div class="bg-secondary text-white w-12 h-12 rounded-full flex items-center justify-center mx-auto mb-4">
+                            <span class="font-bold">3</span>
+                        </div>
+                        <h4 class="font-semibold mb-2">Review & Approval</h4>
+                        <p class="text-sm text-gray-600">Government review process</p>
+                    </div>
+                    
+                    <div class="text-center p-6 bg-blue-50 rounded-xl">
+                        <div class="bg-secondary text-white w-12 h-12 rounded-full flex items-center justify-center mx-auto mb-4">
+                            <span class="font-bold">4</span>
+                        </div>
+                        <h4 class="font-semibold mb-2">Implementation</h4>
+                        <p class="text-sm text-gray-600">Project execution & monitoring</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- One Stop Shop Contact Section -->
+    <section id="contact" class="py-12 bg-dark text-white">
+        <div class="container mx-auto px-4">
+            <h2 class="text-3xl font-bold text-center mb-12">One Stop Shop Portal</h2>
+            <p class="text-gray-300 text-center mb-8 max-w-2xl mx-auto">Northern Province, Sri Lanka. Official investment and proposal management portal operated under the Northern Province.</p>
+            
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-7xl mx-auto">
+                <!-- Governor's Office -->
+                <div class="bg-gray-800 rounded-xl p-8 hover-lift smooth-transition">
+                    <div class="flex items-center mb-6">
+                      <div class="bg-white text-white p-1 rounded-full mr-4">
+                            <!-- <i class="fas fa-graduation-cap text-2xl"></i> -->
+<img src="./logo/2.png" class="h-24 rounded-full"/>
+                        </div>
+                        <div>
+                            <h3 class="text-xl font-bold">Governor's Office</h3>
+                            <p class="text-gray-400">Northern Province, Sri Lanka</p>
+                        </div>
+                    </div>
+                    <div class="space-y-4">
+                        <div>
+                            <p class="text-gray-400 mb-2">Primary Contact:</p>
+                            <a href="mailto:hgnp.op@gmail.com" class="text-warning font-medium hover:text-yellow-400 smooth-transition">
+                                hgnp.op@gmail.com
+                            </a>
+                        </div>
+                        <p class="text-gray-300">some text.</p>
+                    </div>
+                </div>
+                
+                <!-- University of Vavuniya -->
+                <div class="bg-gray-800 rounded-xl p-8 hover-lift smooth-transition">
+                    <div class="flex items-center mb-6">
+                        <div class="bg-white text-white p-1 rounded-full mr-4">
+                            <!-- <i class="fas fa-graduation-cap text-2xl"></i> -->
+<img src="./logo/1.png" class="h-24 rounded-full"/>
+                        </div>
+                        <div>
+                            <h3 class="text-xl font-bold">University of Vavuniya</h3>
+                            <p class="text-gray-400">Sri Lanka</p>
+                        </div>
+                    </div>
+                    <div class="space-y-4">
+                        <div>
+                            <p class="text-gray-400 mb-2">Academic Contact:</p>
+                            <a href="mailto:info@vau.ac.lk" class="text-success font-medium hover:text-green-400 smooth-transition">
+                                info@vau.ac.lk
+                            </a>
+                        </div>
+                        <p class="text-gray-300">some text.</p>
+                    </div>
+                </div>
+
+                    <div class="bg-gray-800 rounded-xl p-8 hover-lift smooth-transition">
+                    <div class="flex items-center mb-6">
+                      <div class="bg-white text-white p-1 rounded-full mr-4">
+                            <!-- <i class="fas fa-graduation-cap text-2xl"></i> -->
+<img src="./logo/3.png" class="h-24 rounded-full"/>
+                        </div>
+                        <div>
+                            <h3 class="text-xl font-bold">nis26</h3>
+                            <p class="text-gray-400">Northern Province, Sri Lanka</p>
+                        </div>
+                    </div>
+                    <div class="space-y-4">
+                        <div>
+                            <p class="text-gray-400 mb-2">Primary Contact:</p>
+                            <a href="mailto:hgnp.op@gmail.com" class="text-warning font-medium hover:text-yellow-400 smooth-transition">
+                                hgnp.op@gmail.com
+                            </a>
+                        </div>
+                        <p class="text-gray-300">some text.</p>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Verification Links -->
+            <div class="mt-12 max-w-4xl mx-auto">
+                <h3 class="text-2xl font-bold text-center mb-8">Verification & Review</h3>
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                    <a href="#" class="bg-gray-800 hover:bg-gray-700 p-6 rounded-xl text-center smooth-transition">
+                        <div class="text-warning text-2xl mb-4">
+                            <i class="fas fa-star"></i>
+                        </div>
+                        <h4 class="font-semibold mb-2">Governor Recommended Projects</h4>
+                        <p class="text-gray-400 text-sm">Priority projects for fast-track approval</p>
+                    </a>
+                    
+                    <a href="#" class="bg-gray-800 hover:bg-gray-700 p-6 rounded-xl text-center smooth-transition">
+                        <div class="text-secondary text-2xl mb-4">
+                            <i class="fas fa-file-invoice"></i>
+                        </div>
+                        <h4 class="font-semibold mb-2">ERD Formatted Proposals</h4>
+                        <p class="text-gray-400 text-sm">Proposals according to Economic Resources Division standards</p>
+                    </a>
+                    
+                    <a href="#" class="bg-gray-800 hover:bg-gray-700 p-6 rounded-xl text-center smooth-transition">
+                        <div class="text-success text-2xl mb-4">
+                            <i class="fas fa-building"></i>
+                        </div>
+                        <h4 class="font-semibold mb-2">Local Government Review</h4>
+                        <p class="text-gray-400 text-sm">Projects under local government review</p>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-gray-900 text-white py-12">
+        <div class="container mx-auto px-4">
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <div>
+                    <h4 class="text-warning text-xl font-bold mb-4">OSSI Portal</h4>
+                    <p class="text-gray-400">The Official Investment Promotion Platform of the Northern Province, Sri Lanka.</p>
+                </div>
+                <div>
+                    <h4 class="text-warning text-xl font-bold mb-4">Quick Links</h4>
+                    <ul class="space-y-2">
+                        <li><a href="#home" class="text-gray-400 hover:text-white smooth-transition">Home</a></li>
+                        <li><a href="#sectors" class="text-gray-400 hover:text-white smooth-transition">Investment Sectors</a></li>
+                        <li><a href="#guidance" class="text-gray-400 hover:text-white smooth-transition">Investment Guidance</a></li>
+                        <li><a href="#proposals" class="text-gray-400 hover:text-white smooth-transition">Proposal Guidelines</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="text-warning text-xl font-bold mb-4">Contact Information</h4>
+                    <p class="text-gray-400">📧 investment@northernprovince.gov.lk</p>
+                    <p class="text-gray-400">📞 +94 21 222 1234</p>
+                    <p class="text-gray-400">📍 Provincial Council Complex, Jaffna</p>
+                </div>
+            </div>
+            <div class="border-t border-gray-800 mt-8 pt-8 text-center text-gray-500">
+                <p>© 2023 OSSI Portal - Northern Province. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Modal -->
+    <div id="districtModal" class="fixed inset-0 bg-black bg-opacity-70 hidden justify-center items-center z-50 p-4">
+        <div class="bg-white rounded-2xl max-w-md w-full animate-fade-in">
+            <div class="bg-gradient-to-r from-primary to-secondary text-white p-6 rounded-t-2xl flex justify-between items-center">
+                <h3 id="modalTitle" class="text-xl font-bold">District Information</h3>
+                <button onclick="closeModal()" class="text-2xl hover:text-warning smooth-transition">×</button>
+            </div>
+            <div class="p-6">
+                <h4 id="districtName" class="text-2xl font-bold text-primary mb-4"></h4>
+                <p id="districtDescription" class="text-gray-600 mb-6"></p>
+                
+                <div class="grid grid-cols-2 gap-4 mb-6">
+                    <div class="bg-blue-50 p-4 rounded-lg">
+                        <p class="text-secondary font-semibold mb-1">Population</p>
+                        <p id="population" class="text-gray-800"></p>
+                    </div>
+                    <div class="bg-blue-50 p-4 rounded-lg">
+                        <p class="text-secondary font-semibold mb-1">Area</p>
+                        <p id="area" class="text-gray-800"></p>
+                    </div>
+                    <div class="bg-blue-50 p-4 rounded-lg">
+                        <p class="text-secondary font-semibold mb-1">Main Industries</p>
+                        <p id="industries" class="text-gray-800"></p>
+                    </div>
+                    <div class="bg-blue-50 p-4 rounded-lg">
+                        <p class="text-secondary font-semibold mb-1">Growth Rate</p>
+                        <p id="growthRate" class="text-gray-800"></p>
+                    </div>
+                </div>
+                
+                <div>
+                    <h5 class="font-semibold text-lg mb-3">Investment Opportunities</h5>
+                    <div id="opportunities" class="space-y-2"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // District data
+        const districtData = {
+            "Jaffna": {
+                description: "The cultural and economic capital of the Northern Province, known for its rich heritage and strategic location.",
+                population: "600,000",
+                area: "1,025 km²",
+                industries: "Education, Healthcare, Retail, Tourism",
+                growthRate: "12.5%",
+                opportunities: [
+                    "Higher Education & Research Centers",
+                    "Specialized Healthcare Facilities",
+                    "IT and Business Process Outsourcing",
+                    "Cultural Tourism & Hospitality"
+                ]
+            },
+            "Kilinochchi": {
+                description: "Agricultural heartland with significant potential for agro-processing and modern farming.",
+                population: "120,000",
+                area: "1,279 km²",
+                industries: "Agriculture, Livestock, Paddy Cultivation",
+                growthRate: "8.7%",
+                opportunities: [
+                    "Modern Irrigation Systems",
+                    "Agro-processing Plants",
+                    "Cold Storage Facilities",
+                    "Organic Farming Initiatives"
+                ]
+            },
+            "Mannar": {
+                description: "Island district with excellent potential for wind energy, fisheries, and tourism.",
+                population: "92,000",
+                area: "2,002 km²",
+                industries: "Fishing, Salt Production, Wind Energy",
+                growthRate: "14.2%",
+                opportunities: [
+                    "Wind Power Generation",
+                    "Deep Sea Fishing",
+                    "Salt Processing",
+                    "Eco-Tourism Development"
+                ]
+            },
+            "Vavuniya": {
+                description: "Transportation hub connecting Northern and Eastern provinces with growing urban infrastructure.",
+                population: "172,000",
+                area: "1,967 km²",
+                industries: "Transport, Trade, Services",
+                growthRate: "9.8%",
+                opportunities: [
+                    "Logistics & Warehousing",
+                    "Commercial Real Estate",
+                    "Manufacturing Units",
+                    "Service Sector Expansion"
+                ]
+            },
+            "Mullaitivu": {
+                description: "Coastal district with pristine beaches and significant potential for fisheries and tourism.",
+                population: "92,000",
+                area: "2,617 km²",
+                industries: "Fishing, Agriculture, Tourism",
+                growthRate: "11.3%",
+                opportunities: [
+                    "Beach Resort Development",
+                    "Fisheries Infrastructure",
+                    "Marine Research Centers",
+                    "Community-based Tourism"
+                ]
+            }
+        };
+
+        // Modal functions
+        function openDistrictModal(district) {
+            const data = districtData[district];
+            document.getElementById('modalTitle').textContent = district + " District";
+            document.getElementById('districtName').textContent = district;
+            document.getElementById('districtDescription').textContent = data.description;
+            document.getElementById('population').textContent = data.population;
+            document.getElementById('area').textContent = data.area;
+            document.getElementById('industries').textContent = data.industries;
+            document.getElementById('growthRate').textContent = data.growthRate;
+            
+            const opportunitiesList = data.opportunities.map(opp => 
+                `<div class="flex items-start">
+                    <div class="text-secondary mr-3 mt-1"><i class="fas fa-check-circle"></i></div>
+                    <p>${opp}</p>
+                </div>`
+            ).join('');
+            document.getElementById('opportunities').innerHTML = opportunitiesList;
+            
+            document.getElementById('districtModal').classList.remove('hidden');
+            document.getElementById('districtModal').classList.add('flex');
+        }
+
+        function openModal(type) {
+            if (type === 'investment') {
+                document.getElementById('modalTitle').textContent = "Investment Application";
+                document.getElementById('districtName').textContent = "Start Your Investment Journey";
+                document.getElementById('districtDescription').textContent = "Fill out our online application to access personalized investment guidance and incentives.";
+                document.getElementById('opportunities').innerHTML = `
+                    <p class="mb-4">Our investment facilitation team will contact you within 24 hours to:</p>
+                    <div class="space-y-3">
+                        <div class="flex items-start">
+                            <div class="text-secondary mr-3 mt-1"><i class="fas fa-check-circle"></i></div>
+                            <p>Guide you through the registration process</p>
+                        </div>
+                        <div class="flex items-start">
+                            <div class="text-secondary mr-3 mt-1"><i class="fas fa-check-circle"></i></div>
+                            <p>Explain available tax incentives</p>
+                        </div>
+                        <div class="flex items-start">
+                            <div class="text-secondary mr-3 mt-1"><i class="fas fa-check-circle"></i></div>
+                            <p>Assist with land acquisition</p>
+                        </div>
+                        <div class="flex items-start">
+                            <div class="text-secondary mr-3 mt-1"><i class="fas fa-check-circle"></i></div>
+                            <p>Connect you with local partners</p>
+                        </div>
+                    </div>
+                    <button class="bg-accent hover:bg-red-600 text-white font-semibold py-3 px-8 rounded-full w-full mt-6 smooth-transition" onclick="alert('Application form will open in new window')">Start Application</button>
+                `;
+                document.getElementById('districtModal').classList.remove('hidden');
+                document.getElementById('districtModal').classList.add('flex');
+            }
+        }
+
+        function closeModal() {
+            document.getElementById('districtModal').classList.add('hidden');
+            document.getElementById('districtModal').classList.remove('flex');
+        }
+
+        // Close modal when clicking outside
+        document.getElementById('districtModal').addEventListener('click', function(e) {
+            if (e.target === this) {
+                closeModal();
+            }
+        });
+
+        // Smooth scroll for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Add hover effects to interactive elements
+        document.addEventListener('DOMContentLoaded', function() {
+            const interactiveCards = document.querySelectorAll('.hover-lift');
+            interactiveCards.forEach(card => {
+                card.addEventListener('mouseenter', function() {
+                    this.style.transition = 'all 0.3s ease';
+                });
+            });
+        });
+    </script>
+</body>
+</html>

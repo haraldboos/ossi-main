@@ -1,14 +1,14 @@
 ---
 deployment:
   tasks:
+    # Main deployment path (subdirectory ossi)
+    - export DEPLOYPATH=/home/misnpgov/public_html/ossi
 
-    # Main deployment path
-    - export DEPLOYPATH=/home/misnpgov/ossi/public_html
     # Create backup before deployment
     - /bin/mkdir -p /home/misnpgov/backups
     - /bin/tar -czf /home/misnpgov/backups/ossi-backup-$(date +%F-%H-%M-%S).tar.gz $DEPLOYPATH
 
-    # Copy all project files
+    # Copy all HTML files
     - /bin/cp -R index.html $DEPLOYPATH
     - /bin/cp -R h1.html $DEPLOYPATH
     - /bin/cp -R h2.html $DEPLOYPATH

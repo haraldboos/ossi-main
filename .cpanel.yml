@@ -1,0 +1,42 @@
+---
+deployment:
+  tasks:
+
+    # Main deployment path
+    - export DEPLOYPATH=/home/misnpgov/ossi
+
+    # Create backup before deployment
+    - /bin/mkdir -p /home/misnpgov/backups
+    - /bin/tar -czf /home/misnpgov/backups/ossi-backup-$(date +%F-%H-%M-%S).tar.gz $DEPLOYPATH
+
+    # Copy all project files
+    - /bin/cp -R index.html $DEPLOYPATH
+    - /bin/cp -R h1.html $DEPLOYPATH
+    - /bin/cp -R h2.html $DEPLOYPATH
+    - /bin/cp -R h3.html $DEPLOYPATH
+    - /bin/cp -R hi5.html $DEPLOYPATH
+    - /bin/cp -R userregister.html $DEPLOYPATH
+    - /bin/cp -R proposalcretionguid.html $DEPLOYPATH
+
+    # Copy images
+    - /bin/cp -R *.png $DEPLOYPATH
+    - /bin/cp -R *.jpeg $DEPLOYPATH
+    - /bin/cp -R *.jpg $DEPLOYPATH
+
+    # Copy folders
+    - /bin/cp -R districts $DEPLOYPATH
+    - /bin/cp -R guid $DEPLOYPATH
+    - /bin/cp -R logo $DEPLOYPATH
+
+    # Copy geojson and other assets
+    - /bin/cp -R *.geojson $DEPLOYPATH
+
+    # Set permissions
+    - /bin/chmod -R 755 $DEPLOYPATH
+
+    # Cleanup unwanted git files
+    - /bin/rm -rf $DEPLOYPATH/.git
+    - /bin/rm -rf $DEPLOYPATH/.github
+
+    # Deployment log
+    - echo "Deployment completed on $(date)" >> /home/misnpgov/deployment.log

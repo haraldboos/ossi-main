@@ -3,8 +3,7 @@ deployment:
   tasks:
 
     # Main deployment path
-    - export DEPLOYPATH=/home/misnpgov/ossi
-
+    - export DEPLOYPATH=/home/misnpgov/ossi/public_html
     # Create backup before deployment
     - /bin/mkdir -p /home/misnpgov/backups
     - /bin/tar -czf /home/misnpgov/backups/ossi-backup-$(date +%F-%H-%M-%S).tar.gz $DEPLOYPATH
